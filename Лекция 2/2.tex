@@ -101,4 +101,16 @@ $U^{-1} = U^* = \overline{U}^T$ $\Rightarrow$ $\overline{U}^T M U$ = $U^{-1} M U
 Тогда $\|Af\| \le \sqrt{\lambda_{max}}\|f\|$
 Обозначим $\tilde{g}_k = \delta_{kk_*}$, $\lambda_{max} = \lambda_{k_*}$, $\tilde{f} = U\tilde{g}$ и $\|\tilde{f}\| = \|\tilde{g}\| = 1$.
 $\sqrt{\lambda_{max}} = \|A\tilde{f}\| \le \|A\| \le \sqrt{\lambda_{max}} \Rightarrow \|A\| = \sqrt{\lambda_{max}(\overline{A}^T A)}$.
+
+\textbf{Пример:}\\
+$\varepsilon_1 = \varepsilon_2 = L_2(G) = H$ --- гильбертово пространство, где $G \in \mathbb R^m$ --- измеримое множество.
+\begin{gather*}
+    A : L_2(G) \to L_2(G)\\
+    (Af)(x) = \int_G \underbrace{K(t, x)}_{\text{интегральное ядро}} f(t) dt\\
+    K \in L_2(G \times G) \quad \|K\|^2_{L_2{G \times G}} = \iint_{G \times G} |K|^2 dt dx \le +\infty\\
+    \|Af\|^2 = \int_{G} |(Af)(x)|^2 dx = \int_G dx  \underbrace{\left| \int_G dt K(t, x) f(t) \right|^2}_{\le\text{по Коши-Буняковскому в }L_2(G)\text{ }
+    \int_G |K(t, x|^2 dt \int_G |f(t)|^2 dt}\le\\
+    \le \left(\iint_{G \times G} dx dt |K|^2 \right)\|f\|^2
+\end{gather*}
+Итого оценили операторную норму: $\|Af\|_{L_2{G}} \le \|K\|_{L_2(G \times G)}\|f\|_{L_2(G)}$ $\forall f \in L_2(G)$ $\Rightarrow$ $\boxed{\|A\| \le \|K\|_{L_2(G \times G)}}$.
 \end{document}
