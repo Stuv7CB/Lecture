@@ -1,0 +1,104 @@
+\documentclass[12pt]{article}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\frenchspacing
+\usepackage{amssymb, amsmath, amscd}
+\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{comment}
+\DeclareMathOperator{\rh}{\rho}
+\DeclareMathOperator{\Ree}{Re}
+\DeclareMathOperator{\Imm}{Im}
+\begin{document}
+\begin{center}
+    \textbf{Линейные непрерывные операторы в евклидовом пространстве.}
+\end{center}
+
+$\varepsilon_1, \varepsilon_2$ --- два евклидовых пространства.
+$A : \varepsilon_1 \to \varepsilon_2$ --- линейный оператор.
+Иначе говоря $\forall \alpha_{1, 2}$ $\forall f_{1, 2} \in \varepsilon_1$ $A(\alpha_1 f_1 + \alpha_2 f_2) = \alpha_1 A(f_1) + \alpha A(f_2)$.
+
+\textbf{Определение:} $A$ непрерывна в $f_0 \in \varepsilon_1$ $\Leftrightarrow$ $\forall \varepsilon > 0$ $\exists \delta_0(\varepsilon)$
+$\forall f \in \varepsilon_1$: $\|f - f_0\| \le \delta_0(\varepsilon)$ $\Rightarrow$ $\|Af-Af_0\| \le \varepsilon$.
+
+Из непрерывность в $f_0$ следует непрерывность $A$ $\forall g \in \varepsilon_1$.
+Так как $\forall f \in \varepsilon_1$ $\|f - g\| \le \delta_0(\varepsilon)$, то $\|Af - Ag\| = \|A(f - g) + A(f_0) - A(f_0)\| = \|A(f_0 + (f - g)
+- A(f_0)\| \le \delta_0(\varepsilon)$ $\Rightarrow$ непрерывна в $g$.
+В частности при $g = 0$ $\|Af\| \le \varepsilon$ $\forall \|f\| \le \delta_0(\varepsilon)$.
+Поэтому $\delta_0$ --- универсальное число.
+
+Пусть $\varepsilon_1 = 1$, $\delta_0(1)$.
+$\forall f \ne 0$ $\left \| \frac{f}{\|f\|}\delta_0(1)\right \| = \delta_0(1)$.
+Подставим это выражение под знак оператора.
+$\|A(\frac{f}{\|f\|}\delta_0(1))\| \le 1$ $\Leftrightarrow$ $\frac{\delta_0(1)}{\|f\|}\|Af\| \le 1$ $\Rightarrow$ оцениваем норму образа через норму
+прообраза: $\forall f \in \varepsilon_1$ $\|A(f)\| \le \frac{\|f\|}{\delta_0(1)}$ $\Rightarrow$ $\forall f,g \in \varepsilon_1$
+$\|A(f-g)\| \le \frac{1}{\delta_0(1)}\|f - g\|$.
+Это липшецевость оператора $A$ на $\varepsilon_1$ с $L=\frac{1}{\delta_0(1)}$.
+Рассмотрим наименьшую константу Липшеца и назовём её нормой.
+
+\textbf{Определение:} $A : \varepsilon_1 \to \varepsilon_2$, $A \ne 0$ --- линейный и непрерывный оператор, то
+$\|A\| = \inf\{L > 0 \mid \|Af\| \le L\|f\| \quad \forall f \in \varepsilon_1\}$.
+Очевидно, что это так же равно $\sup\limits_{f \in \varepsilon_1, f \ne 0} \frac {\|Af\|}{\|f\|}=L_0$, $L_0 \le L$.
+
+\textbf{Пример} линейного разрывного оператора:\\
+$\varepsilon_1 = \{f \in C^1[0,1]\}$ со скалярным произведением $(f, g) = \int\limits_0^1 f(t) \overline{g(t)} dt$, $\varepsilon_2 = \mathbb C$.
+Пусть $A : \varepsilon_1 \to \varepsilon_2$, $A(f)=f'(0)$ $\forall f \in \varepsilon_1$.
+Конечность нормы --- критерий непрерывности.
+У этого оператора норма бесконечность: возмём, например, $f_n(x) = \sin{nx} \in \varepsilon_1$
+\begin{gather*}
+    A(f_n) = n\\
+    \|A(f_n)\| = |n|\\
+    \|f_n\| = \sqrt{ \int \limits_0^1 \sin^2{nx} dx} \le 1 \Rightarrow \|A\| = \infty \text{ иначе говоря }\\
+    \|A\| \ge \frac{|n|}{\|f_n\|} \ge n \to \infty
+\end{gather*}
+Или по-другому
+\begin{gather*}
+    g_n = \frac{1}{\sqrt{n}} f_n \underbrace{\to}_{\text{по нормe в }\varepsilon} 0\\
+    \|g_n\|_{\varepsilon_1} \le \frac{1}{\sqrt{n}}\\
+    A(g_n) = \sqrt{n}\\
+    \|Ag_n\| = \sqrt{n} \to \infty
+\end{gather*}
+
+Дадим теперь два других определения операторной нормы.
+$\|A\| = \underbrace{\sup\limits_{f \ne 0}{\frac{\|Af\|}{\|f\|}}}_{1} = \underbrace{\sup\limits_{\|f\| = 0} \|Af\|}_{2} =
+\underbrace{\sup\limits_{\|f\| \le 1}\|Af\|}_{3}$.
+Покажем их равенство.
+$\boxed{1} \ge \boxed{2}$, так как $\|f\| = 1$ является сужением.
+С другой стороны $\sup\left\|A\frac{f}{\|f\|}\right\| \le \boxed{2}$ $\Rightarrow$ $\boxed{1} = \boxed{2}$.
+$\boxed{3} \le \boxed{2}$ так как $f \ne 0$, $\|f\| \le 1$ $\|Af\| = \underbrace{\|f\|}_{\le 1} \underbrace{\left\|A\frac{f}{\|f\|}\right\|}
+_{\le \sup\limits_{\|\phi\| = 1} \|A\phi\|}$.
+Но $\boxed{2} \le \boxed{3}$ так как является сужением, поэтому $\boxed{2} = \boxed{3}$.
+
+\textbf{Пример:}\\
+Пусть $\varepsilon_1 = \mathbb C^n$, $\varepsilon_2 = \mathbb C^m$.
+$A : \mathbb C^n \to \mathbb C^m$ задаётся комплексной матрицей $m \times n$.
+$Af \in \mathbb C^m$ $\forall f \in \mathbb C^n$ есть умножение матрицы на столбец.
+$\|Af\|^2_{\mathbb C^m} = \overline{Af}^T Af = \overline{f}^T \underbrace{\overline{A}^T A}_{M} f$.
+$M^*=\overline{M}^T=M$ $\Rightarrow$ $M \in \mathbb C^{n \times n}$.
+Следовательно $\exists U : \mathbb C^n \to \mathbb C^n$ --- унитарная матрица, то есть сохраняющая норму.
+$U^{-1}MU =
+    \left(
+        \begin{array}{ccc}
+            \lambda_1 & \phantom{x} & \phantom{x}\\
+            \phantom{x} & \ddots & \phantom{x}\\
+            \phantom{x} & \phantom{x} & \lambda_n
+        \end{array}
+    \right)
+$, $\lambda_i \in \mathbb R$.
+$\overline{f}^TMf = \|Af\|^2 \ge 0$.
+$\|Uf\|=\|f\|$, поэтому можно перейти к базису из собственных векторов.
+$f=Ug$, тогда $\|Af\|^2 = \overline{Ug}^TM Ug = \overline{g}^T \overline{U}^T M Ug$, но $U$ --- унитарная, следовательно
+$U^{-1} = U^* = \overline{U}^T$ $\Rightarrow$ $\overline{U}^T M U$ = $U^{-1} M U =
+    \left(
+        \begin{array}{ccc}
+            \lambda_1 & \phantom{x} & \phantom{x}\\
+            \phantom{x} & \ddots & \phantom{x}\\
+            \phantom{x} & \phantom{x} & \lambda_n
+        \end{array}
+    \right)
+\Rightarrow \overline{g}^T \overline{U}^T M Ug = \sum\limits_{i = 1}^n \lambda_i |g_i|^2$.
+Обозначим теперь $\lambda_{max} = \max\lambda_i$, тогда $\sum\limits_{i = 1}^n \lambda_i |g_i|^2 \le \lambda_{max}\sum\limits_{i = 1}^n |g_i|^2 =
+\lambda_{max} \|f\|^2$.
+Тогда $\|Af\| \le \sqrt{\lambda_{max}}\|f\|$
+Обозначим $\tilde{g}_k = \delta_{kk_*}$, $\lambda_{max} = \lambda_{k_*}$, $\tilde{f} = U\tilde{g}$ и $\|\tilde{f}\| = \|\tilde{g}\| = 1$.
+$\sqrt{\lambda_{max}} = \|A\tilde{f}\| \le \|A\| \le \sqrt{\lambda_{max}} \Rightarrow \|A\| = \sqrt{\lambda_{max}(\overline{A}^T A)}$.
+\end{document}
