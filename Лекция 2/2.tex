@@ -5,9 +5,8 @@
 \usepackage{amssymb, amsmath, amscd}
 \usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
 \usepackage{comment}
-\DeclareMathOperator{\rh}{\rho}
-\DeclareMathOperator{\Ree}{Re}
 \DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\Lin}{Lin}
 \begin{document}
 \begin{center}
     \textbf{Линейные непрерывные операторы в евклидовом пространстве.}
@@ -112,5 +111,208 @@ $\varepsilon_1 = \varepsilon_2 = L_2(G) = H$ --- гильбертово прос
     \int_G |K(t, x|^2 dt \int_G |f(t)|^2 dt}\le\\
     \le \left(\iint_{G \times G} dx dt |K|^2 \right)\|f\|^2
 \end{gather*}
-Итого оценили операторную норму: $\|Af\|_{L_2{G}} \le \|K\|_{L_2(G \times G)}\|f\|_{L_2(G)}$ $\forall f \in L_2(G)$ $\Rightarrow$ $\boxed{\|A\| \le \|K\|_{L_2(G \times G)}}$.
+Итого оценили операторную норму: $\|Af\|_{L_2{G}} \le \|K\|_{L_2(G \times G)}\|f\|_{L_2(G)}$
+$\forall f \in L_2(G)$ $\Rightarrow$ $\boxed{\|A\| \le \|K\|_{L_2(G \times G)}}$.
+
+Свойства операторной нормы, $A, B : \varepsilon_1 \to \varepsilon_2$
+\begin{enumerate}
+    \item{$\|A + B\| \le \|A\| + \|B\|$}
+    \item{$\|\alpha A\| = |\alpha| \|A\|$}
+    \item{$\|A\| \Leftrightarrow Af = 0 \quad \forall \in \varepsilon_1$}
+\end{enumerate}
+Докажем эти свойства.
+\begin{enumerate}
+    \item{$\|(A + B)f\| \le \|A(f)\| + \|B(f)\| \le (\|A\| + \|B\|)\|f\| \Rightarrow \|A + B\| \le \|A\| + \|B\|$}
+    \item{$\|(\alpha A)f\| = \|\alpha A(f)\| = |\alpha| \|A(f)\|$, $\sup \limits_{\|f\| = 1} \|(\alpha A)f\| = |\alpha| \sup \limits_{\|f\| = 1} \|Af\|$}
+    \item{Очевидно}
+\end{enumerate}
+4. $A : \varepsilon_1 \to \varepsilon_2$, $B : \varepsilon_2 \to \varepsilon_3$, $T = B \cdot A$ $T(f) = B(A(f))$ $\forall f \in \varepsilon_1$.
+Тогда $\|T(f)\| = \|B(A(f))\| \le \|B\|\|A(f)\| \le \|B\|\|A\|\|f\|$ $\Rightarrow$ $\boxed{\|T\| \le \|B\|\|A\|}$.
+Следствие: $A : \varepsilon \to \varepsilon$, $A$ --- линейный непрерывный оператор.
+Тогда можно формально рассмотреть $A^n f = \underbrace{A(A(\dots A}_{\text{n раз}}(f)) \dots )$ --- произведение в пространстве линейный операторов.
+Естественно получается $\|A^n\| \le \|A\|^n$ по индукции из пункта 4.
+
+\textbf{Наблюдение}\\
+$F : H \to \mathbb C$ --- линейный непрерывный функционал.
+По теореме Рисса-Фреше $\exists! h \in H$: $F(f) = (f, h)$ $\forall f \in H$.
+Следовательно $\|F\|_{\text{операторная}} = \|h\|_H$.
+Получаем изометрический (так как сохраняет норму) изоморфизм между гильбертовым пространством и пространством непрерывных линейных операторов.
+В квантмехе это называют отождествление гильбертового пространства и наблюдателей над ним.
+Если ввести $H^* = \{\text{все }F : H \to \mathbb C \text{ линейные}\*\text{ и непрерывные функционалы}\}$.
+То имеется линейная биекция (изоморфизм) сохраняющая норму по теореме Рисса-Фреше.
+Норма сохраняется так как $\|F\| = \sup \limits_{\|f\| = 1}|(f, h)| = \|h\|$, в прямую сторону по неравенству Коши-Буняковского, а в обратную
+если взять вектор $f = \frac{h}{\|h\|}$ при $h \ne 0$, то результат будет не меньше $\|h\|$.
+
+Два типа сходимости для последовательности операторов.
+$\{A_n\} : \varepsilon_1 \to \varepsilon_2$, $\{T_n\} \varepsilon_2 \to \varepsilon_1$ --- линейные непрерывные функционалы.
+
+Говорят, что $\|A_n\| \to T$ по операторной норме, если $\|A_n - T\| \to 0\quad n\to \infty$.
+Фактически это равномерная сходимость на сфере или на шаре, при чём на любом.
+$\|A_n - T\| \to 0 \Leftrightarrow A_n(f) \rightrightarrows T(f)$, $\|f\| < R\quad \forall R$, потому что
+$\|A_n(f) - T(f)\| \le \underbrace{\|A_n - T\|}_{\to 0}\underbrace{\|f\|}_{\le R}$.
+И наоборот, если $\forall n \ge N(\varepsilon)$, $\forall \|f\| \le 1$ $\|A_n f - Tf\| \le \varepsilon$, то беря
+$\sup \limits_{\|f\| \le 1} \|A_n f -Tf\| = \|A_n - T\|$.
+Сходимость по норме синоним сходимости на произвольном шаре.
+
+$A_n \to T$ сходится поточечно, если $\|A_nf-Tf\| \to 0$ $\forall f \in \varepsilon_1$.
+Ясно, что если $A_n \to T$ по операторной норме, то очевидно сходится и поточечно.
+Обратное неверно.
+
+\textbf{Упражнение:}\\
+Придумать пример, когда $A_n : \varepsilon_1 \to \varepsilon_2$ линейно непрерывный поточечно сходится к разрывному.
+
+$\|T\| = \lim \|A_n\|$ $\|A_n - A_m\| \le \|A_n - T\| + \|A_m - T\|$.
+Получается, что $\|T\| - \|A_n\| \le \|T - A_n\| \to 0$ если есть сходимость по операторной норме.
+
+\textbf{Теорема Банаха-Штейнгаусса}\\
+Пусть $H$ --- гильбертово пространство, $\varepsilon$ --- евклидово, $A_n : H \to \varepsilon$, $A_n$ поточечно сходится к $T$, где $T : H \to \varepsilon$
+линейный оператор, тогда $T$ --- линейный непрерывный оператор, $\{A_n\}$ --- ограниченная числовая последовательность, $\|T\| \le \varliminf\limits_
+{n\to \infty}\|A_n\|$.
+
+\textbf{Доказательство:}\\
+Шаг первый. Если $\forall f \in H$ $\{A_nf\}$ ограничена в $\varepsilon$, тогда $\{\|A_n\|\}$ ограничена.
+Докажем это.
+Посмотрим на множество $\Gamma_N = \{f \in H \mid \|A_n f\| \le N \quad \forall n \in \mathbb N\}$, $N \in \mathbb N$.
+Так как последовательность $\{\|A_nf\|\}$ ограничена в $\varepsilon$, то такая последовательность не будет превосходить какого-нибудь числа.
+Следовательно если взять числа $N$ и смотреть на функции, которые отвечают $\Gamma_N$, то перебирая все $N$ можно перебрать все функции.
+$\bigcup\limits_{N = 1}^\infty \Gamma_N = H$.
+Теперь воспользуемся полнотой, попытаемся доказать, что хотя бы в одной из этих множеств попадает шарик.
+Если $\exists f_0 \in H$ и $\exists N_0$ и $r_0 > 0$ так, что $B_{r_0}(f_0)=\{f \in H \mid \|f - f_0\| \le r_0\} \subset \Gamma_{N_0}$, тогда $\|A_n f\| \le N_0$
+если $\forall f$ $\|f - f_0\| \le r_0$.
+Если взять $\|w\| = 1$ и рассмотреть $\|A_n w\|$, то $f_0 + r_0 w \in B_{r_0}(f_0)$ (к $f_0$ прибавили вектор единичной длина, умноженный на радиус шара
+и остались в нём), тогда $\frac{1}{r_0}\|A_n(f_0 + r_0 w) - A_n f_0\| \le \frac{1}{r_0}(N_0 + \overbrace{\|A_n f_0\|}^{\le R_0})\le \frac{N_0 + R_0}{r_0}$
+для любого вектора на единичной сфере.
+Следовательно $\|A_n\| \le \frac{N_0 + R_0}{r_0}$.
+Если удастся в $\Gamma_N$ впихнуть шарик, то можно оценить любой элемент сферы.
+Пусть в любое $\Gamma_N$ нельзя впихнуть никакой шар положительного радиуса.
+Тогда рассмотрим шар в центре 0 радиуса 1 и рассмотрим $\Gamma_1$, в который нельзя впихнуть какой-либо шар.
+Рассмотрим разность этого открытого шара и $\Gamma_1$.
+Получим открытое множество, в нём любая точка входит вместе с окрестностью, а значит можно выбрать шар радиуса $r_1 < \frac12$, непересекающий $\Gamma_1$.
+Рассмотрим теперь этот шар и множество $\Gamma_2$, в которое также нельзя запихнуть ни один шар.
+Опять смотрим их разность (открытое множество) и выбираем шар $r_2 < \left(\frac12\right)^2$ и так далее.
+Получаем последовательность вложенных шаров $B_{r_1}(f_1) \supset B_{r_2}(f_2)$ и $\forall k$ $B_{r_k} \cap \Gamma_k = \varnothing$, а радиусы стремяться к нулю.
+Центры этих шаров образуют фундаментальную последовательность $\|f_k - f_{k + p}\| \le \frac{1}{2^k} \le \varepsilon$ $\forall k \ge k(\varepsilon)$.
+Пользяся полнотой получаем, что ряд сходится в $H$ $f_k \to f_*$.
+Получаем парадокс: $f_{k+p} \in B_{r_k}(f_k)$, при $p \to \infty$ $f_{k+p} \to f_*$ $\Rightarrow$ $f_* \in B_{r_k}(f_k)$ $\forall k$.
+Но каждый такой шар построен так, что $B_{r_k} \cap \Gamma_k = \varnothing$, следовательно $f_* \notin \Gamma_k$ $\forall k$, но всё пространство есть объединение
+в том числе и $f_*$, получили противоречие с условием.
+
+Следствие шага 1: Если $\sup\limits_{n \in N}\|A_n\| = \infty$, $A_n$ --- линейный непрерывный оператор, то $\exists f_* \in H\colon
+\sup \limits_{n \in \mathbb N}\|A_n f_*\| = \infty$.
+
+Шаг второй. Если есть поточечная сходимость из полного пространства, то тогда поточечный предел --- непрерывный ограниченный оператор.
+$A_n f \to T f$ $\forall f$ в $\varepsilon$, следовательно $\{A_n f\}$ ограниченна в $\varepsilon$ $\forall f$ $\Rightarrow$ по шагу один $\sup \limits_{n \in
+\mathbb N}\|A_n\| < +\infty$.
+Тогда $\|Tf + A_n f - A_n f\| \le \underbrace{\|Tf - A_n f\|}_{\le 1\text{ при } n \ge N(f)} + \underbrace{\|A_n f\|}_{\le \|A_n\| \|f\|}$, где $\|f\| = 1$ ($f$ с
+единичной сферы), а $\|A_n\| \le R$.
+Следовательно $\|Tf\| \le 1 + R$ $\forall \|f\| = 1$ и значит $\|T\| \le 1 + R$.
+Поэтому поточечный предел последовательности будет непрерывным.
+Во-вторых, $\forall \|f\| = 1$, $\forall \varepsilon > 0$ $\exists N(\varepsilon, f)$: $\forall n \ge N(\varepsilon, f)$ $\|A_n f - Tf\| \le \varepsilon$
+$\Rightarrow$ $\|Tf\| \le \varepsilon + \|A_n\|\|f\|$.
+Нижний предел последовательности с добавкой превосходит $\|A_n\|$, начиная с некоторого $n$:
+$\forall \varepsilon > 0$ $\forall M(\varepsilon) > 0$ $\exists n \ge M(\varepsilon)$ $\varliminf\limits_{k \to \infty}\|A_k\| + \varepsilon \ge \|A_n\|$.
+Если возмём $M = N(\varepsilon, f)$, то $\varepsilon + \|A_n\| \|f\| \le \varliminf\limits_{k \to \infty}\|A_k\| + 2 \varepsilon$.
+Отсюда взяв супремум по $f$ получаем, что $\|T\| \le \varliminf\limits_{k \to \infty}\|A_k\| + 2 \varepsilon$, $\varepsilon \to +0$.
+Доказательство закончено.
+
+\textbf{Пример:}\\
+$H$ --- гильбертово пространство, $\{e_n\}_{n = 1}^{\infty}$ --- ортонормированный базис в $H$.
+$\forall f \in H$ $f = \sum\limits_{k = 1}^{\infty}(f, e_k)e_k$, это ни что иное $P_k(f)$ --- ортопроектор на линейную оболочку $e_k$.
+Очевидно $\|P_k\| = 1$.
+Возникает ряд из проекторов $I = \sum\limits_{k = 1}^{\infty}P_k$, где $If = f$ --- тождественый оператор из $H$ в $H$, $\|I\| = 1$.
+Это обозначение символизирует собой ряд Фурье: $f = \sum\limits_{k = 1}^{\infty}P_k(f)$.
+Это справедливо для любого $f$, следовательно получается, что $S_n = \sum\limits_{k = 1}^{n}P_k \to I$ поточечно, потому что
+$S_n(f) = \sum\limits_{k = 1}^{n}(f, e_k)e_k \to f$ в $H$ при $n \to \infty$.
+А сходимости по норме здесь нет.
+Действительно $\|I - \sum\limits_{k = 1}^{n}P_k\| \ge \|(I - \sum\limits_{k = 1}^{n}P_k)e_{n + 1}\|$.
+$e_{n+  1}$ с единичной сферы, а супремум по единичной сфере даст норму.
+Но $Ie_{n + 1} = e_{n + 1}$, а $P_k e_{n + 1} = 0$ при $k < n + 1$.
+Получаем $\|I - \sum\limits_{k = 1}^{n}P_k\| = \|e_n\| = 1$ $\forall n$.
+То есть никакой сходимости по норме нет.
+Но поточечная есть, она дайт факт что последовательность частичных сумм $S_n$ ограничена.
+Оценит норму суммой норм проекторов плохо, так как оценка стремится к бесконечности, а по теорема Банаха-Штейнгасса
+$S_n$ по норме меньше некого числа $R$.
+
+\begin{center}
+    \textbf{Спектр и резольвентное множество линейного непрерывного оператора в гильбертовом пространстве $A : H \to H$.}
+\end{center}
+
+Введём оператор $A_\lambda = A - \lambda I$, $\lambda \in \mathbb C$.
+Резольвентное множество $\rho(A) = \{\lambda \in \mathbb C \mid \exists (A_\lambda)^{-1} : H \to H\}$.
+
+\textbf{Замечание:}\\
+Пусть $\varepsilon_1, \varepsilon_2$ --- два евклидовых пространства и линейный оператор $T : \varepsilon_1 \to \varepsilon_2$.
+Обратный оператор отображает образ $T$ $T^{-1} : \Imm T \to \varepsilon_1 \Leftrightarrow \ker T = \{0\}$.
+Тогда существует обратный $T^{-1}:\varepsilon_2 \rho \varepsilon_1$ $\Leftrightarrow$ $\ker T = \{0\}$ и $\Imm T = \varepsilon_2$.
+
+Тогда можно переписать определение резольвентного множества как $\rho(A) = \{\lambda \in \mathbb C \mid \ker A_\lambda = 0\text{ и }\Imm A_\lambda = H \}$.
+Более того в гильбертовом пространстве обратный оператор автоматически непрерывен.
+
+\textbf{Замечание (Теорема Банаха об обратном операторе)}\\
+$T:H_1 \to H_2$ --- линейный непрерывный оператор, где $H_{1,2}$ --- гильбертовы пространства.
+Тогда $\exists! T^{-1} : H_2 \to H_1$ линейный и непрерывный если, и только если $\ker T = 0$ и $\Imm T = H_2$.
+
+$\lambda \in \rho(A) \Leftrightarrow \exists(A_\lambda)^{-1} : H \to H$ --- непрерывный оператор.
+$(I - \mu A) = -\mu A_{\frac{1}{\mu}}$, то $\frac{1}{\mu} \in \rho(A) \Leftrightarrow \exists \underbrace{(I - \mu A)^{-1}}_{\text{резольвента }\rho_A(\mu)}
+= -\frac{1}{\mu}(A_{\frac{1}{\mu}})$.
+
+\textbf{Определение:} Спектр оператора $\sigma(A) = \mathbb C \setminus \rho(A)$. $\lambda \in \sigma(A)$ эквивалентно одному из двух случаев:
+либо $\ker A_\lambda \ne \{0\}$ --- точечный спектр, состоящий из собственных значений ($\sigma_P(A)$) (точечный спектр может образовывать множество мощности континум),
+либо $\ker A_\lambda = \{0\}$, но $\Imm A_\lambda \ne H$ --- непрерывный спектр ($\sigma_C(A)$) (непрерывный спектр может быть из отдельных точек).
+В случае непрерывного спектра обратный оператор существует $A_\lambda^{-1} : \Imm A_\lambda \to H$ и даже может оказаться непрерывным, если (и только если) образ его
+замкнут.
+
+\textbf{Пример} когда обратный оператор непрерывный есть, а точка в спектре.\\
+Пусть $H$ с ортонормированным базисом $\{e_k\}$.
+$f = \sum \limits_{k = 1}^{\infty} \alpha_k(f) e_k$, где $\alpha_k(f)=(f, e_k)$.
+Пусть оператор $A$ производит сдвиг: $Af = \sum \limits_{k = 1}^{\infty} \alpha_k(f) e_{k+1}$.
+Естественно $\|f\| = \|Af\| = \sqrt{\sum \limits_{k = 1}^{\infty} |\alpha_k(f)|^2}$ --- это равенство Парсеваля.
+$\ker A = \{0\}$, $\Imm A = (\Lin e_1)^{\perp}$.
+$A^{-1} : (\Lin e_1)^{\perp} \to H$, $g \in (\Lin e_1)^{\perp}$ $g = \sum \limits_{k = 2}^{\infty}\underbrace{\beta_k}_{(g, e_k)}e_k$ отображается
+в $\sum\limits_{k = 1}^{\infty} \beta_{k + 1}e_k$ действием оператора $A^{-1}$.
+Получается $A^{-1}g = f \Leftrightarrow Af = g$, естественным образом $\|A^{-1}g\| = \|g\|$ $\forall g \in (\Lin e_1)^{\perp}$, следовательно $\|A^{-1}\| = 1$.
+
+\textbf{Теорема (фон Неймана)}\\
+Если $T : H \to H$ --- линейный и непрерывный так, что ряд $\sum_{n = 0}^\infty \|T^n\|$ сходится, тогда $S_N = \sum_{n = 0}^N T^n$ сходится по операторной норме
+к некоторому оператору $S$ --- линейный непрерывный оператор $S = \sum_{n = 0}^\infty T^n$, причём $S = (I - T)^{-1}$.
+
+\textbf{Доказательство}\\
+Убедимся, что $S_N$ обладает сходимостью.
+$S_N f$ --- фундаментальная последовательность в $H$ $\forall f \in H$, так как $\|S_N f - S_{N+P} f\| = \|\sum_{n = N + 1}^{N + P} T^n f\| \le 
+\sum_{n = N + 1}^{N + P}\underbrace{\|T^n\|}_{\to 0}\|f\| \Rightarrow \|S_N f - S_{N+P} f\| \to 0$ $N \to \infty$ равномерно по $P$.
+Раз фундаментальна в гильбертовом, значит сходится $S_N f \to Sf$.
+$\|S_f\| = \lim \limits_{N \to \infty}\|S_N f\| \le \lim \limits_{N \to \infty} \sum_{k = 1}^N \|T\|^k\|f\| \le \sum_{k = 1}^{\infty} \|T^k\| \|f\|$.
+Следовательно $\|S\| \le \sum \limits_{k = 1}^{\infty}\|T^k\|$, следовательно $S$ --- линейный непрерывный оператор.
+
+Теперь покажем, что он обратный.
+Надо доказать, что 
+$
+\left\{
+    \begin{aligned}
+        &(I - T)S = I \Rightarrow \Imm(I - T) = H\\
+        &S(I - T) = I \Rightarrow \ker(I - T) = 0
+    \end{aligned}
+\right\} \Rightarrow \exists (I - T)^{-1} : H \to H
+$.
+$\forall f \in H$ $(I - T)Sf = \underbrace{(I - T)}_{\text{непрерывный}}(\lim \limits_{N \to \infty} S_N f) = \lim \limits_{N \to \infty}((I - T)S_N f) = 
+\lim \limits_{N \to \infty}((I - T) \sum\limits_{n = 0}^N T^k f) = \lim \limits_{N \to \infty}(f - T^{N+1}f)$.
+Но $\|T^{N+1}f\| \le \|T^{N+1}\|\|f\| \to 0$ $\Rightarrow$ $(I - T)S = I$.
+$S(I - T)f = \lim \limits_{N \to \infty}(S_N(I - T)f) = \lim \limits_{N \to \infty}((I - T^{N+1})f) = f$.
+Таким образом теорема фон Неймана доказана.
+
+\textbf{Следствия:}\\
+Пусть $A : H \to H$ --- линейный и непрерывный, тогда
+\begin{enumerate}
+    \item{$\forall \lambda \in \mathbb C$ такой, что $|\lambda| > \|A\|$ $\Rightarrow$ $\lambda \in \rho(A)$.
+        При этом $(A_\lambda)^{-1} = -\sum \limits_{n = 0}^{\infty}\frac{A^k}{\lambda^{k+1}}$, причём ряд сходиться по операторной норме.}
+    \item{$\rho(A)$ --- открыто в $\mathbb C$}
+    \item{Функция от $\lambda$ $(A_\lambda)^{-1}$ непрерывна на $\rho(A)$ по операторной норме}
+    \item{$\forall \lambda \in \rho(A)$ $\exists \lim\limits_{\text{по операторной норме}}\frac{(A_{\lambda + \Delta \lambda})^{-1} - (A_\lambda)^{-1}}{\Delta\lambda} =
+        ((A_\lambda)^{-1})^2$}
+\end{enumerate}
+
+\textbf{Доказательство}\\
+1: Если $|\lambda| > \|A\|$ $A_\lambda = A - \lambda I = -\lambda (I - \overbrace{\frac{A}{\lambda}}^{=T})$, $\|T\|=\frac{\|A\|}{|\lambda|} < 1$
+следовательно $\|T^n\| \le \|T\|^n = \left( \frac{\|A\|}{|\lambda|}\right)^n$ --- это член сходящегося ряда.
+Значит по теореме фон Неймана $\exists (A_\lambda)^{-1} = -\frac{1}{\lambda}\sum\limits_{n = 0}^{\infty}\frac{A^k}{\lambda^k}$ сходящегося по операторной норме
 \end{document}
