@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\frenchspacing
+\usepackage{amssymb, amsmath, amscd}
+\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{comment}
+\DeclareMathOperator{\Imm}{Im}
+\DeclareMathOperator{\Lin}{Lin}
+\newcommand{\Al}{A_\lambda}
+\newcommand{\Alo}{(\Al)^{-1}}
+\newcommand{\Rez}{(I - \lambda A)^{-1}}
+\begin{document}
+Пусть $A : H \to H$ --- линейный и непрерывный оператор.
+Тождественный оператор $I : H \to H$ ($If = f$ $\forall f \in H$).
+$\forall \lambda \in \mathbb C$ $A_\lambda = A - \lambda I$.
+Резольвентное множество $\rho(A) = \{ \lambda \in \mathbb C \mid \exists \underbrace{(A_\lambda)^{-1}}_{\text{линейный и непрерывный}} : H \to H \} 
+\overbrace{=}^{\text{по теореме Банаха об обратном операторе}} \{ \lambda \in \mathbb C \mid \ker A_\lambda = 0, \Imm A_\lambda = H \}$.
+Тогда $\sigma(A) = \mathbb C \setminus \rho(A)$ --- спектр, $\sigma(A) = \left \{ \lambda \in \mathbb C \mid 
+\left [
+    \begin{aligned}
+        &\ker A_\lambda \ne 0\\
+        &\left \{
+            \begin{aligned}
+                &\ker \Al = 0\\
+                &\Imm \Al \ne H
+            \end{aligned}
+            \right.
+    \end{aligned}
+\right.\right\}$.
+Точечный спектр $A$ $\lambda \in \sigma_p(A)= \left \{ \lambda \in \mathbb C \mid \ker A_\lambda \ne 0 \right\}$ называют собственными значениями $A$.
+Непрерывный спектр в свою очередь $\sigma_C(A) =  \left \{ \lambda \in \mathbb C \mid 
+\left\{
+    \begin{aligned}
+                &\ker \Al = 0\\
+                &\Imm \Al \ne H
+    \end{aligned}
+\right.\right \}$.
+Очевидно $\sigma(A) = \sigma_p(A) \cup \sigma_C(A)$.
+Рзольвента $R_A(\lambda) = \Rez : H \to H$, также используется определение
+$\forall \lambda \ne 0$: $\frac{1}{\lambda} \in \rho(A)$ $-\frac{1}{\lambda}(A - \frac{I}{\lambda})^{-1} = -\frac{1}{\lambda}(A_{\frac1{\lambda}})^{-1}$
+
+\textbf{Теорема}\\
+Пусть $A : H \to H$ --- линейный и непрерывный, тогда
+\begin{enumerate}
+    \item{$\forall \lambda \in \mathbb C$ такой, что $|\lambda| > \|A\|$ $\Rightarrow$ $\lambda \in \rho(A)$.
+        При этом $(A_\lambda)^{-1} = -\sum \limits_{n = 0}^{\infty}\frac{A^k}{\lambda^{k+1}}$, причём ряд сходиться по операторной норме.}
+    \item{$\rho(A)$ --- открыто в $\mathbb C$ (очевидно следует, что спект --- замкнутое множество, а так же $\sigma(A) \subset \{ \lambda \in \mathbb C \mid |\lambda
+        \le \|A\|\}$, поэтому спектр --- компакт).}
+    \item{Функция от $\lambda$ $(A_\lambda)^{-1}$ непрерывна на $\rho(A)$ по операторной норме}
+    \item{$\forall \lambda \in \rho(A)$ $\exists \lim\limits_{\text{по операторной норме}}\frac{(A_{\lambda + \Delta \lambda})^{-1} - (A_\lambda)^{-1}}{\Delta\lambda} =
+        ((A_\lambda)^{-1})^2$}
+\end{enumerate}
+
+\textbf{Доказательство}\\
+\begin{enumerate}
+    \item{$|\lambda| > \|A\|$, то $\Al = -\lambda(I - \underbrace{\frac{A}{\lambda}}_{=T}$, $\|T\| = \frac{\|A\|}{|\lambda|}<1$,
+        следовательно по теореме Неймана $\exists$ оператор непрерывный в $H$ $\Alo = -\frac{1}{\lambda}(I - \frac{A}{\lambda})^{-1} =
+        -\sum_{n=0}^\infty \frac{A^n}{\lambda^{n+1}}$ ряд сходится по операторной норме.}
+    \item{$\forall \lambda \in \rho(A)$ рассмотрим $A_{\lambda + \Delta\lambda} = \Al - \Delta\lambda I = \Al\underbrace{(I - 
+        \overbrace{\Delta\lambda\Alo}^{T})}_{\text{т. к. существует $\exists \Alo$ линейный и непрерывный}}$.
+        $\exists \Delta\lambda$: $\|T\|=|\Delta\lambda|\|\Alo\| < 1$.
+        Тогда $\Delta\lambda < \frac{1}{\Alo}$, следовательно $\exists (A_{\lambda+\Delta\lambda})^{-1} : H \to H$ линейный и непрерывный, следовательно
+        $\lambda + \Delta\lambda \in \rho(A)$.}
+    \item{$\lambda \in \rho(A)$: $\lambda \to \Alo$.
+        $(A_{\lambda + \Delta\lambda})^{-1} - \Alo = (I - \Delta\lambda\Alo)\Alo - \Alo \boxed{=}$ расскладываем по Нейману $\boxed{=} \sum_{n=1}^\infty
+        (\Delta\lambda)^n(\Alo)^{n+1}$.
+        Отсюда $\|(A_{\lambda + \Delta\lambda})^{-1} - \Alo\| \le \sum_{n=1}^\infty |\Delta\lambda|^n\underbrace{\|(\Alo)^{n+1}\|}_{\le \|\Alo\|^{n+1}} \le
+        |\Delta\lambda| \underbrace{\dfrac{\|\Alo\|^2}{1-|\Delta\lambda\|\Alo\|}}_{O(|\Delta\lambda|) \to 0, \Delta\lambda \to 0}$. Следовательно непрерывен
+        по операторной норме}
+    \item{$\lambda \in \rho(A)$ $|\Delta\lambda| < \frac{1}{\|\Alo\|}$, тогда $(A_{\lambda + \Delta\lambda})^{-1} - \Alo \overbrace{=}^{\text{тождество Гильберта}}
+        \Alo\underbrace{(\Al - A_{\lambda + \Delta\lambda})}_{\Delta\lambda I}(A_{\lambda + \Delta\lambda})^{-1} = \Delta\lambda \Alo (A_{\lambda + \Delta \lambda})^{-1}$.
+        $\lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}} = \dfrac{(A_{\lambda + \Delta\lambda})^{-1} - \Alo}{\Delta\lambda} = 
+        \lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}} = \Alo \underbrace{(A_{\lambda + \Delta\lambda})^{-1}}_{\to \Alo \text{ по п. 3}} =
+        \Alo \Alo$.}
+\end{enumerate}
+
+\textbf{Следствие}\\
+$\sigma(A) \ne \varnothing$, иначе говоря спектр --- непустой компакт в $\mathbb C$ и спектральный радиус $r(A) = \max |\lambda| \overbrace{=}^{?}
+\lim \limits_{n \to \infty} \sqrt[n]{\|A\|^n} \le \|A\|$.
+
+\textbf{Доказательство:}\\
+1) Если вдруг спектр пуст $\sigma(A) = \varnothing$, тогда $\forall f, g \in H$ $\forall \lambda \in  \rho(A) = \mathbb C$.
+Рассмотрим $F(\lambda) = (\Alo f, g) \boxed{=}$ при $|\lambda| > \|A\|$ $\boxed{=} \underbrace{(\underbrace{-\sum_{n = 0}^{\infty}
+\frac{A^n f}{\lambda^{n + 1}}}_{\text{сходится в $H$}}, g)}_{\text{непрерывно в $H$}} \boxed{=}$ по непрерывности скалярного произведения в $H$ $\boxed{=}
+-\sum_{n = 0}^{\infty} \frac{(A^n f, g)}{\lambda^{n + 1}} = O(\frac{1}{\lambda}, \lambda \to \infty$, но в силу п. 4 $F(\lambda)$ регулярная.
+Действительно, $\forall \lambda \in \mathbb C, \forall \Delta\lambda \ne 0$ $\lim\limits_{\Delta\lambda \to 0} \frac{F(\lambda + \Delta\lambda) - F(\lambda)}
+{\Delta\lambda} = \lim\limits_{\Delta\lambda \to 0} (\underbrace{\frac{(A_{\lambda + \Delta\lambda})^{-1}f - \Alo f}{\Delta\lambda}}_{\text{сходится по операторной
+норме к $(\Alo)^2 f$}}, g)$.
+$F'(\lambda) = \lim\limits_{\Delta\lambda \to 0} \dots = ((\Alo)^2 f, g)$ --- непрерывно в $\mathbb C$.
+Следовательно $F(\lambda)$ --- целая функция, далее $F(\lambda) \to 0$ $\lambda \to \infty$, тогда по теореме Лиувиля из ТФКП $F(\lambda) \equiv 0$,
+следовательно $\ker \Alo = H$, с другой стороны $\ker \Alo = 0$ так как $\Alo$ имеет обратный $\Al$ на $H$, следовательно $H = 0$, получили противоречие.
+2) По определению $r(A) = \max\limits_{\lambda \in \sigma(A)} |\lambda| \overbrace{=}^{?} \lim \limits_{n \to \infty} \sqrt[n]{\|A^n\|}$ существует в $\mathbb R$.
+Шаг 1.
+$\forall \lambda \in \sigma(A) \overbrace{\Rightarrow}^{?} \lambda^n \in \sigma(A^n)$. 
+Если вдруг это не так, тогда $\lambda^n \in \rho(A^n) \Rightarrow \exists \underbrace{((A^n)_{\lambda^n})^{-1}}_{B} : H \to H$ линейный непрерывный оператор.
+$(A^n - \lambda^n I) = (A - \lambda I)\underbrace{(A^{n - 1} + \lambda A^{n - 2} + \dots + \lambda^{n - 2} A + \lambda^{n - 1} I)}_{C : H \to H}$.
+$B = C(A - \lambda I)$, $A^n - \lambda^n I = \Al C$ $\Rightarrow$ $)A^n - \lambda^n I) B = I = \Al C B$ $\Rightarrow$ $\Imm \Al = H$.
+Далее $\Al CBf = f \in H, \forall f \in H$, $A^n - \lambda^n I = C\Al$, тогда $B(A^n - \lambda^n I) = I = B C \Al$ $\Rightarrow$ $\ker \Al = 0$.
+$F \in \ker \Al \Rightarrow f = B C \Al f = B C(0) = 0$.
+Из $\Imm \Al = H$ и $\ker \Al = 0$ следует по определению, что $\lambda \in \rho(A)$.
+Получили противоречие условию, что $\lambda$ в спектре.
+Отсюда $|\lambda^n| \le \|A^n\|$ так как $\rho(A^n) \supset \{\mu \in \mathbb C \mid |\mu| > \|A^n\|\}$.
+Очевидно тогда, что $|\lambda| \le \sqrt[n]{\|A^n\|} \Rightarrow |\lambda| \le \varliminf \sqrt[n]{\|A^n\|} \Rightarrow r(A) \le \varliminf \sqrt[n]{\|A^n\|}$.
+Шаг 2.
+Утверждаем, что $\varlimsup \sqrt[n]{\|A\|^n} \le r(A)$.
+$\forall f, g \in H$ рассмотрим $F(\lambda) = (\Alo f, g)$, $F(\lambda) \to 0, \lambda \to \infty$, регулярная во внешности круга $|\lambda| < r(A)$.
+$|\lambda| > r(A) \Rightarrow \lambda \in \rho(A)$. Так как $|\lambda| > \|A\| \ge r(A)$, то по теореме Неймана
+$F(\lambda) = - \sum_0^\infty \frac{(A^n f, g)}{\lambda^{n + 1}}$.
+$F(\lambda) = \sum_0^\infty \frac{c_n}{\lambda^{n + 1}}$, $|\lambda|>r(A)$ $\Rightarrow$ по теореме единственности разложения в ряд Лорана
+$c_n = - (A^n f, g)$ $\forall n \in \mathbb N \cup \{0\}$.
+Таким образом $\forall |\lambda| > r(A)$ получаем $\frac{A^n f, g}{\lambda^n}$ --- член сходящегося ряда, следовательно
+$\frac{(A^n f, g)}{\lambda^n} \to 0, n \to \infty$, что равносильно $\forall g \in H$ $(g, \underbrace{\frac{A^n f}{\lambda^n}}_{=\Phi_n(g)}) \to 0, n \to \infty$.
+$\Phi_n : H \to C$ линейный и непрерывный оператор.
+$\|\Phi_n\| = \frac {\|A^n f\|}{|\lambda^n|}$ сходится к 0 поточечно на $H$.
+Отсюда по теореме Банаха-Штейнгаусса $\|\Phi_n\|$ --- ограниченная числа последовательность. $\forall f \in H$ $\exists M_f > 0$: $\|\frac{A_n f}{\lambda^n}\|
+\le M_f$ $\Rightarrow$ $\{\frac{A_n}{\lambda_n}\}$ --- поточечно сходящаяся на $H$ ограниченная последовательность операторов, следовательно
+по теореме Банаха-Штейнгаусса $\|\frac{A^n}{\lambda^n}\|$ ограниченная числовая последовательность.
+Следовательно $\exists M>0$: $\|\frac{A^n}{\lambda^n}\| \le M$ $\Rightarrow$ $\forall |\lambda| > r(A)$ $\sqrt[n]{\|A^n\|} \le \sqrt[n]{M}|\lambda|$.
+$\varlimsup\limits_{n \to \infty} \sqrt[n]{\|A^n\|} \le |\lambda| \to r(A) + 0$.
+Получаем $\varlimsup\sqrt[n]{\|A^n\|} \le r(A) \le \varliminf\sqrt[n]{\|A^n\|}$, что и требовалось доказать.
+\end{document}
