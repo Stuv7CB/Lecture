@@ -1,3 +1,4 @@
+%Надо добавить примеры и упражнения
 \documentclass[12pt]{article}
 \usepackage[russian]{babel}
 \usepackage[utf8]{inputenc}
@@ -119,4 +120,45 @@ $\|\Phi_n\| = \frac {\|A^n f\|}{|\lambda^n|}$ сходится к 0 поточе
 Следовательно $\exists M>0$: $\|\frac{A^n}{\lambda^n}\| \le M$ $\Rightarrow$ $\forall |\lambda| > r(A)$ $\sqrt[n]{\|A^n\|} \le \sqrt[n]{M}|\lambda|$.
 $\varlimsup\limits_{n \to \infty} \sqrt[n]{\|A^n\|} \le |\lambda| \to r(A) + 0$.
 Получаем $\varlimsup\sqrt[n]{\|A^n\|} \le r(A) \le \varliminf\sqrt[n]{\|A^n\|}$, что и требовалось доказать.
+
+\textbf{Определение: }$A : H \to H$ линейно непрерывный оператор, то $A^* : H \to H$ называется сопряжённым к $A$ (эрмитов оператор), если $(Af, g) = (f, A^* g)$ $\forall f, g \in H$.
+
+\textbf{Утверждение}\\
+$\forall A : H \to H$ линейный непрерывный оператор $\exists! A^* = T$: $(Af, g) = (f, Tg)$ $\forall f, g \in H$ и $\|T\| = \|A\|$.
+
+\textbf{Доказательство}\\
+$\forall g \in H$ рассмотрим $f \in H$ $f \to (Af, g) = \Phi_g(f)$.
+$\Phi_g : H \to \mathbb C$ линейный и непрерывный.
+Тогда по теореме Риса-Фреше $\exists! h \in H$: $\Phi_g(f) = (f, h)$ $\Rightarrow$ $\exists! T : H \to H$: $\forall g \in H$ $Tg = h_g$ и
+$(Af, g) = (f, h_g) = (f, Tg)$.
+Далее $(Af, \alpha_1 g_1 + \alpha_2 g_2) = (f, T(\alpha_1 g_1 + \alpha_2 g_2)) = \overline{\alpha}_1 (Af, g_1) + \overline{\alpha}_2 (Af, g2) 
+= (f, \alpha_1 Tg_1) + (f, \alpha_2 Tg_2), \forall f \in H$.
+Следовательно $T(\alpha_1 g_1 + \alpha_2 g_2) = \alpha_1 T(g_1) + \alpha_2 T(g_2)$, $T$ --- линейный оператор.
+
+$\|Tg\| = \sup\limits_{\|f\| = 1}|(f, Tg)| = \sup\limits_{\|f\| = 1}|(Af, g)| \le \sup\limits_{\|f\| = 1}\|Af\|\|g\| \le \|A\|\|g\|$.
+С другой стороны $\|Af\| = \sup\limits_{\|g\| = 1}|(Af, g)| = \sup\limits_{\|g\| = 1}|(f, Tg)| \le \sup\limits_{\|g\| = 1} \|f\| \|Tg\| \le \|f\| \|T\|$.
+Получаем, что $T$ --- линейный и непрерывный оператор и $\|T\| = \|A\|$.
+
+\textbf{Упражнение} $A^{**} = A$ $\forall A : H \to H$.
+
+\textbf{Теорема (Фредгольма)}\\
+Пусть $A : H \to H$ линейный и непрерывный оператор. Тогда $\ker A = (\Imm A^*)^\perp$ и $(\Imm A)^\perp = \ker A^*$.
+
+\textbf{Доказательство:}\\
+Пусть $f \in \ker A$ $\Leftrightarrow$ $Af = 0$ $\Leftrightarrow$ $\forall g \in H$ $(Af, g) = 0$ $\Leftrightarrow$ $(f, A^* g) = 0$.
+$\forall h \in \Imm A^*$ $(f, h) = 0$ $\Leftrightarrow$ $f \in (\Imm A^*)^\perp$. Второе утверждение доказывается аналогично.
+
+\textbf{Утверждение}\\
+$L \subset H$ --- подпространство, тогда $L \subseteq L^{\perp\perp} = \overline{L}$.
+
+\textbf{Доказательство}\\
+%SMTH
+$\forall f \in L^{\perp\perp}$
+%SMTH
+$\overline{L} \oplus (\overline{L})^{\perp} = H$ по теореме Риса об ортогональном дополнении.
+Покажем, что $\overline{L^{\perp}} \subset L^{\perp}$.
+Пусть последовательность $h_n \in L$ такая, что $h_n \to \Phi \in \overline{L}$.
+Пусть $g \in L^{\perp}$, тогда $(h_n, g) = 0$, $h_n \to \Phi$, поэтому $(\Phi, g) = 0$ по непрерывности скалярного произведения.
+Теперь разложим $f = f_1 + f_2$, $f_1 \in \overline{L}$, $f_2 \in L^{\perp}$ и $f$ перпендикулярен $f_2$.
+$0 = (f, f_2) = (f_1, f_2) + \|f_2\|^2$ следовательно $\|f_2\| = 0\|$, следовательно $f = f_1 \in \overline{L}$ $\Rightarrow$ $L^{\perp\perp} \subset \overline{L}$.
 \end{document}
