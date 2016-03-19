@@ -6,125 +6,193 @@
 \usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
 \usepackage{comment}
 \DeclareMathOperator{\rh}{\rho}
-\DeclareMathOperator{\Ree}{Re}
-\DeclareMathOperator{\Imm}{Im}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
+\usepackage{theorem}
 \begin{document}
-\begin{center}
-\textbf{Элементы теории линейных операторов в гильбертовых пространствах и её приложение к линейным операторным уравнениям в гильбертовом пространстве.}
-\end{center}
-
+\section*{Элементы теории линейных операторов в гильбертовых пространствах и её приложение к линейным операторным уравнениям в гильбертовом пространстве.}
 Пусть $H$ --- гильбертово пространство, то есть полное евклидово пространство со скалярным произведением.
-Скалярное произведение определим в комплексном пространстве: $(f,g)\in \mathbb C$.
-Тогда $\|f\|=\sqrt{(f,g)}$ --- евклидова норма.
-В этом пространстве выполняется неравенство треугольника: $\|f + g\| \le \|f\| + \|g\|$, которое следует из неравенства Коши-Буняковского $|(f,g)| \le \|f\|\|g\|$.
+Скалярное произведение определим в комплексном пространстве: $(f,g) \in \mathbb C$.
+Тогда $\|f\| = \sqrt{(f,g)}$ --- евклидова норма.
+В этом пространстве выполняется неравенство треугольника:
+$$
+\|f + g\| \le \|f\| + \|g\|\text{,}
+$$
+которое следует из неравенства Коши-Буняковского $|(f,g)| \le \|f\|\|g\|$.
 
-Полнота по определению: $\forall \{f_n\} \subset H$ $\forall n,m \in \mathbb N$ $\|f_n - f_m\| \to 0$ при $n,m \to \infty$ следует,
-что $\exists h \in H$: $\|f_n - h\| \to 0$
-при $n \to \infty$.
+Полнота по определению: из
+$$
+\forall \{f_n\} \subset H\; \forall n,m \in \mathbb N\; \|f_n - f_m\| \to 0 \quad \text{при} \quad n,m \to \infty
+$$
+следует, что 
+$$
+\exists h \in H\; \|f_n - h\| \to 0\quad \text{при} \quad n \to \infty
+$$
 
 $G \subset \mathbb R^m$ --- открытое множество.
 $CL_2(G) = \{f\colon G \to \mathbb C \mid f\text{ непрерывная}, \int\limits_G |f|^2 dx < +\infty\}$.
-Введём скалярное произведение как $(f, g)=\int\limits_G f(x) \overline{g(x)} dx$. Тогда такое множество неполное.
-$L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G\to\mathbb C$ измерима по Лебегу и $\int\limits_G |f|^2 dx < +\infty$.
-\begin{center}
-\textbf{Геометрия гильбертого пространства}
-\end{center}
-
-1) Пусть $L \subset H$, где $L$ --- замкнутое подпространство.
-Следовательно $\forall f \in H$ $\exists! g\in L$: $\|g - f\|=\rh(f,L)$ или по-другому $\inf\|f - h\|$, $h\in L$.
-Обозначим $g_f$ --- проекция $f$.
-Тогда отображение $P:H \to L$ такое, что $Pf = g_f$, называется ортопроектором из $L$ на $H$.
-
-\textbf{Доказательство}
-
-Покажем существование.
-$\forall f \in H$ $\exists \{g_n\} \subset L$: $\rh(f, L) \le \|f-g_n\| \le \rh(f,L) + \frac{1}{n}$.
-Тогда $\|f - g\| \to \rh(f,L)$ $n \to \infty$.
-Установим факт фундаментальности.
-Наблюдение: из равенства параллелограмма следует: $f, g\in H$ $\|f + g\|^2 + \|f - g\|^2 = 2\|f\|^2 + 2\|g\|^2$.
-Тогда
-\begin{gather*}
-\|g_n - g_m\|^2 = \|(g_n - f) - (g_m - f)\|^2 = 2\|g_n - f\|^2 + 2\|g_m - f\|^2 - \|g_n + g_m - 2f\|^2 \boxed{\le}\\
-\|g_m+g_m-2f\|^2 = 4\|\underbrace{\frac{g_n + g_m}{2}}_{\in L} - f\|^2 \ge 4\rh^2(f, L)\\
-\boxed{\le} 2\underbrace{\|g_n - f\|^2}_{\rh^2(f, L)} + 2\underbrace{\|g_m - f\|^2}_{\rh^2(f,L)} - 4\rh^2(f,L) \to 0 \qquad n,m \to 0
-\end{gather*}
-$\exists g \in H$: $g_n \to g$ по норме, а так как $L$ --- замкнутое, то $g \in L$.
-Получаем 
+Введём скалярное произведение как
 $$
-|\|f - g\| - \underbrace{\|f - g_n\|}_{\text{стремится к }\rho}| \le \|g - g_n\| \to 0 \Rightarrow \|f-g\| = \rh(f,L)
+(f, g) = \int\limits_G f(x) \overline{g(x)} dx
 $$
-Отсюда следует существование.
-
-Покажем единственность.
-Пусть $\|f - g_1\| = \|f - g_2\| = \rh(f, L)$, $g_1, g_2 \in L$.
-$$
-0 \le \|g_1 - g_2\|^2 = \|(g_1 - f) - (g_2 - f)\|^2 = 2\|g_1 - f\|^2 + 2\|g_2 - f\|^2 - \|\frac{g_1 + g_2}{2} - f\|^2 \le 4\rho^2 - 4\rho^2 = 0
-$$
-Следовательно $g_1 = g_2$.
-Доказательство закончено
+Тогда такое множество неполное.
+$L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \mapsto \mathbb C$ измерима по Лебегу и $\int\limits_G |f|^2 dx < +\infty$.
+\subsection*{Геометрия гильбертого пространства}
+\newtheorem{Th1}{Теорема}
+\begin{Th1}[Риса о расстоянии]
+    Пусть $L \subset H$, где $L$ --- замкнутое подпространство.
+    Следовательно
+    $$
+    \forall f \in H\; \exists! g \in L\colon \|g - f\| = \rh(f, L)
+    $$ 
+    или по-другому 
+    $$
+    \inf\|f - h\|, \;h\in L
+    $$
+    Обозначим $g_f$ --- проекция $f$.
+    Тогда отображение $P:H \mapsto L$ такое, что $Pf = g_f$, называется ортопроектором из $L$ на $H$.
+\end{Th1}
+\begin{Proof}
+    Покажем существование.
+    $$
+    \forall f \in H\;\exists \{g_n\} \subset L\colon \rh(f, L) \le \|f-g_n\| \le \rh(f,L) + \frac{1}{n}
+    $$
+    Тогда
+    $$
+    \|f - g\| \to \rh(f,L)\quad \text{при} \quad n \to \infty
+    $$
+    Установим факт фундаментальности.
+    Наблюдение: из равенства параллелограмма следует:
+    $$
+    f, g\in H\;\|f + g\|^2 + \|f - g\|^2 = 2\|f\|^2 + 2\|g\|^2
+    $$
+    Тогда
+    $$
+    \|g_n - g_m\|^2 = \|(g_n - f) - (g_m - f)\|^2 = 2\|g_n - f\|^2 + 2\|g_m - f\|^2 - \|g_n + g_m - 2f\|^2
+    $$
+    Теперь учтём, что
+    $$
+    \|g_m+g_m-2f\|^2 = 4\|\frac{g_n + g_m}{2} - f\|^2 \ge 4\rh^2(f, L)
+    $$
+    где $\frac{g_n + g_m}{2} \in L$, $\|g_{n,m} - f\|^2 = \rh^2(f, L)$
+    Тогда получаем
+    $$
+    \|g_n - g_m\|^2 \le 2\|g_n - f\|^2 + 2\|g_m - f\|^2 - 4\rh^2(f,L) \to 0 \quad n,m \to 0
+    $$
+    $\exists g \in H\colon g_n \to g$, по этому $\|f - g_n\| \to \rh$, а так как $L$ --- замкнутое, то $g \in L$.
+    Получаем 
+    $$
+    |\|f - g\| - \|f - g_n\|| \le \|g - g_n\| \to 0 \Rightarrow \|f-g\| = \rh(f,L)
+    $$
+    Отсюда следует существование.
+    
+    Покажем единственность.
+    Пусть
+    $$
+    \|f - g_1\| = \|f - g_2\| = \rh(f, L)\quad g_1, g_2 \in L
+    $$
+    Рассмотрим $\|g_1 - g_2\|$:
+    $$
+    0 \le \|g_1 - g_2\|^2 = \|(g_1 - f) - (g_2 - f)\|^2 = 2\|g_1 - f\|^2 + 2\|g_2 - f\|^2 - \|\frac{g_1 + g_2}{2} - f\|^2 \le 4\rho^2 - 4\rho^2 = 0
+    $$
+    Следовательно $g_1 = g_2$.
+    Доказательство закончено
+\end{Proof}
 
 Таким образом мы доказали теорему Риса о расстоянии.
-Пусть $P_L : H \to L$, $P_L f = g_f$.
+Пусть $P_L : H \mapsto L$, $P_L f = g_f$.
 Тогда $\|P_Lf - f\| = \rh(f, L)$. $P_L$ --- линейный оператор.
-Наблюдение: $\|g - f\| = \rh(f, L)$; $g \in L$ равносильно тому, что 
-$$
-\left\{
-\begin{aligned}
-&f - g \in L^{+}\\
-&g \in L\\
-\end{aligned}
-\right.
-$$
-Где $L^+ = \{h \in H \mid (h, f) = 0 \quad \forall f \in L\}$ --- замкнутое подпространство.
-Это следует из неравенства Коши-Буняковского: пусть $h_n \to h$ и $h_n \in L^+$.
-Тогда
-$$
-|(h, f) - (h_n, f)| = |(h - h_n, f)| \le \|h - h_n\| \|f\|\ to 0
-$$
-Поэтому $(h, f)=0$, а значит $h \in L$.
+\newtheorem{Nubl}{Наблюдение}
+\begin{Nubl}
+	$\|g - f\| = \rh(f, L)\quad g \in L$ равносильно тому, что 
+	$$
+	\left\{
+		\begin{aligned}
+			&f - g \in L^{+}\\
+        	&g \in L\\
+    	\end{aligned}
+	\right.
+	$$
+	Где $L^+ = \{h \in H \mid (h, f) = 0 \quad \forall f \in L\}$ --- замкнутое подпространство.
+	Это следует из неравенства Коши-Буняковского: пусть $h_n \to h$ и $h_n \in L^+$.
+	Тогда
+	$$
+	|(h, f) - (h_n, f)| = |(h - h_n, f)| \le \|h - h_n\| \|f\|\to 0
+	$$
+	Поэтому $(h, f)=0$, а значит $h \in L$.
+\end{Nubl}
 Докажем теперь наше наблюдение
+\begin{Proof}
+    В прямую сторону.
+    $$
+    \|g - f\| = \rh(f, L)
+    $$
+    Прибавим к $g$ $th$ так, чтобы $g + th \in L$.
+    $$
+    \|g - f\| \le \|(g + t h) - f\| \quad \forall h \in L
+    $$
+    Возведём в квадрат и разложим выражение на компоненты
+    \begin{gather*}
+        \|g - f\|^2 \le \|(g - f) + t h\|^2\\
+        \|g - f\|^2 \le ((g - f) + t h, (g - f) + t h)^2\\
+        \|g - f\|^2 \le \|g - f\|^2 + (g - f, t h) + (t h, g - f) + |t|^2 \|h\|^2\\
+	\end{gather*}
+	Перенесём левую часть вправо и учтём, что по определению скалярного произведения $(a, b) = \overline{(b, a)}$
+	\begin{gather*}
+        0 \le (g - f, t h) + \overline{(g - f, t h)} + |t|^2 \|h\|^2\\ 
+        0 \le 2\Re(g - f,t h) + |t|^2 \|h\|^2\\
+        0 \le 2\Re(g - f, \frac{t}{|t|} h) + O(|t|)
+	\end{gather*}
+    Пусть $t \in \mathbb R$.
+    $$
+    0 \le 2\Re(g - f, h)
+    $$
+    подставляя $\pm h$ имеем
+    $$
+    \Re(g - f, h) = 0
+    $$
+    Пусть теперь $t = \imath \tau\; \tau \in \mathbb R$.
+    $$
+    2\Re(g - f, \imath h) = 2\Im(g - f, h) \ge 0\quad\forall h \in L
+    $$
+    Возмём $\pm h$ и получаем
+    $$
+    (g - f, h) = 0
+    $$
+    Таким образом для любого $h$ мы доказали в прямую сторону.
+    
+    В обратную сторону.
+    \begin{multline*}
+    \forall h \in L\;\|f - (g + h)\|^2 = \|(f - g) + h\|^2 =\\
+     = (f - g, f - g) + (h, h) + (f - g, h) + (h, f - g) =\\
+    = \|f - g\|^2+\|h\|^2 \ge \|f - g\|^2 \Rightarrow \\
+    \Rightarrow \forall h\;\|f - (g + h)\|^2 \ge \|f - g\|^2 \Rightarrow \|f - g\| = \rh(f, L)
+    \end{multline*}
+    Что и требовалось доказать.
+    Доказательство закончено.
+\end{Proof}
 
-\textbf{Доказательство}
-
-В прямую сторону.
+Покажем линейность оператора $P_L$.
 \begin{gather*}
-\|g - f\| = \rh(f, L)\\
-\|g - f\| \le \|\underbrace{(g + t h)}_{\in L} - f\| \qquad \forall h \in L\\
-\|g - f\|^2 \le \|(g - f) + t h\|^2\\
-\|g - f\|^2 \le ((g - f) + t h, (g - f) + t h)^2\\
-\|g - f\|^2 \le \|g - f\|^2 + (g - f, t h) + (t h, g - f) + |t|^2 \|h\|^2\\
-0 \le (g - f, t h) + \overline{(g - f, t h)} + |t|^2 \|h\|^2\\ 
-0 \le 2\Ree(g - f,t h) + |t|^2 \|h\|^2\\
-0 \le 2\Ree(g - f, \frac{t}{|t|} h) + \underbrace{O(|t|)}_{\text{стремиться к 0}}
+    P_L(f_1 + f_2) = g\\
+    P_Lf_1 = g_1 \Leftrightarrow (f_1 - g_1, h) = 0\\
+    P_Lf_2 = g_2 \Leftrightarrow (f_2 - g_2, h) = 0
 \end{gather*}
-Пусть $t \in \mathbb R$.
-$0 \le 2\Ree(g - f, h)$, подставляя $\pm h$ имеем $\Ree(g - f, h) = 0$.
-Пусть теперь $t = \imath \tau$, $\tau \in \mathbb R$.
-$2\Ree(g - f, \imath h) = 2\Imm(g - f, h) \ge 0$ $\forall h \in L$.
-Возмём $\pm h$ и получаем $(g - f, h) = 0$. Таким образом для любого $h$ мы доказали в прямую сторону.
-
-В обратную сторону.
-$\forall h \in L$ $\|f - (g + h)\|^2 = \|(f - g) + h\|^2  = (f - g, f - g) + (h, h) + (f - g, h) + (h, f - g) = \|f - g\|^2+\|h\|^2 \ge \|f - g\|^2$ $\Rightarrow$
-$\forall h$ $\|f - (g + h)\|^2 \ge \|f - g\|^2$ $\Rightarrow$ $\|f - g\| = \rh(f, L)$.
-Что и требовалось доказать.
-Доказательство закончено.
-
-Докажем линейность оператора $P_L$.
-\begin{gather*}
-P_L(f_1 + f_2) = g\\
-P_Lf_1 = g_1 \Leftrightarrow (f_1 - g_1, h) = 0\\
-P_Lf_2 = g_2 \Leftrightarrow (f_2 - g_2, h) = 0
-\end{gather*}
-Сложим правые выражения и получим $(f_1 + f_2 - (g_1 + g_2), h) = 0$ $\Rightarrow$ $g_1 + g_2 = P_L(f_1 + f_2)$.
-Аналогично доказывается однородность $P_L(\alpha f) = \alpha P_L(f)$: $P_L(f) = g \Leftrightarrow (f - g, h) = 0$ $\Rightarrow$
-$(\alpha f - \alpha g, h) = 0$ $\Rightarrow$ $P_L(\alpha f) = \alpha g$.
+Сложим правые выражения и получим
+$$
+(f_1 + f_2 - (g_1 + g_2), h) = 0 \Rightarrow g_1 + g_2 = P_L(f_1 + f_2)
+$$
+Аналогично доказывается однородность $P_L(\alpha f) = \alpha P_L(f)$: 
+$$
+P_L(f) = g \Leftrightarrow (f - g, h) = 0\Rightarrow (\alpha f - \alpha g, h) = 0\Rightarrow P_L(\alpha f) = \alpha g
+$$
 
 \textbf{Проблема выпуклости в $H$}
 
-Пусть $A \subset H$ --- назовём выпуклым, если $\forall f,g \in A$ $\forall t \in [0;1]$ $t f + (1 - t) g \in A$.
-Мы уже доказали, что для любого выпуклого и замкнутого $A \subset H$ $\forall f \in H$ $\exists! g \in A$: $\|f - g\| = \rh(f, A)$.
+Пусть $A \subset H$ --- назовём выпуклым, если $\forall f,g \in A\;\forall t \in [0;1]\;t f + (1 - t) g \in A$.
+Мы уже доказали, что для любого выпуклого и замкнутого $A \subset H\;\forall f \in H\;\exists! g \in A\colon \|f - g\| = \rh(f, A)$.
 Такое множество ещё называют чебышевским.
-Верно ли обратное? Пусть $A \subset H$ --- чебышевское, то есть $\forall f \in H$ $\exists! g \in A$: $\|f - g\| = \rh(f,A)$. 
+Верно ли обратное? Пусть $A \subset H$ --- чебышевское, то есть $\forall f \in H\;\exists! g \in A\colon \|f - g\| = \rh(f,A)$. 
 Следует ли отсюда, что $A$ --- выпуклое и замкнутое?
 Замкнутость была доказана в 1936 году для конечномерных $H$.
 Интересные подвижки были получены на мехмате Бородиным Петром Анатольевичем.
@@ -133,43 +201,58 @@ $\forall f,h \in H$ пусть $\rho_2(f, h, A) = \inf\{\|f - g\| + \|h - g\|):g
 Из 2-чебышевости следует выпуклость и замкнутость.
 Но получаем вопрос: верно ли что из чебышевости следует 2-чебышевость?
 
-2) \textbf{Теорема} (Риса об ортогональном дополнении)
-$L \subset H$ --- замкнутое подпространство $\Rightarrow$ $L \oplus L^+ = H$ и $L \cap L^+ = \varnothing$.
-Последнее очевидно. 
-$\forall f \in H$ $\exists! g \in L$ и $h \in L^+$: $f = g + h$.
-$$
-\left\{
-\begin{aligned}
-&f - g \in L^{+}\\
-&g \in L\\
-\end{aligned}
-\right.
-$$
-Это равносильно $P_Lf = g$.
+\newtheorem{Th2}{Теорема}
+\begin{Th2}[Риса об ортогональном дополнении]
+    $L \subset H$ --- замкнутое подпространство $\Rightarrow$ $L \oplus L^+ = H$ и $L \cap L^+ = \varnothing$.
+    Последнее очевидно. 
+    $\forall f \in H\;\exists! g \in L$ и $h \in L^+\colon f = g + h$.
+    $$
+    \left\{
+        \begin{aligned}
+            &f - g \in L^{+}\\
+            &g \in L\\
+        \end{aligned}
+    \right.
+    $$
+    Это равносильно $P_Lf = g$.
+\end{Th2}
+\begin{Proof}
+$f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+\Rightarrow f = g + h$.
+Доказательство закончено.
+\end{Proof}
 
-\textbf{Доказательство}
+Пусть $f = g_1 + h_1$ и $f = g_2 + h_2$, и $g_{1,2} \in L$.
+Тогда $g_1 - g_2 = h_2 - h_1 \in L^+$, но $L \cap L^+\Rightarrow g_1 = g_2$ и $h_1 = h_2$.
 
-$f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+$ $\Rightarrow$ $f = g + h$ Доказательство закончено.
-
-Пусть $g_1,g_2 \in L$, $h_1, h_2 \in L^+$,  $f = g_1 + h_1 = g_2 + h_2$.
-Тогда $\underbrace{g_1 - g_2}_{\in L} = h_2 - h_1 \in L^+$, но $L \cap L^+$ $\Rightarrow$ $g_1 = g_2$ и $h_1 = h_2$.
-
-\textbf{Теорема} (Рис, Фреше)
-
-$\Phi:H \to \mathbb C$ --- линейный и непрерывный функционал ($f_n \to f$ в $H$ по норме, $\Phi(f_n) \to \Phi(f)$ в $\mathbb C$).
-Тогда $\exists! h \in H$: $\Phi(f) = (f,h)$.
-
-\textbf{Доказательство}
-
-$L = \ker \Phi$ --- замкнутое подпространство в $H$.
-Первое в связи непрерывности, второе в силу линейности.
-$L \oplus L^+$.
-Случай $\Phi = 0$ очевиден: $h = 0$.
-Пусть теперь $\Phi \ne 0$ $\Rightarrow$ $(\ker\Phi)^+ \ne \{0\}$
-Пусть $h_0 \in (\ker\Phi)^+\backslash\{0\}$, тогда отсюда следует $f \in H$ $f = \underbrace{g}_{\in \ker \Phi}+\alpha h_0$,
-где $\alpha = \dfrac{\Phi(f)}{\Phi(h_0)}$.
-Следовательно $g = f - \dfrac{\Phi(f)}{\Phi(h_0)}h_0$ $\Rightarrow$ $(f,h_0) = \underbrace{(g, h_0)}_{0} + \dfrac{\Phi(f)}{\Phi(h_0)}\|h_0\|^2$.
-Тогда $\Phi(f) = (f, \underbrace{\dfrac{\overline{\Phi(h_0)}}{\|h_0\|}h_0}_{\text{равно }h})$.
-Пусть $\Phi(f) = (f, h_1) = (f, h_2)$ $\forall f\in H$.
-$f = h_1 - h_2$ $\Rightarrow$ $\|h_1 - h_2\|^2 = 0$ $\Rightarrow$ $h_1 = h_2$.
+\newtheorem{Th3}{Теорема}
+\begin{Th3}[Рис, Фреше]
+    $\Phi:H \mapsto \mathbb C$ --- линейный и непрерывный функционал ($f_n \to f$ в $H$ по норме, $\Phi(f_n) \to \Phi(f)$ в $\mathbb C$).
+    Тогда $\exists! h \in H\colon \Phi(f) = (f,h)$.
+\end{Th3}
+\begin{Proof}
+    $L = \ker \Phi$ --- замкнутое подпространство в $H$.
+    Первое в связи непрерывности, второе в силу линейности.
+    $L \oplus L^+ = H$.
+    Случай $\Phi = 0$ очевиден: $h = 0$.
+    Пусть теперь $\Phi \ne 0\Rightarrow (\ker\Phi)^+ \ne \{0\}$.
+    Пусть $h_0 \in (\ker\Phi)^+\backslash\{0\}$, тогда отсюда следует $f \in H\;f = g +\alpha h_0$,
+    где $g \in \ker \Phi$ и $\alpha = \dfrac{\Phi(f)}{\Phi(h_0)}$.
+    Следовательно
+    $$
+    g = f - \frac{\Phi(f)}{\Phi(h_0)}h_0\Rightarrow (f,h_0) = (g, h_0) + \frac{\Phi(f)}{\Phi(h_0)}\|h_0\|^2
+    $$
+    Тогда
+    $$
+    \Phi(f) = (f, \frac{\overline{\Phi(h_0)}}{\|h_0\|}h_0)
+    $$
+    где $\frac{\overline{\Phi(h_0)}}{\|h_0\|}h_0 = h$.
+    Пусть
+    $$
+    \Phi(f) = (f, h_1) = (f, h_2)\quad\forall f\in H
+    $$
+    Тогда
+    $$
+    f = h_1 - h_2\Rightarrow \|h_1 - h_2\|^2 = 0\Rightarrow h_1 = h_2
+    $$
+\end{Proof}
 \end{document}
