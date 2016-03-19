@@ -6,12 +6,20 @@
 \usepackage{amssymb, amsmath, amscd}
 \usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
 \usepackage{comment}
+\usepackage{theorem}
 \DeclareMathOperator{\Imm}{Im}
 \DeclareMathOperator{\Lin}{Lin}
 \newcommand{\Al}{A_\lambda}
 \newcommand{\Alo}{(\Al)^{-1}}
 \newcommand{\Rez}{(I - \lambda A)^{-1}}
 \begin{document}
+\newtheorem{Theor}{Теорема}
+\newtheorem{Opr}{Опреление}
+\newtheorem{Prim}{Пример}
+\newtheorem{Upr}{Упражнение}
+\newtheorem{Nabl}{Наблюдение}
+\newtheorem{Zam}{Замечание}
+\section*{Спектр и резольвентное множество линейного непрерывного оператора в гильбертовом пространстве $A : H \mapsto H$.}
 Пусть $A : H \to H$ --- линейный и непрерывный оператор.
 Тождественный оператор $I : H \to H$ ($If = f$ $\forall f \in H$).
 $\forall \lambda \in \mathbb C$ $A_\lambda = A - \lambda I$.
@@ -151,14 +159,14 @@ $\forall h \in \Imm A^*$ $(f, h) = 0$ $\Leftrightarrow$ $f \in (\Imm A^*)^\perp$
 \textbf{Утверждение}\\
 $L \subset H$ --- подпространство, тогда $L \subseteq L^{\perp\perp} = \overline{L}$.
 
-\textbf{Доказательство}\\
+%\textbf{Доказательство}\\
 %SMTH
-$\forall f \in L^{\perp\perp}$
+%$\forall f \in L^{\perp\perp}$
 %SMTH
-$\overline{L} \oplus (\overline{L})^{\perp} = H$ по теореме Риса об ортогональном дополнении.
-Покажем, что $\overline{L^{\perp}} \subset L^{\perp}$.
-Пусть последовательность $h_n \in L$ такая, что $h_n \to \Phi \in \overline{L}$.
-Пусть $g \in L^{\perp}$, тогда $(h_n, g) = 0$, $h_n \to \Phi$, поэтому $(\Phi, g) = 0$ по непрерывности скалярного произведения.
-Теперь разложим $f = f_1 + f_2$, $f_1 \in \overline{L}$, $f_2 \in L^{\perp}$ и $f$ перпендикулярен $f_2$.
-$0 = (f, f_2) = (f_1, f_2) + \|f_2\|^2$ следовательно $\|f_2\| = 0\|$, следовательно $f = f_1 \in \overline{L}$ $\Rightarrow$ $L^{\perp\perp} \subset \overline{L}$.
+%$\overline{L} \oplus (\overline{L})^{\perp} = H$ по теореме Риса об ортогональном дополнении.
+%Покажем, что $\overline{L^{\perp}} \subset L^{\perp}$.
+%Пусть последовательность $h_n \in L$ такая, что $h_n \to \Phi \in \overline{L}$.
+%Пусть $g \in L^{\perp}$, тогда $(h_n, g) = 0$, $h_n \to \Phi$, поэтому $(\Phi, g) = 0$ по непрерывности скалярного произведения.
+%Теперь разложим $f = f_1 + f_2$, $f_1 \in \overline{L}$, $f_2 \in L^{\perp}$ и $f$ перпендикулярен $f_2$.
+%$0 = (f, f_2) = (f_1, f_2) + \|f_2\|^2$ следовательно $\|f_2\| = 0\|$, следовательно $f = f_1 \in \overline{L}$ $\Rightarrow$ $L^{\perp\perp} \subset \overline{L}$.
 \end{document}
