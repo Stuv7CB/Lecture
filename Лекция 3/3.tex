@@ -292,14 +292,62 @@ $\forall h \in \Im A^*\;(f, h) = 0\;\Leftrightarrow\;f \in (\Im A^*)^\perp$. В�
 $L \subset H$ --- подпространство, тогда $L \subseteq L^{\perp\perp} = \overline{L}$.
 \end{Utv}
 
-%\textbf{Доказательство}\\
-%SMTH
-%$\forall f \in L^{\perp\perp}$
-%SMTH
-%$\overline{L} \oplus (\overline{L})^{\perp} = H$ по теореме Риса об ортогональном дополнении.
-%Покажем, что $\overline{L^{\perp}} \subset L^{\perp}$.
-%Пусть последовательность $h_n \in L$ такая, что $h_n \to \Phi \in \overline{L}$.
-%Пусть $g \in L^{\perp}$, тогда $(h_n, g) = 0$, $h_n \to \Phi$, поэтому $(\Phi, g) = 0$ по непрерывности скалярного произведения.
-%Теперь разложим $f = f_1 + f_2$, $f_1 \in \overline{L}$, $f_2 \in L^{\perp}$ и $f$ перпендикулярен $f_2$.
-%$0 = (f, f_2) = (f_1, f_2) + \|f_2\|^2$ следовательно $\|f_2\| = 0\|$, следовательно $f = f_1 \in \overline{L} \Rightarrow L^{\perp\perp} \subset \overline{L}$.
+\begin{Proof}
+    $L^{\perp\perp} \supset L$.
+    С другой стороны из непрерывности скалярного произведения в $H$ имеем
+    $L^{\perp\perp} \subset \overline{L}$.
+    Рассмотрим $\forall f \in L^{\perp\perp}$, тогда $f \in \overline{L}$ и 
+    $$
+    \overline{L} \oplus \overline{L}^{\perp} = H
+    $$ по теореме Риса об ортогональном дополнении.
+    Покажем, что $\overline{L}^{\perp} \subset L^{\perp}$.
+    Пусть последовательность $h_n \in L$ такая, что $h_n \to \Phi \in \overline{L}$.
+    Пусть $g \in L^{\perp}$, тогда $(h_n, g) = 0$, $h_n \to \Phi$, поэтому $(\Phi, g) = 0\;\forall \Phi \in \overline{L}$ по непрерывности скалярного произведения.
+    Получаем, что
+    $$
+    \overline{L} \oplus L^{\perp} = H
+    $$
+    Теперь разложим $f = f_1 + f_2$, $f_1 \in \overline{L}$, $f_2 \in L^{\perp}$ и $f$ перпендикулярен $f_2$.
+    $$
+    0 = (f, f_2) = (f_1, f_2) + \|f_2\|^2
+    $$
+    следовательно $\|f_2\| = 0$, следовательно $f = f_1 \in \overline{L} \Rightarrow L^{\perp\perp} \supset \overline{L}$.
+\end{Proof}
+\newtheorem{Sled2}{Следствие}
+\begin{Sled2}
+    $\overline{\Im A} = (\ker A^*)^\perp$
+\end{Sled2}
+
+\begin{Prim}
+	Рассмотрим оператор $A : L_2(G) \mapsto L_2(G)$, действующий следующим
+	образом:
+	$$
+	(Af)(x) = \int \limits_G K(t, x) f(t) dt
+	$$
+	где $K(t, x) \in L_2(G \times G)$.
+	Рассмотрим скалярное произведение $(Af, g)$
+	$$
+	(Af, g) = \int \limits_G dx \int \limits_G dt K(t, x) f(t) \overline{g(x)}=
+	\int \limits_G dt f(t) \int \limits_G dx \overline{K(t, x)} g(x)
+	$$
+	где $\int \limits_G dx \overline{K(t, x)} g(x) = (A^* g)(t)$.
+	
+	Расмотрим частный случай.
+	Пусть $A:L_2[0,1] \mapsto L_2[0,1]$,
+	$$
+	(A f)(x) = \int \limits_0^x f(t) dt
+	$$
+	Тогда сопряжённый оператор будет иметь вид:
+	$$
+	(A^*g)(t) = \int \limits_t^1 g(x) dx
+	$$
+	Образ этого оператора $\Im A^* \supset \{h\in C^1[0,1], h(1) = 0\}$ --- всюду
+	плотно в $L_2[0,1]$.
+	Очевидно, что $\overline{Im A^*}^\perp = H^\perp = 0$
+\end{Prim}
+
+Введём уравнение Фредгольма.
+$(I - \lambda A) u = f\;f\in H\;\lambda \in \mathbb C \setminus\{0\}$.
+Пусть $\frac{1}{\lambda} \in \rho(A) \Rightarrow \exists! u = (I - \lambda A)^{-1}f$ 
+и $\overline{\Im(I - \lambda A)} = (\ker(I - \lambda A)^*)^\perp$
 \end{document}
