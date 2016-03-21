@@ -1,0 +1,98 @@
+\documentclass[12pt]{article}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\frenchspacing
+\usepackage{amssymb, amsmath, amscd}
+\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
+\usepackage{comment}
+\usepackage{theorem}
+\renewcommand{\Im}{\operatorname{Im}}
+\DeclareMathOperator{\Lin}{Lin}
+\newcommand{\Al}{A_\lambda}
+\newcommand{\Alo}{(\Al)^{-1}}
+\newcommand{\Rez}{(I - \lambda A)^{-1}}
+\begin{document}
+\newtheorem{Theor}{Теорема}
+\newtheorem{Utv}{Утверждение}
+\newtheorem{Opr}{Опреление}
+\newtheorem{Prim}{Пример}
+\newtheorem{Upr}{Упражнение}
+\newtheorem{Nabl}{Наблюдение}
+\newtheorem{Zam}{Замечание}
+%=============================================================================!
+\section*{Свойства самосопряжённых линейных операторов в гильбертовом
+пространств}
+Пусть $H$ --- гильбертово пространство.
+Пусть $A : H \mapsto H$ --- линейный и непрерывный оператор.
+Пусть $A$ --- самосопряжённый оператор, то есть $A = A^*$.
+\begin{Utv}
+    Если $A$ --- самосопряжённый оператор, тогда выполняются следующие
+    свойства:
+    \begin{enumerate}
+        \item{$\|A^n\| = \|A\|^n\; \forall n \in \mathbb N$}
+        \item{$r(A) = \|A\|$}
+        \item{$\sigma(A) \subset \mathbb R$}
+        \item{пусть $m_+ = \sup \limits_{\|f\| = 1} (Af, f)$, где $(Af, f) \in 
+                \mathbb R$ для самосопряжённого оператора, пусть $m_- = \inf 
+                \limits_{\|f\| = 1} (Af, f)$, тогда $m_{+-} \in \sigma(A)$ и
+                $\sigma(A) \subset [m_-(A), m_+(A)]$ (доказать в качестве
+            упражнения)}
+    \end{enumerate}
+\end{Utv}
+\begin{Proof}
+    Докажем первое утверждение.
+    $\|A^n\| \le \|A\|^n$ по определению операторной нормы.
+    Надо показать, что $\|A^n\| \ge \|A\|^n$.
+    Для $n = 1$ очевидно верно.
+    Если для $k = 1 \dots n$ имеем $\|A^k\| = \|A\|^k$ и $A \ne 0$, тогда 
+    без ограничения общности $\forall f: \|f\| = 1$
+    $$
+    \|A^n f\|^2 = (A^n f, A^n f)
+    $$
+    В силу того, что $A$ --- самосопряжённый оператор
+    $$
+    (A^n f, A^n f) = (A^{n - 1} f, A^{n + 1} f)
+    $$
+    Последнее в силу неравенства Коши-Буняковского
+    $$
+    (A^{n - 1} f, A^{n + 1} f) \le \|A^{n - 1}f\| \|A^{n + 1} f\| 
+    \le \|A^{n - 1}\| \|A^{n + 1}\|
+    $$
+    Получаем, что
+    $$
+    \|A^n f\|^2 \le \|A^{n - 1}\| \|A^{n + 1}\|
+    $$
+    Из индукции $\|A^{n - 1}\| \le \|A\|^{n -1}$ и $\|A^n\| = \|A\|^n$
+    Возмём теперь супремум $\forall \|f\| = 1$
+    $$
+    \|A^n\|^2 = \|A\|^{2n} \le \|A\|^{n - 1} \|A^{n + 1}\|
+    $$
+    Отсюда при $A \ne 0$ получаем
+    $$
+    \|A\|^{n + 1} \le \|A^{n + 1}\|
+    $$
+    Что и требовалось доказать.
+%=============================================================================!
+    
+    Второе утверждение очевидно следует из первого для самосопряжённого
+    оператора:
+    $$
+    r(A) = \lim_{n \to \infty} \sqrt[n]{\|A^n\|} = \lim_{n \to \infty}
+    \sqrt[n]{\|A\|^n} = \|A\|
+    $$
+
+    Перейдём к третьему утверждению.
+    Воспоминание: пусть $A$ --- самосопряжённый оператор.
+    Пусть $\lambda \in \sigma_p(A)$, то есть $\ker \Al \ne 0$, следовательно
+    $\exists f \ne 0 \in \ker \Al\colon Af = \lambda f$.
+    Тогда 
+    $$
+    (Af, f) = \lambda (f, f)
+    $$
+    С другой стороны, в силу самосопряжённости
+    $$
+    (Af, f) = (f, Af) = \overline{\lambda}(f, f)
+    $$
+    И так как $f \ne 0$, то $\lambda = \overline{\lambda}$
+\end{Proof}
+\end{document}
