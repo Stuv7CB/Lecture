@@ -72,8 +72,7 @@
     \|A\|^{n + 1} \le \|A^{n + 1}\|
     $$
     Что и требовалось доказать.
-%=============================================================================!
-    
+
     Второе утверждение очевидно следует из первого для самосопряжённого
     оператора:
     $$
@@ -93,6 +92,203 @@
     $$
     (Af, f) = (f, Af) = \overline{\lambda}(f, f)
     $$
-    И так как $f \ne 0$, то $\lambda = \overline{\lambda}$
+    И так как $f \ne 0$, то $\lambda = \overline{\lambda}$.
+    Перейдём теперь непосредственно к доказательству.
+    Рассмотрим $\lambda = \mu + \imath \nu,\; \nu \ne 0$ и докажем, что $\lambda \in \rho(A)$ и тогда, очевидно, $\sigma(A)
+    = \mathbb C \setminus \rho(A) \subset \mathbb R$.
+    $\forall f \in H$
+    $$
+    \|A_\lambda f\|^2 = \|A_\mu f - \imath \nu f\|^2 = (A_\mu f - \imath \nu f, A_\mu f - \imath \nu f) = \|A_\nu f\|^2 + 
+    \nu^2 \|f\|^2 - \imath \nu (f, A_\mu) + \imath \nu (A_\mu f, f)
+    $$
+    где $A_\lambda f = Af - \lambda f$.
+    Раз $\mu \in \mathbb R$, то 
+    $$
+    (A_\mu)^* = A^*_{\overline{\mu}} = A^*_\mu = A_\mu
+    $$
+    так как $A^* = A$.
+    Следовательно
+    $$
+    (f, A_\mu f) = (A_\mu f, f)
+    $$
+    Отсюда получаем, что
+    $$
+    (A_\mu f - \imath \nu f, A_\mu f - \imath \nu f) = \|A_\mu f\|^2 + \nu^2\|f\|^2
+    $$
+    Тогда
+    $$
+    \|A_\lambda f\|^2 = \|A_\mu f\|^2 + \nu^2\|f\|^2 \ge \nu^2 \|f\|^2
+    $$
+    Получили оценку снизу:
+    $$
+    \|A_\lambda f\| \ge |\nu| \|f\| \quad \forall f \in H
+    $$
+    Пусть теперь $f \in \ker A_\lambda$.
+    Это равносильно $A_\lambda f = 0 \Rightarrow 0 \ge |\nu|\|f\| \ge 0$,отсюда $f = 0$.
+    По теореме Фредгольма 
+    $$
+    \overline{(\Im A_\lambda)} = (\ker(A_\lambda)^*)^\perp = (\ker A_{\overline{\lambda}})^\perp = 0^\perp = H
+    $$
+    так как в силу самосопряжённости $(A_\lambda)^* = A^*_{\overline{\lambda}} = A_{\overline{\lambda}}$.
+    Аналогично как для $A_\lambda$
+    $$
+    \|A_{\overline{\lambda}}\| \ge |\nu| \|f\| \Rightarrow \ker A_{\overline{\lambda}} = 0
+    $$
+    
+    Покажем теперь, что $\Im A_\lambda$ замкнут.
+    Пусть $\|A_\lambda\|f = g$, тогда $\Alo g =f$, тогда
+    $$
+    \|\Alo g\| \le \frac{\|g\|}{\nu} \quad \forall g \in \Im \Al
+    $$
+    Поэтому
+    $$
+    \|\Alo\| \le \frac{1}{\nu}
+    $$
+    Возмём $\forall g \in \overline{\Im \Al}$, тогда $\exists \{g_n\} \in \Im \Al\colon g_n \to g$ в $H$.
+    $g_n = \Al f_n$
+    $$
+    \|f_n - f_m\| \le \frac{1}{\nu}\|g_n - g_m\|
+    $$
+    где $\|g_n - g_m\| \to 0\; n,m \to \infty$, отсюда $f_n - f_m \to 0\; n,m \to \infty$.
+    Так как $\{f_n\}$ --- фундаментальная последовательность в полном пространстве $H$, то $\exists f \in H\colon f_n \to f$ 
+    в $H$.
+    Так $g_n \to g\; n \to \infty$ и так как $\Al$ --- непрерывный оператор, то $g = \Al f$ и $g \in \Im \Al$.
+    Таким образом получаем
+    $$
+    \left\{
+        \begin{aligned}
+            \Im \Al = H\\
+            \ker \Al = 0
+        \end{aligned}
+   \right.
+   $$
+   поэтому $\exists \Alo : H \mapsto H$ такой, что $\|\Alo\| \le \frac{1}{|\nu|}$ и $\nu = \Im \lambda \ne 0$.
 \end{Proof}
+\nopagebreak
+\begin{Prim}
+    Пусть $H = L_2[0,1]$.
+    Пусть задан оператор $A : H \mapsto H$ такой, что
+    $$
+    (A f)(x) = x f(x) \quad 0 \le x \le 1, f \in H
+    $$
+    Норма этого оператора будет
+    $$
+    \|Af\| = \sqrt{\int\limits_0^1 x^2 |f|^2 dx} \le \|f\|_{L_2}
+    $$
+    так как $x^2 \le 1$.
+    Отсюда следует, что $\|A\| \le 1$.
+    Рассмотрим функцию $f_\varepsilon \in H$ такую:
+    $$
+    f_\varepsilon =
+    \left\{
+        \begin{aligned}
+            0 \quad 0 \le x \le \varepsilon\\
+            1 \quad \varepsilon \le x \le 1
+        \end{aligned}
+    \right.
+    $$
+    Тогда получаем, что
+    $$
+    1 \ge \|A\| \ge \frac{\|A f_\varepsilon\|_{L_2}\|}{\|f_\varepsilon\|_{L_2}}
+    $$
+    Выписываем явный вид нормы
+    $$
+    \|A\| \ge \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 x^2 dx}}{\sqrt{\int\limits_{1-\varepsilon}^1 dx}} \ge (1  - \varepsilon)
+    \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}
+    $$
+    В итоге мы получили
+    $$
+    1 \ge \|A\| \ge 1 - \varepsilon \to 1 \quad \varepsilon \to +0
+    $$
+    Покажем теперь, что этот оператор самосопряжённый
+    $$
+    (Af, g) = \int\limits_0^1 x f \overline{g} dx = \int \limits_0^1 f \overline{xg} dx = (f, xg) = (f, A^*g)
+    $$
+    Поэтому $A^*g = xg =Ag\; \forall g \in H$.
+    Рассмотрим теперь $\forall \lambda \in \mathbb C\colon \lambda \ne [0,1] \subset \mathbb R$.
+    Тогда
+    $$
+    \Al f = g = (x - \lambda)f
+    $$
+    И тогда
+    $$
+    \Alo g = f(x) = \frac{g(x)}{x -\lambda} \in L_2[0,1] \quad x \in [0,1]
+    $$
+    Найдём норму $f$:
+    $$
+    \|f\| = \sqrt{\int \limits_0^1 \frac{|g|^2}{|x - \lambda|^2}dx} \le \rho(\lambda, [0,1] \|g\|
+    $$
+    где $0 \le \rho(\lambda, [0, 1]) \le |x - \lambda|\; \forall x \in [0, 1]$ --- расстояние, причём $\rho(\lambda, [0, 1]) = 0 
+    \Leftrightarrow \lambda \in [0,1]$.
+    Таким образом 
+    $$
+    \|\Alo\| \le \frac{1}{\rho(\lambda, [0, 1])}
+    $$
+    И образ естественно всё пространство так как $g$ --- любой объект из $H$.
+    Таким образом непрерывность очевидна, определена на всём пространстве и поэтому за пределами этого отрезка спектра
+    нет.
+    $\forall \lambda \in [0,1] \Rightarrow \lambda \in \sigma(A)$, причём $\lambda \notin \sigma_P(A)$ так как иначе
+    $Af = \lambda f, f \ne 0$ в $H$.
+    $x f(x) = \lambda f(x)$ для почти всех $x \in [0,1]$, $\|f\| > 0$ на множестве положительной меры $S$. 
+    Получаем $x = \lambda$ почти всюду на $S$.
+    Но мера $S > 0$, то есть не одно число, поэтому $x = \lambda$ невозможно.
+    
+    Покажем, что $\forall \lambda \in [0,1]$ выполняется $\lambda \in \sigma(A)$ тогда $\ker \Al = 0$ и $g \in \Im \Al 
+    \Leftrightarrow (x - \lambda)f(x) = g(x)$, то есть $x \in [0,1]$.
+    Тогда $f(x) = \frac{g(x)}{x - \lambda} \in L_2[0,1]$ для почти всех $x \in [0, 1] \setminus \{\lambda\}$.
+    Но это справедливо не для всякой $g$.
+    Пусть $g(x) = 1$, тогда $\frac{1}{x - \lambda} \notin L_2[0,1]$, поэтому $1 \notin \Im A \Rightarrow \Im A \ne H$, 
+    Значит это элемент спектра $\sigma(A) = \sigma_C(A)$.
+    Так как оператор самосопряженный, то для $\lambda \in \mathbb R$ $\ker \Al^* = \ker \Al = 0$ и получается, что
+    $\overline{\Im \Al} = (\ker \Al)^\perp = 0^\perp = H$. 
+    Таким образом для $\lambda \in [0,1]$ оператор $\Alo : \Im \Al \mapsto L_2[0,1]$, где $\Im \Al = \{g \in L_2[0,1] \mid
+    \frac{g(x)}{x - \lambda} \in L_2[0,1]\}$. 
+    $\Alo g = \frac{g}{x - \lambda}$.
+    Но норма такого оператора $\|\Alo\| = +\infty$ (доказать в качестве упражнения): надо подобрать функции такие, что
+    $\forall n \in \mathbb N\; \exists g_n \in \Im \Al$
+    $$
+    \frac{\Alo g_n\|}{\|g_n\|} \ge n
+    $$
+    Если бы $\|\Alo\| \le +\infty$, то получили ту же самую оценку:
+    $$
+    \|f\| = \|\Alo g\| \le \|\Alo\| \|g\|
+    $$
+    для любого $f$ из $H$, причём $g = \Al f$.
+    Отсюда
+    $$
+    k\|f\| = \frac{\|f\|}{\|\Alo\|} \le \|\Al f\|
+    $$
+    гдe $k = \frac{1}{\|\Alo\|}$.
+    И отсюда можно доказать, если норма образа больше или равна константы на норму прообраза, то мгновенно
+    доказывается, что $\Im \Al$ замкнут, что не так, так как замыкание образа совпадает с $H$, сам образ не совпадает.
+\end{Prim}
+
+Ещё одно свойство самосопряжённого оператора:
+\begin{Utv}
+    Если $A : H \mapsto H$ --- линейный и непрерывный самосопрежённый оператор и $\lambda, \mu \in \sigma(A)\colon
+    \lambda \ne \mu$, тогда $\ker \Al \perp \ker A_\mu$
+\end{Utv}
+\begin{Proof}
+    Утверждение нетривиально для $\lambda, \mu \in \sigma_P(A)$ так как если одно из них из непрерывного спектра, то
+    соответствующее ядро тривиально, а нулевое подпространство перпендикулярно чему угодно.
+    Пусть $f \ne 0 \in \ker \Al \ne 0$ и $g \ne 0 \in \ker A_\mu \ne 0$, тогда надо доказать, что $f \perp g$, то есть $(f, g) = 0$.
+    В силу пункта 3 предыдущего утверждения $\lambda, \mu \in \mathbb R$.
+    Тогда $A f = \lambda f$ и $A g = \mu g$.
+    Получается
+    $$
+    (Af, g) = \lambda (f, g)
+    $$
+    с другой стороны
+    $$
+    (Af, g) = (f, Ag) = (f, \mu g) = \overline{\mu}(f, g) = \mu (f, g)
+    $$
+    Отсюда получаем, что
+    $$
+    (\lambda - \mu)(f, g) = 0
+    $$
+    И отсюда $(f, g) = 0$.
+    Утверждение доказано.
+\end{Proof}
+\begin{Upr}[решается, например, с помощью теоремы Банаха-Штейнгаусса]
+\end{Upr}
 \end{document}
