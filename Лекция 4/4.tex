@@ -94,11 +94,13 @@
     $$
     И так как $f \ne 0$, то $\lambda = \overline{\lambda}$.
     Перейдём теперь непосредственно к доказательству.
-    Рассмотрим $\lambda = \mu + \imath \nu,\; \nu \ne 0$ и докажем, что $\lambda \in \rho(A)$ и тогда, очевидно, $\sigma(A)
+    Рассмотрим $\lambda = \mu + \imath \nu,\; \nu \ne 0$ и докажем, что
+    $\lambda \in \rho(A)$ и тогда, очевидно, $\sigma(A)
     = \mathbb C \setminus \rho(A) \subset \mathbb R$.
     $\forall f \in H$
     $$
-    \|A_\lambda f\|^2 = \|A_\mu f - \imath \nu f\|^2 = (A_\mu f - \imath \nu f, A_\mu f - \imath \nu f) = \|A_\nu f\|^2 + 
+    \|A_\lambda f\|^2 = \|A_\mu f - \imath \nu f\|^2 = (A_\mu f - \imath \nu
+    f, A_\mu f - \imath \nu f) = \|A_\nu f\|^2 + 
     \nu^2 \|f\|^2 - \imath \nu (f, A_\mu) + \imath \nu (A_\mu f, f)
     $$
     где $A_\lambda f = Af - \lambda f$.
@@ -113,7 +115,8 @@
     $$
     Отсюда получаем, что
     $$
-    (A_\mu f - \imath \nu f, A_\mu f - \imath \nu f) = \|A_\mu f\|^2 + \nu^2\|f\|^2
+    (A_\mu f - \imath \nu f, A_\mu f - \imath \nu f) = \|A_\mu f\|^2 + \nu^2
+    \|f\|^2
     $$
     Тогда
     $$
@@ -124,15 +127,20 @@
     \|A_\lambda f\| \ge |\nu| \|f\| \quad \forall f \in H
     $$
     Пусть теперь $f \in \ker A_\lambda$.
-    Это равносильно $A_\lambda f = 0 \Rightarrow 0 \ge |\nu|\|f\| \ge 0$,отсюда $f = 0$.
+    Это равносильно $A_\lambda f = 0 \Rightarrow 0 \ge |\nu|\|f\| \ge
+    0$,отсюда $f = 0$.
     По теореме Фредгольма 
     $$
-    \overline{(\Im A_\lambda)} = (\ker(A_\lambda)^*)^\perp = (\ker A_{\overline{\lambda}})^\perp = 0^\perp = H
+    \overline{(\Im A_\lambda)} = (\ker(A_\lambda)^*)^\perp = (\ker
+    A_{\overline
+    {\lambda}})^\perp = 0^\perp = H
     $$
-    так как в силу самосопряжённости $(A_\lambda)^* = A^*_{\overline{\lambda}} = A_{\overline{\lambda}}$.
+    так как в силу самосопряжённости $(A_\lambda)^* = A^*_{\overline{\lambda}} 
+    = A_{\overline{\lambda}}$.
     Аналогично как для $A_\lambda$
     $$
-    \|A_{\overline{\lambda}}\| \ge |\nu| \|f\| \Rightarrow \ker A_{\overline{\lambda}} = 0
+    \|A_{\overline{\lambda}}\| \ge |\nu| \|f\| \Rightarrow \ker
+    A_{\overline{\lambda}} = 0
     $$
     
     Покажем теперь, что $\Im A_\lambda$ замкнут.
@@ -144,15 +152,19 @@
     $$
     \|\Alo\| \le \frac{1}{\nu}
     $$
-    Возмём $\forall g \in \overline{\Im \Al}$, тогда $\exists \{g_n\} \in \Im \Al\colon g_n \to g$ в $H$.
+    Возмём $\forall g \in \overline{\Im \Al}$, тогда $\exists \{g_n\} \in \Im
+    \Al\colon g_n \to g$ в $H$.
     $g_n = \Al f_n$
     $$
     \|f_n - f_m\| \le \frac{1}{\nu}\|g_n - g_m\|
     $$
-    где $\|g_n - g_m\| \to 0\; n,m \to \infty$, отсюда $f_n - f_m \to 0\; n,m \to \infty$.
-    Так как $\{f_n\}$ --- фундаментальная последовательность в полном пространстве $H$, то $\exists f \in H\colon f_n \to f$ 
+    где $\|g_n - g_m\| \to 0\; n,m \to \infty$, отсюда $f_n - f_m \to 0\; n,m 
+    \to \infty$.
+    Так как $\{f_n\}$ --- фундаментальная последовательность в полном 
+    пространстве $H$, то $\exists f \in H\colon f_n \to f$ 
     в $H$.
-    Так $g_n \to g\; n \to \infty$ и так как $\Al$ --- непрерывный оператор, то $g = \Al f$ и $g \in \Im \Al$.
+    Так $g_n \to g\; n \to \infty$ и так как $\Al$ --- непрерывный оператор, 
+    то $g = \Al f$ и $g \in \Im \Al$.
     Таким образом получаем
     $$
     \left\{
@@ -162,7 +174,8 @@
         \end{aligned}
    \right.
    $$
-   поэтому $\exists \Alo : H \mapsto H$ такой, что $\|\Alo\| \le \frac{1}{|\nu|}$ и $\nu = \Im \lambda \ne 0$.
+   поэтому $\exists \Alo : H \mapsto H$ такой, что $\|\Alo\| \le \frac{1}{|
+   \nu|}$ и $\nu = \Im \lambda \ne 0$.
 \end{Proof}
 \nopagebreak
 \begin{Prim}
@@ -189,12 +202,15 @@
     $$
     Тогда получаем, что
     $$
-    1 \ge \|A\| \ge \frac{\|A f_\varepsilon\|_{L_2}\|}{\|f_\varepsilon\|_{L_2}}
+    1 \ge \|A\| \ge \frac{\|A f_\varepsilon\|_{L_2}\|}{\|f_\varepsilon\|
+    _{L_2}}
     $$
     Выписываем явный вид нормы
     $$
-    \|A\| \ge \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 x^2 dx}}{\sqrt{\int\limits_{1-\varepsilon}^1 dx}} \ge (1  - \varepsilon)
-    \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}
+    \|A\| \ge \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 x^2 dx}}{\sqrt{\int
+    \limits_{1-\varepsilon}^1 dx}} \ge (1  - \varepsilon)
+    \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}{\sqrt{\int\limits_{1 - 
+    \varepsilon}^1 dx}}
     $$
     В итоге мы получили
     $$
@@ -202,10 +218,12 @@
     $$
     Покажем теперь, что этот оператор самосопряжённый
     $$
-    (Af, g) = \int\limits_0^1 x f \overline{g} dx = \int \limits_0^1 f \overline{xg} dx = (f, xg) = (f, A^*g)
+    (Af, g) = \int\limits_0^1 x f \overline{g} dx = \int \limits_0^1 f 
+    \overline{xg} dx = (f, xg) = (f, A^*g)
     $$
     Поэтому $A^*g = xg =Ag\; \forall g \in H$.
-    Рассмотрим теперь $\forall \lambda \in \mathbb C\colon \lambda \ne [0,1] \subset \mathbb R$.
+    Рассмотрим теперь $\forall \lambda \in \mathbb C\colon \lambda \ne [0,1] 
+    \subset \mathbb R$.
     Тогда
     $$
     \Al f = g = (x - \lambda)f
@@ -216,35 +234,46 @@
     $$
     Найдём норму $f$:
     $$
-    \|f\| = \sqrt{\int \limits_0^1 \frac{|g|^2}{|x - \lambda|^2}dx} \le \rho(\lambda, [0,1] \|g\|
+    \|f\| = \sqrt{\int \limits_0^1 \frac{|g|^2}{|x - \lambda|^2}dx} \le 
+    \rho(\lambda, [0,1] \|g\|
     $$
-    где $0 \le \rho(\lambda, [0, 1]) \le |x - \lambda|\; \forall x \in [0, 1]$ --- расстояние, причём $\rho(\lambda, [0, 1]) = 0 
+    где $0 \le \rho(\lambda, [0, 1]) \le |x - \lambda|\; \forall x \in [0, 1]$ 
+    --- расстояние, причём $\rho(\lambda, [0, 1]) = 0 
     \Leftrightarrow \lambda \in [0,1]$.
     Таким образом 
     $$
     \|\Alo\| \le \frac{1}{\rho(\lambda, [0, 1])}
     $$
     И образ естественно всё пространство так как $g$ --- любой объект из $H$.
-    Таким образом непрерывность очевидна, определена на всём пространстве и поэтому за пределами этого отрезка спектра
+    Таким образом непрерывность очевидна, определена на всём пространстве и 
+    поэтому за пределами этого отрезка спектра
     нет.
-    $\forall \lambda \in [0,1] \Rightarrow \lambda \in \sigma(A)$, причём $\lambda \notin \sigma_P(A)$ так как иначе
+    $\forall \lambda \in [0,1] \Rightarrow \lambda \in \sigma(A)$, причём $
+    \lambda \notin \sigma_P(A)$ так как иначе
     $Af = \lambda f, f \ne 0$ в $H$.
-    $x f(x) = \lambda f(x)$ для почти всех $x \in [0,1]$, $\|f\| > 0$ на множестве положительной меры $S$. 
+    $x f(x) = \lambda f(x)$ для почти всех $x \in [0,1]$, $\|f\| > 0$ на 
+    множестве положительной меры $S$. 
     Получаем $x = \lambda$ почти всюду на $S$.
     Но мера $S > 0$, то есть не одно число, поэтому $x = \lambda$ невозможно.
     
-    Покажем, что $\forall \lambda \in [0,1]$ выполняется $\lambda \in \sigma(A)$ тогда $\ker \Al = 0$ и $g \in \Im \Al 
+    Покажем, что $\forall \lambda \in [0,1]$ выполняется $\lambda \in 
+    \sigma(A)$ тогда $\ker \Al = 0$ и $g \in \Im \Al 
     \Leftrightarrow (x - \lambda)f(x) = g(x)$, то есть $x \in [0,1]$.
-    Тогда $f(x) = \frac{g(x)}{x - \lambda} \in L_2[0,1]$ для почти всех $x \in [0, 1] \setminus \{\lambda\}$.
+    Тогда $f(x) = \frac{g(x)}{x - \lambda} \in L_2[0,1]$ для почти всех $x \in 
+    [0, 1] \setminus \{\lambda\}$.
     Но это справедливо не для всякой $g$.
-    Пусть $g(x) = 1$, тогда $\frac{1}{x - \lambda} \notin L_2[0,1]$, поэтому $1 \notin \Im A \Rightarrow \Im A \ne H$, 
+    Пусть $g(x) = 1$, тогда $\frac{1}{x - \lambda} \notin L_2[0,1]$, поэтому 
+    $1 \notin \Im A \Rightarrow \Im A \ne H$, 
     Значит это элемент спектра $\sigma(A) = \sigma_C(A)$.
-    Так как оператор самосопряженный, то для $\lambda \in \mathbb R$ $\ker \Al^* = \ker \Al = 0$ и получается, что
+    Так как оператор самосопряженный, то для $\lambda \in \mathbb R$ $\ker 
+    \Al^* = \ker \Al = 0$ и получается, что
     $\overline{\Im \Al} = (\ker \Al)^\perp = 0^\perp = H$. 
-    Таким образом для $\lambda \in [0,1]$ оператор $\Alo : \Im \Al \mapsto L_2[0,1]$, где $\Im \Al = \{g \in L_2[0,1] \mid
+    Таким образом для $\lambda \in [0,1]$ оператор $\Alo : \Im \Al \mapsto 
+    L_2[0,1]$, где $\Im \Al = \{g \in L_2[0,1] \mid
     \frac{g(x)}{x - \lambda} \in L_2[0,1]\}$. 
     $\Alo g = \frac{g}{x - \lambda}$.
-    Но норма такого оператора $\|\Alo\| = +\infty$ (доказать в качестве упражнения): надо подобрать функции такие, что
+    Но норма такого оператора $\|\Alo\| = +\infty$ (доказать в качестве 
+    упражнения): надо подобрать функции такие, что
     $\forall n \in \mathbb N\; \exists g_n \in \Im \Al$
     $$
     \frac{\Alo g_n\|}{\|g_n\|} \ge n
@@ -259,19 +288,25 @@
     k\|f\| = \frac{\|f\|}{\|\Alo\|} \le \|\Al f\|
     $$
     гдe $k = \frac{1}{\|\Alo\|}$.
-    И отсюда можно доказать, если норма образа больше или равна константы на норму прообраза, то мгновенно
-    доказывается, что $\Im \Al$ замкнут, что не так, так как замыкание образа совпадает с $H$, сам образ не совпадает.
+    И отсюда можно доказать, если норма образа больше или равна константы на 
+    норму прообраза, то мгновенно
+    доказывается, что $\Im \Al$ замкнут, что не так, так как замыкание образа 
+    совпадает с $H$, сам образ не совпадает.
 \end{Prim}
 
 Ещё одно свойство самосопряжённого оператора:
 \begin{Utv}
-    Если $A : H \mapsto H$ --- линейный и непрерывный самосопрежённый оператор и $\lambda, \mu \in \sigma(A)\colon
+    Если $A : H \mapsto H$ --- линейный и непрерывный самосопрежённый оператор 
+    и $\lambda, \mu \in \sigma(A)\colon
     \lambda \ne \mu$, тогда $\ker \Al \perp \ker A_\mu$
 \end{Utv}
 \begin{Proof}
-    Утверждение нетривиально для $\lambda, \mu \in \sigma_P(A)$ так как если одно из них из непрерывного спектра, то
-    соответствующее ядро тривиально, а нулевое подпространство перпендикулярно чему угодно.
-    Пусть $f \ne 0 \in \ker \Al \ne 0$ и $g \ne 0 \in \ker A_\mu \ne 0$, тогда надо доказать, что $f \perp g$, то есть $(f, g) = 0$.
+    Утверждение нетривиально для $\lambda, \mu \in \sigma_P(A)$ так как если 
+    одно из них из непрерывного спектра, то
+    соответствующее ядро тривиально, а нулевое подпространство перпендикулярно 
+    чему угодно.
+    Пусть $f \ne 0 \in \ker \Al \ne 0$ и $g \ne 0 \in \ker A_\mu \ne 0$, тогда 
+    надо доказать, что $f \perp g$, то есть $(f, g) = 0$.
     В силу пункта 3 предыдущего утверждения $\lambda, \mu \in \mathbb R$.
     Тогда $A f = \lambda f$ и $A g = \mu g$.
     Получается
@@ -289,6 +324,165 @@
     И отсюда $(f, g) = 0$.
     Утверждение доказано.
 \end{Proof}
-\begin{Upr}[решается, например, с помощью теоремы Банаха-Штейнгаусса]
+\begin{Upr}[решается, например, с помощью теоремы Банаха-Штейнгаусса, (теорема 
+Хеллингера, Теплица)]
+    Пусть $A : H \mapsto H$ --- линейный и симметричный оператор, то есть $(Af 
+    ,g) = (f, AG)\; \forall f,g \in H$.
+    Тогда $A$ --- непрерывный оператор ($\|A\| < +\infty$).
 \end{Upr}
+\section*{Теория компактных операторов в гильбертовом пространстве.}
+\begin{Opr}
+    $A : H \mapsto H$ --- линейный оператор называется компактным (или вполне 
+    непрерывным), если $\forall \{f_n\} \subset
+    H$ $\{f_n\}$ ограничена в $H$.
+    Иначе говоря $\forall n\; \|f_n\| \le R \Rightarrow \exists \{Af_{n_k}\}$ 
+    --- фундаментальная подпоследовательность в $H$, 
+    где $n_1 < n_2 < \dots$
+\end{Opr}
+\begin{Utv}
+    $A$ --- компактный, тогда $A$ --- непрерывный.
+    Обратное не верно. 
+\end{Utv}
+\begin{Prim}
+    Пусть $U$ --- унитарный оператор, то есть $U : H \mapsto H$ и $\|Uf\| = \|
+    f\|\; \forall f \in H$ в
+    бесконечномерном гильбертовом пространстве $H$.
+    Очевидно, что $\|U\| = 1$, он он не компактный.
+    Так как $\dim H = +\infty$, то существует линейно независимая 
+    последовательность $\{f_n\}_{n = 1}^{\infty}$.
+    Ортагонализируем её по Грамму-Шмитду и получим $\{e_n\}_{n = 1}^{\infty}
+    $,тогда
+    $$
+    (U e_n, U e_m) = (e_n, e_m) = 0
+    $$
+    $\|U e_n\| = 1$, тогда
+    $$
+    \|U e_n - U e_m\| = \sqrt{\|U e_n\|^2 + \|U e_m\|^2} = \sqrt{2}
+    $$
+    для любых $n \ne m$, поэтому нет фундаментальной подпоследовательности и 
+    $U$ не компактный.
+\end{Prim}
+\begin{Upr}
+    Пусть оператор $A f(x) = x f(x)$ в $L_2[0,1]$.
+    $A$ --- самосопряжённный оператор.
+    Показать, что $A$ --- не компактный оператор.
+\end{Upr}
+
+Докажем теперь утверждение
+\begin{Proof}
+    Если вдруг $A$ --- компактный и $\|A\| = +\infty$, тогда $\exists \{f_n\}$ 
+    с единичной сферы такая, что $\|A f_n\| \to 
+    +\infty$.
+    Из компактности следует, что $\exists A f_{n_k}$ фундаментальная, то есть 
+    $A f_{n_k} \le R$, а с другой стороны 
+    $\|A f_{n_k}\| \to +\infty$.
+    Получаем противоречие.
+\end{Proof}
+ 
+\begin{Utv}
+    Пусть $A_1$ и $A_2$ --- компактные операторы.
+    Тогда их линейная комбинация также компактна (доказательство очевидно).
+    Если $\{A_n\}_{n = 1}^\infty$ --- последовательность компактных операторов 
+    и $A_n \to T$ по операторной норме, тогда
+    $T$ также компактный.
+\end{Utv}
+\begin{Proof}
+    Возмём последовательность $f_n$ ограниченную в $H$ и $\|f_n\| \le R$.
+    Рассмотрим $\{A_1 f_n\}$ --- это действие компактного оператора на 
+    ограниченную последовательность, тогда по
+    определению $\exists \{n_k(1)\}_{k = 1}^\infty \colon n_1(1) < n_2(1) < 
+    \dots \Rightarrow A_1 f_{n_k(1)}$ ---
+    фундаментальная.
+    Дальше действуем оператором $A_2$, тогда $\exists \{n_k(2)\} \subset 
+    \{n_k(1)\} \colon n_1(2) < n_2(2) < \dots 
+    \Rightarrow A_2 f_{n_k(2)}$ --- фундаментальная, причём $A_1 f_{n_k(2)}$ 
+    осталась фундаментальной как
+    подпоследовательность фундаментальной.
+    Будем действовать так дальше.
+    Реализуем Канторов диагональный процесс.
+    Если для $m \in \mathbb N$ имеем $\{n_k(m)\} \subset \{n_k(m - 1)\} 
+    \subset \dots \subset \{n_k(1)\} \subset \mathbb N$
+    так что $\{A_s f_{n_k(m)}\}_{k = 1}^{\infty}$ --- фундаментальная $\forall 
+    s = 1 \dots m$.
+    Тогда рассмотрим $\{A_{m + 1} f_{n_k(m)}\}$, тогда, используя 
+    компактность, $\exists \{n_k(m + 1)\} \subset \{n_k(m)\}$
+    такой, что $n_1(m + 1) < n_2(m + 1) < \dots$ такая, что $\{A_{m + 1} 
+    f_{n_k(m + 1)}\}$ фундаментальная.
+    Остальные же сохранили фундаментальность, так как мы перешли к 
+    подпоследовательности фундаментальной 
+    последовательности, которая также фундаментальна.
+    Таким образом мы по индукции реализовали счётный набор последовательностей 
+    натуральных чисел.
+    Рассмотрим $\{n_k(k)\}_{k = 1}^\infty$.
+    $n_{k + 1} \ge n_{k + 1}(k)$ по построению и $n_{k + 1}(k) > n_k(k)$ по 
+    определению, тогда $\{n_k(k)\}_{k = 1}^\infty$
+    строго возрастающая последовательность чисел.
+    Тогда $\{f_{n_k(k)}\}$ --- фундаментальная подпоследовательность.
+    Рассмотрим действие оператора $T$ на эту подпоследовательность.
+    Надо доказать, что малло при большом $p$
+    $$
+    \|T f_{n_k(k)} - T f_{n_{k + p}(k + p)}\|
+    $$
+    должно быть мало.
+    Добавим умный ноль
+    $$
+    \|T f_{n_k(k)} -T f_{n_{k + p}(k + p)} \pm A_s f_{n_k(k)} \pm 
+    A_s f_{n_{k + p}(k + P}\|
+    $$
+    Какое $s$ надо взять?
+    $\|f_n\| \le R$ по условию, тогда 
+    $$
+    \|f_n\| \le R\; \forall n \colon \forall
+    \varepsilon > 0\; \exists S(\varepsilon)\colon \forall s \ge 
+    S(\varepsilon)\; \|T - A_s\| \le \dfrac{\varepsilon}{R + 1}
+    $$
+    $A_s f_{n_k(m)}$ --- фундаментальна по $k$ если $s \ge m$
+\end{Proof}
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
