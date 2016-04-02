@@ -20,8 +20,8 @@
 \newtheorem{Nabl}{Наблюдение}
 \newtheorem{Zam}{Замечание}
 %=============================================================================!
-\section*{Свойства самосопряжённых линейных операторов в гильбертовом
-пространств}
+\section*{Свойства самосопряжённых линейных операторов в гильбертовом 
+пространстве}
 Пусть $H$ --- гильбертово пространство.
 Пусть $A : H \mapsto H$ --- линейный и непрерывный оператор.
 Пусть $A$ --- самосопряжённый оператор, то есть $A = A^*$.
@@ -419,11 +419,10 @@
     строго возрастающая последовательность чисел.
     Тогда $\{f_{n_k(k)}\}$ --- фундаментальная подпоследовательность.
     Рассмотрим действие оператора $T$ на эту подпоследовательность.
-    Надо доказать, что малло при большом $p$
+    Надо доказать, что мало при большом $p$
     $$
     \|T f_{n_k(k)} - T f_{n_{k + p}(k + p)}\|
     $$
-    должно быть мало.
     Добавим умный ноль
     $$
     \|T f_{n_k(k)} -T f_{n_{k + p}(k + p)} \pm A_s f_{n_k(k)} \pm 
@@ -436,53 +435,267 @@
     \varepsilon > 0\; \exists S(\varepsilon)\colon \forall s \ge 
     S(\varepsilon)\; \|T - A_s\| \le \dfrac{\varepsilon}{R + 1}
     $$
-    $A_s f_{n_k(m)}$ --- фундаментальна по $k$ если $s \ge m$
+    $A_s f_{n_k(m)}$ --- фундаментальна по $k$ если $s \ge m$.
+    Возмём $s = S(\varepsilon)$ и $k \ge S(\varepsilon)$.
+    Следовательно получается, что $A_s f_{n_k(k)}$, если $k \ge S(\varepsilon)
+    $ --- подпоследовательность $A_s f_{n_k(S(\varepsilon))}$, которая
+    фундаментальная и значит наша подпоследовательность также фундаментальна.
+    Получаем, что 
+    $$
+    \|(T - A_{S(\varepsilon)})f_{n_k(k)}\| \le \frac{\varepsilon}{R + 1}
+    $$ 
+    Аналогично
+    $$
+    \|(T - A_{S(\varepsilon)})f_{n_{k + p}(k + p)}\| \le \frac{\varepsilon}{
+    R + 1}
+    $$
+    А из фундаментальности
+    $$
+    \|A_{S(\varepsilon)}f_{n_k(k)} - A_{S(\varepsilon)}f_{n_{k + p}(k + p)}
+    \| \le \varepsilon
+    $$
+    Итого имеем
+    \begin{multline*}
+        \|T f_{n_k(k)} - T f_{n_{k + p}(k + p)}\| \le \\
+        \le \|(T - A_{S(\varepsilon)})f_{n_k(k)}\| + 
+        \|(T - A_{S(\varepsilon)})f_{n_{k + p}(k + p)}\| +
+        \|A_{S(\varepsilon)}f_{n_k(k)} - A_{S(\varepsilon)}
+        f_{n_{k + p}(k + p)}\| \le \\
+        \le \frac{\varepsilon}{R + 1} + \frac{\varepsilon}{R + 1} + 
+        \varepsilon \le 3 \varepsilon
+    \end{multline*}
+    Отсюда образ $\|T\|$ содержит фундаментальную подпоследовательность и
+    $\|T\|$ компактен.
 \end{Proof}
+
+Докажем ещё одно свойство компактного оператора.
+\begin{Utv}
+    Пусть $A : H \mapsto H$ --- компактный оператор и $T : H \mapsto H$ --- 
+    непрерывный оператор, тогда $TA$ и $AT$ --- тоже компактный оператор.
+\end{Utv}
+\begin{Proof}
+    Пусть $\{f_n\}$ --- ограниченная последовательность ,тогда 
+    $A f_{n_k}$ --- фундаментальная подпоследовательность.
+    Смотрим на $T A f_{n_k}$ и получаем
+    $$
+    \|T A f_{n_k} - T A f_{n_{k + p}}\| \le \|T\|
+    \|A f_{n_k} - A f_{n_{k + p}}\|
+    $$
+    стремиться к нулю, так как $T$ непрерывный следовательно $T A f_{n_k}$
+    тоже фундаментальная.
+    Расмотрим теперь $A T f_n$.
+    $T$ --- непрерывный оператор, $\|f_n\| \le R$ --- ограниченная в $H$, то
+    $T f_n$ тоже ограниченная
+    $$
+    \|T f_n\| \le \|T\| \|f\| \le \|T\| \|R\|
+    $$
+    Отсюда $T f_n$ ограниченная и по определению $\exists n_k A(T f_{n_k})$
+    фундаментальная.
+\end{Proof}
+
+\begin{Prim}
+    Если $A : H \mapsto H$ линейный и непрерывный.
+    Пусть $\dim \Im A < +\infty$ (такой $A$ называется конечномерным).
+    Тогда $A$ --- компактный оператор.
+    
+    Действительно, пусть $f_n$ --- ограниченная последовательность, тогда
+    $A f_n$ также ограничен в конечном $\Im A$.
+    Тогда по теореме Больцано-Вейерштрасса $\exists A f_{n_k}$ фундаментальная
+    в $\Im A$.
+    
+    Покажем вид этих операторов.
+    Если $A$ --- линейный и непрерывный и его образ конечномерный, тогда возмём
+    базис $g_1, \dots, g_N$ в $\Im A$, где $N = \dim \Im A$.
+    Тогда $Af$ раскладывается
+    $$
+    Af = \sum\limits_{k = 1}^N\alpha_k(f)g_k
+    $$
+    где $\alpha_k$ линейный и непрерывный функционал.
+    Если мы будем скалярно умножать
+    $$
+    (Af, g_m) = \sum \alpha_k(f) (g_k, g_m)
+    $$
+    И если мы введём матрицу Грамма
+    $$
+    \Gamma = ((g_k, g_m))_{k,m=1}^N
+    $$
+    Тогда получается, что это всё равно, что
+    $$
+    \left(
+        \begin{array}{c}
+            (Af, g_1)\\
+            \dots\\
+            (Af, g_N)
+        \end{array}
+    \right)
+    =
+    \Gamma \left(
+        \begin{array}{c}
+            \alpha_1(f)\\
+            \dots\\
+            \alpha_N(f)
+        \end{array}
+        \right)
+    $$
+    Матрица $\Gamma$ не вырожденена в силу линейной независимости 
+    $g_1, \dots g_N$ и тогда
+    $$
+    \left(
+        \begin{array}{c}
+            \alpha_1(f)\\
+            \dots\\
+            \alpha_N(f)
+        \end{array}
+    \right)
+    =
+    \Gamma^{-1}\left(
+        \begin{array}{c}
+            (Af, g_1)\\
+            \dots\\
+            (Af, g_N)
+        \end{array}
+    \right)
+    $$
+    где правая часть непрерывна по $f$ в $H$.
+    Отсюда $\alpha_k(f) : H \mapsto \mathbb C$ линеен и непрерывен, а значит
+    по теореме Риса-Фреше
+    $$
+    \alpha_k(f) = (f, h_k)\quad \exists! h_k \in H
+    $$
+    Отсюда
+    $$
+    Af = \sum\limits_{k = 1}^N(f, h_k)g_k
+    $$
+    где $h_k, g_k \in H$ и $k = 1 \dots N$
+\end{Prim}
+\begin{Prim}
+    В случае $H = L_2(G)$, тогда $h_k(x), g_k(x) \in L_2(G)$ и
+    $$
+    Af = \sum\limits_{k = 1}^N \int\limits_G f(y)\overline{h_k(y)} \mathop{dy} 
+    g_k(x) 
+    $$
+    Иначе
+    $$
+    Af = \int\limits_G \left(\sum\limits_{k = 1}^N \overline{h_k(y)} g_k(x)
+    \right) f(y)\mathop{dy}
+    $$
+\end{Prim}
+
+Если взять предел последовательности конечномерных операторов $\{A_n\}$ такие,
+что $A_n \to T$ по операторной норме, тогда $T$ также будет компактным.
+\begin{Utv}
+    $T$ --- компактный оператор в гильбертовом пространстве $H$, тогда 
+    $\forall \varepsilon > 0\; \exists A_\varepsilon$ --- конечномерные
+    операторы
+    и $\|T - A_\varepsilon\| \le \varepsilon$
+\end{Utv}
+
+В 1972 году датский математик Энфло доказал, что существуют $X$ --- полные
+линейные непрерывные пространства и $A : X \mapsto X$ компактный оператор, не
+апроксимирующийся конечномерым.
+\begin{Proof}
+    Посмотрим на множество $TB_1(0)$ --- образ шара, $B_1(0) = \{f \in H \mid
+    \|f\| \le 1\}$.
+    Любая последовательность $Tf_n$, где $f_n \in B_1(0)$ имеет фундаментальную 
+    подпоследовательность $T f_{n_k}$, тогда утверждается, что $\forall 
+    \varepsilon > 0\; \exists g_1,\dots,g_N \in TB_1(0)\colon TB_1(0) \subset
+    \bigcup\limits_{k = 1}^N B_\varepsilon(g_k)$, где $B_\varepsilon(g_k)$ 
+    называют эпсилон-сетью.
+    
+    Если вдруг $\exists \varepsilon_0\colon \forall g_1,\dots,g_N \in TB_1(0)
+    \colon TB_1(0) \nsubseteq \bigcup\limits_{k = 1}^N B_\varepsilon(g_k)$.
+    Пусть $f_1 \in B_1(0)$ и $g_1 = T f_1$, тогда $B_{\varepsilon_0}(g_1)
+    \nsupseteq TB_1(0)$, следовательно $\exists g_2 \in TB_1(0)\setminus 
+    B_{\varepsilon_0}(g_1)$, а значит $\exists f_2 \in B_1(0) \colon g_2 =
+    Tf_2$ и так далее.
+    Если есть $f_1 \dots f_n \in B_1(0)$, таких, что
+    $$
+    \|T f_k - T f_s\| \ge \varepsilon_0
+    $$
+    где $1 \le k \ne s \le n$.
+    То эти функции порождают набор $g_k = T f_k$ и эти функции после 
+    объединения шаров не вместят образ шара, а значит существует $f_{n + 1}
+    \in B_1(0)\colon Tf_{n + 1} \nsubseteq B_{\varepsilon_0}(g_k)$.
+    Таким образом
+    $$
+    \exists\{f_k\}_{k = 1}^\infty \subset B_1(0) \colon \|T f_k - T f_s\| \ge
+    \varepsilon_0
+    $$
+    а значит нет фундаментальной подпоследовательности в $\{T f_k\}_{k = 1}^
+    \infty$, хотя $f_k$ ограничена.
+    Получаем противоречие.
+    
+    Пользуясь этой эпсилон-сетью займёмся апроксимацией.
+    Пусть $L_N = \Lin \{g_1,\dots g_N\}$ --- конечномерное пространство, а
+    значит замкнутое в $H$.
+    Следовательно $\exists P_N$ --- ортопроектор из $H$ на $L_N$ и 
+    $L_N \oplus L_N^\perp = H$ и соответственно $P_N h = h_N \in L_N$.
+    Норма $\|P_N\| = 1$.
+    Рассмотрим теперь оператор $A_\varepsilon = P_N T$.
+    Образ $\Im A_\varepsilon \subset L_N$ и
+    $$
+    A_\varepsilon h = P_N T h \quad \forall n \in H
+    $$
+    поэтому $A_\varepsilon$ конечномерен и непрерывен как суперпозиция 
+    непрерывных.
+    Возмём $\forall f\colon \|f\| = 1$, $Tf \in TB_1(0)$, значит
+    $\exists g_k\colon \|Tf - g_k\| \le \varepsilon$ и отсюда
+    \begin{multline*}
+    \|Tf - A_\varepsilon f\| = \|Tf + g_k - g_k - A_\varepsilon f\| \le \\ \le
+    \varepsilon + \|g_k - A_\varepsilon\| = \varepsilon + \|P_N g_k - P_N T f\|
+    \le \\ \le\varepsilon  \|P_N(g_k - T_f)\| \le \varepsilon + \|g_k - Tf\| 
+    \le 2 \varepsilon 
+    \end{multline*}
+\end{Proof}
+\begin{Prim}
+    Пусть $H = L_2(G)$, где $G$ --- компакт в $\mathbb R^m$ и $A : L_2(G)
+    \mapsto L_2(G)$ имеет вид
+    $$
+    (Af)(x) = \int\limits_G K(t, x)f(t)\mathop{dt}
+    $$
+    где $K \in L_2(G \times G)$.
+    Ранее получено, что $\|A\| \le \|K\|_{L_2(G \times G)}$.
+    Утверждается, что $A$ компактен.
+    $L_2(G \times G)$ --- пополнение $C(G \times G)$, $C$ --- компакт с нормой
+    $L_2$.
+    Тогда $\forall \varepsilon > 0 \exists F_\varepsilon(t, x) \in
+    C(G \times G)\colon \|K - F_\varepsilon\|_{L_2(G \times G)} \le 
+    \varepsilon$.
+    \begin{Theor}[Стоун, Вейерштрасс (см. Рудин <<Основы математического 
+    анализа>>)]
+        Пусть $D \subset \mathbb R^N$ --- компакт функция $F \in C(D)$, тогда
+        $\forall \varepsilon > 0\; \exists P : \mathbb R^N \mapsto \mathbb C$
+        комплексный многочлен $n$ переменных такой, что
+        $\|F - P\|_C = \max\limits_{x \in D} |F(x) - P(x)| \le \varepsilon$
+    \end{Theor}
+    
+    Применяем теорему Стоуна-Вейерштрасса: $\exists P$ многочлен
+    $$
+    \max_{G \times G}|F_\varepsilon - P| \le \frac{\varepsilon}{\mu(G \times 
+    G) + 1}
+    $$
+    следовательно
+    $$
+    \|F_\varepsilon - P\|_{L_2(G \times G)} \le \max_{G \times G}|F_\varepsilon 
+    - P|\sqrt{\mu(G \times G)} \le \varepsilon
+    $$
+    Таким образо мы строим оператор
+    $$
+    A_\varepsilon f = \int \limits_G P(t, x) f(t) \mathop{dt}
+    $$
+    Тогда $\Im A_\varepsilon$ конечномерен и
+    $$
+    \|A_\varepsilon - A\| \le \|K - P \pm F_\varepsilon\|_{L_2{G \times G}} \le
+    2 \varepsilon
+    $$
+\end{Prim}
+\begin{Upr}
+    Пусть $A : L_2(G) \mapsto L_2(\mathbb R)$ имеет вид
+    $$
+    Af(x) = \int\limits_{\mathbb R} e^{-(t - x)^2}f(t)\mathop{dt} = (e^{-x^2} *
+    f)(x)
+    $$
+    Тогда $\|A\| \le \|e^{-x^2}\|_{L_2(\mathbb R)}$. 
+    Показать, что $A$ не компактный оператор.
+\end{Upr}
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
