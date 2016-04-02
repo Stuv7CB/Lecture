@@ -5,7 +5,7 @@
 \usepackage{amssymb, amsmath, amscd}
 \usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
 \usepackage{comment}
-\usepackage{theorem}
+\usepackage{../theorem}
 \usepackage{indentfirst}
 \renewcommand{\Im}{\operatorname{Im}}
 \DeclareMathOperator{\Lin}{Lin}
@@ -16,7 +16,6 @@
 \newtheorem{Theor}{Теорема}
 \newtheorem{Utv}{Утверждение}
 \newtheorem{Opr}{Определение}
-\newtheorem{Prim}{Пример}
 \newtheorem{Upr}{Упражнение}
 \newtheorem{Nabl}{Наблюдение}
 \newtheorem{Zam}{Замечание}
@@ -30,8 +29,7 @@
     $\|f_n\|\le R\;\forall n$ следует $\exists A f_{n_k}$~--- фундаментальная
     в $H$ подпоследовательность или, что равносильно $\forall \varepsilon > 0
     \;\exists A_\varepsilon : H \mapsto H$ линейный и непрерывный и $\dim \Im
-    A_\varepsilon < + \infty$, тогда $\|A - A_\varepsilon\| \le \varepsilon\|$
-    .
+    A_\varepsilon < + \infty$, тогда $\|A - A_\varepsilon\| \le \varepsilon$.
 }
 
 Для прикладных целей пусть $A$~--- компактный оператор и $\lambda \in
@@ -40,6 +38,118 @@ $$
 (I - \lambda A)u = f
 $$
 где $u \in H$ и нужно найти $u$.
+
+Из компактности $\forall \varepsilon > 0\colon \varepsilon|\lambda| < 1\;
+\exists A_\varepsilon : H \mapsto H$~--- линейный и непрерывный оператор,
+$\dim \Im A_\varepsilon < + \infty$ и $\|A_\varepsilon - A \| < \varepsilon$.
+Тогда
+$$
+(I - \lambda A) = (I - \lambda A \pm \lambda A_\varepsilon) = (I - 
+\lambda(A - A_\varepsilon) - \lambda A_\varepsilon)
+$$
+Обозначим $\lambda(A - A_\varepsilon)$ как $T_\varepsilon(\lambda)$.
+$$
+\|T_\varepsilon(\lambda)\| = \|\lambda\|\|A - A_\varepsilon\| \le |\lambda|
+\varepsilon < 1
+$$
+А значит по теореме Неймана $\exists (I - T_\varepsilon(\lambda))^{-1} : H 
+\mapsto H$ линейный и непрерывный и
+$$
+(I - T_\varepsilon(\lambda))^{-1} = \sum\limits_{n = 0}^\infty(T_\varepsilon
+(\lambda))^n
+$$
+ряд сходящийся по операторной норме.
+Уравнение
+$$
+(I - \lambda A)u = f
+$$
+называется уравнением Фредгольма 2-го рода.
+Оно равносильно выражению
+$$
+(I - T_\varepsilon(\lambda) - \lambda A_\varepsilon)u = f
+$$
+Разобьём полученное выражение
+$$
+(I - T_\varepsilon(\lambda))(I - \lambda(I - T_\varepsilon(\lambda))^{-1}
+A_\varepsilon))u = f
+$$
+Обозначим $(I - T_\varepsilon(\lambda))^{-1}$ как $L_\varepsilon(\lambda)$
+Получаем
+$$
+(I - \lambda L_\varepsilon(\lambda) A_\varepsilon)u = f_\varepsilon(\lambda)
+= L_\varepsilon(\lambda) f
+$$
+Обозначим $C_\varepsilon(\lambda) = L_\varepsilon(\lambda)A_\varepsilon$.
+Этот оператор линейно непрерывный и его образ изоморфен образу $A_\varepsilon$
+.
+Отсюда $\dim C_\varepsilon = \dim A_\varepsilon$.
+\begin{Utv}
+    $A$~--- компактный оператор в $H$, тогда $A^*$ также компактный оператор в
+    $H$.
+\end{Utv}
+\begin{Proof}
+    Рассмотрим оператор такой, что
+    $$
+    \forall \varepsilon\; \exists A_\varepsilon\colon 
+    A_\varepsilon f = \sum\limits_{k = 1}^N(f, h_k)g_k\quad h_k,g_k \in H
+    $$
+    Тогда $\|A - A_\varepsilon\| < \varepsilon$.
+    $$
+    \|A^* - A_\varepsilon^*\| = \|(A - A_\varepsilon)^*\| = 
+    \|A - A_\varepsilon\| < \varepsilon
+    $$
+    Надо показать, что $A_\varepsilon^*$~--- компактный оператор.
+    Покажем, что
+    $$
+    A_\varepsilon^* g = \sum\limits_{k = 1}^N(g, g_k)h_k
+    $$
+    так как
+    \begin{multline*}
+    (f, A_\varepsilon^* g) = (A_\varepsilon f, g) = \sum\limits_{k = 1}^{N}
+    (f, h_k)(g_k, g) =\\= \sum\limits_{k = 1}^N (f, (g, g_k)h_k) = (f, \sum
+    \limits_{k = 1}^N(g, g_k)h_k) = (f, A_\varepsilon^* g)
+    \end{multline*}
+    Получаем, что $\dim A_\varepsilon^* \le N \subset \Lin(h_1,\dots, h_N)$.
+    Следовательно $A_\varepsilon^*$~--- компактный оператор.
+\end{Proof}
+\begin{Theor}[первая теорема Фредгольма]
+    Пусть $A$~--- компактный оператор в $H$ и $\lambda \ne 0$, тогда
+    $\dim \ker A_\lambda < +\infty$, где $A_\lambda = A - \lambda I)$
+\end{Theor}
+\begin{Proof}
+    Заметим, что, во-первых, если $L \subset H$ подпространство и $\dim \ker L
+    < +\infty$, то это равносильно тому, что для любой ограниченной
+    последовательность из $L$ имеет фундаментальную подпоследовательность.
+    В прямую сторону это следует из теоремы Больцано-Вейерштрасса.
+    Покажем справедливость в обратную сторону.
+    Если вдруг $\dim L = +\infty$, то $\exists\{f_n\}_{n = 1}^\infty$
+    последовательность линейно независимых векторов.
+    Подвергнем её процедуре ортогонализации Грама-Шмитда и получим $\{g_n\}
+    _{n = 1}^\infty \ subset L$, и $g_m \perp g_m\; n \ne m$, и $g_n = \Lin
+    \{f_1,\dots,f_n\}$ так как
+    \begin{gather*}
+    0 \ne g_1 = f_1\\
+    0 \ne g_2 = f_2 + \alpha g_1 \perp g_1\\
+    \vdots\\
+    0 \ne g_n = f_n + p_1 g_1 + \dots + p_{n - 1} g_{n - 1} \perp g_1, \dots,
+    g_{n - 1}
+    \end{gather*}
+    Строим $h_n = \frac{g_n}{\|g_n\|}$.
+    Тогда $\{h_n\}_{n = 1}^\infty$~--- ортонормированная последовательность в
+    $L$, а значит не имеет фундаментальной подпоследовательности, так как
+    $$
+    \|h_n - h_m\|^2 = \|h_n\| + \|h_m\|^2 = \sqrt{2} \quad n \ne m
+    $$
+    получили противоречие с условием, что $\forall \{f_n\} \subset \ker A_
+    \lambda$~--- ограниченная последовательность.
+    $A f_{n_k}$~--- фундаментальная последовательность образов в силу
+    компактности $A$.
+    $$
+    A_\lambda f_{n_k} = A f_{n_k} - \lambda f_{n_k} \equiv 0
+    $$
+    Следовательно $f_{n_k} = \frac{1}{\lambda}A f_{n_k}$~--- автоматически
+    фундаментальная
+\end{Proof}
 \end{document}
 
 
