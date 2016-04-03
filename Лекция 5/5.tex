@@ -115,7 +115,7 @@ $$
     0 \ne g_n = f_n + p_1 g_1 + \dots + p_{n - 1} g_{n - 1} \perp g_1, \dots,
     g_{n - 1}
     \end{gather*}
-    Строим $h_n = \frac{g_n}{\|g_n\|}$.
+    Строим $h_n = \dfrac{g_n}{\|g_n\|}$.
     Тогда $\{h_n\}_{n = 1}^\infty$~--- ортонормированная последовательность в
     $L$, а значит не имеет фундаментальной подпоследовательности, так как
     $$
@@ -128,7 +128,7 @@ $$
     $$
     A_\lambda f_{n_k} = A f_{n_k} - \lambda f_{n_k} \equiv 0
     $$
-    Следовательно $f_{n_k} = \frac{1}{\lambda}A f_{n_k}$~--- автоматически
+    Следовательно $f_{n_k} = \dfrac{1}{\lambda}A f_{n_k}$~--- автоматически
     фундаментальная.
 \end{Proof}
 \newtheorem{Lemm}{Лемма}
@@ -145,15 +145,15 @@ $$
     $$
     Покажем, что $\exists k > 0\colon \forall f \in (\ker A_\lambda)^\perp$
     выполняется $\|A_\lambda\| \ge k \|f\|$.
-    Отсюда вытекает, что $\exists \Al : \frac{1}{k}(\ker A_\lambda)^\perp 
+    Отсюда вытекает, что $\exists \Al : \dfrac{1}{k}(\ker A_\lambda)^\perp 
     \mapsto \Im 
     \Al$ такой что
     $$
-    \|f\| = \|\Alo \Al f\| \le \frac{1}{k}\|\Al f\|
+    \|f\| = \|\Alo \Al f\| \le \dfrac{1}{k}\|\Al f\|
     $$
     и следовательно
     $$
-    \|\Alo\| \le \frac{1}{k}
+    \|\Alo\| \le \dfrac{1}{k}
     $$
     Если показать существование такого $k$, то получим, что $\forall g \in 
     \overline{\Im \Al} = \overline{\Al (\ker A_\lambda)^\perp}\; \exists f_n
@@ -184,17 +184,17 @@ $$
     Если вдруг такого $k > 0$ нет, то
     $\forall k > 0\; \exists f_k \in (\ker A_\lambda)^\perp\colon \|\Al f_k\| 
     < k \|f_k\|\quad f_k \ne 0$.
-    Пусть $k = \frac{1}{n}, n \in \mathbb N$, тогда $f_k = f_{\frac{1}{n}}$ и
+    Пусть $k = \dfrac{1}{n}, n \in \mathbb N$, тогда $f_k = f_{\dfrac{1}{n}}$ и
     $$
-    \|\Al \frac{f_{\frac{1}{n}}}{\|f_{\frac{1}{n}}\|}\| \le \frac{1}{n}
+    \|\Al \dfrac{f_{\dfrac{1}{n}}}{\|f_{\dfrac{1}{n}}\|}\| \le \dfrac{1}{n}
     $$
-    Введём $g_n = \frac{f_{\frac{1}{n}}}{\|f_{\frac{1}{n}}\|} \in H$ и $\|g_n
+    Введём $g_n = \dfrac{f_{\dfrac{1}{n}}}{\|f_{\dfrac{1}{n}}\|} \in H$ и $\|g_n
     \| = 1$.
     Тогда
     $$
     \left\{
         \begin{array}{l}
-            \|\Al g_n\| < \frac{1}{n} \quad \forall n \in \mathbb N\\
+            \|\Al g_n\| < \dfrac{1}{n} \quad \forall n \in \mathbb N\\
             \|g_n\| = 1
         \end{array}
     \right.
@@ -214,20 +214,20 @@ $$
     $$
     И тогда
     $$
-    g_{n_m} = \frac{A g_{n_m} - \Al g_{n_m}}{\lambda} \to \frac{h}{\lambda}
+    g_{n_m} = \dfrac{A g_{n_m} - \Al g_{n_m}}{\lambda} \to \dfrac{h}{\lambda}
     $$
-    С другой стороны в $H$ $\Al g_{n_m} \to \Al \frac{h}{\lambda}$ 
+    С другой стороны в $H$ $\Al g_{n_m} \to \Al \dfrac{h}{\lambda}$ 
     следовательно $\Al h = 0$ и $h$ лежит в ядре $\ker \Al$.
     Но $g_{n_m} \in (\ker A_\lambda)^\perp$~--- замкнутое подпространство в 
     $H$.
-    И $g_{n_m} \to \frac{h}{\lambda} \Rightarrow \frac{h}{\lambda} \in 
+    И $g_{n_m} \to \dfrac{h}{\lambda} \Rightarrow \dfrac{h}{\lambda} \in 
     (\ker A_\lambda)^\perp \Rightarrow h \in (\ker A_\lambda)^\perp$.
     Таким образом $h = 0$, $\|g_{n_m}\| = 1$ и
     $$
-    |\|\frac{h}{\lambda}\| - \|g_{n_m}\|| \le \|\frac{h}{\lambda} - g_{n_m}\|
+    |\|\dfrac{h}{\lambda}\| - \|g_{n_m}\|| \le \|\dfrac{h}{\lambda} - g_{n_m}\|
     \to 0
     $$
-    Значит $\frac{\|h\|}{|\lambda|} = 1 \Rightarrow  \|h\| = |\lambda| > 0$.
+    Значит $\dfrac{\|h\|}{|\lambda|} = 1 \Rightarrow  \|h\| = |\lambda| > 0$.
     Противоречие.
 \end{Proof}
 \begin{MathCl}{Вопрос}
@@ -256,8 +256,8 @@ $$
     Раскроем подробней.
     $\lambda \ne 0$ и $(I - \lambda A)u = f$
     $$
-    \Im (I - \lambda A) = \Im (-\lambda)(A - \frac{I}{\lambda}) =
-    \Im A_{\frac{1}{\lambda}} = (\ker(A_{\frac{1}{\lambda}})^*)^\perp = 
+    \Im (I - \lambda A) = \Im (-\lambda)(A - \dfrac{I}{\lambda}) =
+    \Im A_{\dfrac{1}{\lambda}} = (\ker(A_{\dfrac{1}{\lambda}})^*)^\perp = 
     (\ker(I - \overline{\lambda}A^*)^\perp)
     $$
     $f \in (I - \lambda A) \Leftrightarrow f \in (\ker(I - \overline{\lambda}
@@ -352,14 +352,14 @@ $$
         0 \ne f_2 \in L_2 \cap L_1^\perp\\
         0 \ne f_n \in L_n \cap L_{n - 1}^\perp\quad n \ge 2
     \end{gather*}
-    Пусть теперь $g_1 = \frac{f_1}{\|f_1\|}$, $g_2 = \frac{f_2}{\|f_2\|}$, 
-    $g_n = \frac{f_n}{\|f_n\|}$.
+    Пусть теперь $g_1 = \dfrac{f_1}{\|f_1\|}$, $g_2 = \dfrac{f_2}{\|f_2\|}$, 
+    $g_n = \dfrac{f_n}{\|f_n\|}$.
     $\{g_n\}$ также ограниченная последовательность в $H$.
     $\forall n, p \in \mathbb N$
     \begin{multline*}
         \|Ag_n - Ag_{n + p} \pm \lambda g_n \pm \lambda g_{n + p}\| =\\
         = \|\Al g_n - \Al g_{n + p} + \lambda g_n - \lambda g_{n + p}\| =\\
-        = |\lambda|\|\frac{\Al g_n - \Al g_{n + p} + \lambda g_n}{\lambda} -
+        = |\lambda|\|\dfrac{\Al g_n - \Al g_{n + p} + \lambda g_n}{\lambda} -
         g_{n + p}\| \ge\\\ge |\lambda| \|g_{n + p}\| = |\lambda|
     \end{multline*}
     Следовательно
@@ -493,10 +493,10 @@ $$
     $$
     Теперь как в доказательстве леммы 2 для подпространств $\{L_n\}_{N = 1}^
     \infty$ строим ортонормированную систему $g_N \in L_N \cap (L_{N - 1})^
-    \perp$, где $g_1 = \frac{f_1}{\|f_1\|} \in L_1$ и $\|g_N\| = 1, N \ge 2$.
+    \perp$, где $g_1 = \dfrac{f_1}{\|f_1\|} \in L_1$ и $\|g_N\| = 1, N \ge 2$.
     $$
     \|A g_N - A g_{N + p} \pm \lambda_N g_N \pm \lambda_{N + p} g_{N + p}\| =
-    |\lambda_{N + p}|\|\frac{A_{\lambda_N}g_N - A_{\lambda_{N + p}}g_{N + p} +
+    |\lambda_{N + p}|\|\dfrac{A_{\lambda_N}g_N - A_{\lambda_{N + p}}g_{N + p} +
     \lambda_N g_N}{\lambda_{N +}} - g_{N + p}\| \ge |\lambda_{N + p}|\||
     \lambda_{N + p}|\| \ge \varepsilon_0
     $$
