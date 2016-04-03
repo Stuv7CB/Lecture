@@ -1,23 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\frenchspacing
-\usepackage{amssymb, amsmath, amscd}
-\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
-\usepackage{comment}
-\usepackage{../theorem}
-\renewcommand{\Im}{\operatorname{Im}}
-\DeclareMathOperator{\Lin}{Lin}
-\newcommand{\Al}{A_\lambda}
-\newcommand{\Alo}{(\Al)^{-1}}
-\newcommand{\Rez}{(I - \lambda A)^{-1}}
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
 \begin{document}
-\newtheorem{Theor}{Теорема}
-\newtheorem{Utv}{Утверждение}
-\newtheorem{Opr}{Определение}
-\newtheorem{Upr}{Упражнение}
-\newtheorem{Nabl}{Наблюдение}
-\newtheorem{Zam}{Замечание}
 %=============================================================================!
 \section*{Свойства самосопряжённых линейных операторов в гильбертовом 
 пространстве}
@@ -145,17 +128,17 @@
     Покажем теперь, что $\Im A_\lambda$ замкнут.
     Пусть $\|A_\lambda\|f = g$, тогда $\Alo g =f$, тогда
     $$
-    \|\Alo g\| \le \frac{\|g\|}{\nu} \quad \forall g \in \Im \Al
+    \|\Alo g\| \le \dfrac{\|g\|}{\nu} \quad \forall g \in \Im \Al
     $$
     Поэтому
     $$
-    \|\Alo\| \le \frac{1}{\nu}
+    \|\Alo\| \le \dfrac{1}{\nu}
     $$
     Возмём $\forall g \in \overline{\Im \Al}$, тогда $\exists \{g_n\} \in \Im
     \Al\colon g_n \to g$ в $H$.
     $g_n = \Al f_n$
     $$
-    \|f_n - f_m\| \le \frac{1}{\nu}\|g_n - g_m\|
+    \|f_n - f_m\| \le \dfrac{1}{\nu}\|g_n - g_m\|
     $$
     где $\|g_n - g_m\| \to 0\; n,m \to \infty$, отсюда $f_n - f_m \to 0\; n,m 
     \to \infty$.
@@ -173,7 +156,7 @@
         \end{aligned}
    \right.
    $$
-   поэтому $\exists \Alo : H \mapsto H$ такой, что $\|\Alo\| \le \frac{1}{|
+   поэтому $\exists \Alo : H \mapsto H$ такой, что $\|\Alo\| \le \dfrac{1}{|
    \nu|}$ и $\nu = \Im \lambda \ne 0$.
 \end{Proof}
 \nopagebreak
@@ -201,14 +184,14 @@
     $$
     Тогда получаем, что
     $$
-    1 \ge \|A\| \ge \frac{\|A f_\varepsilon\|_{L_2}\|}{\|f_\varepsilon\|
+    1 \ge \|A\| \ge \dfrac{\|A f_\varepsilon\|_{L_2}\|}{\|f_\varepsilon\|
     _{L_2}}
     $$
     Выписываем явный вид нормы
     $$
-    \|A\| \ge \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 x^2 dx}}{\sqrt{\int
+    \|A\| \ge \dfrac{\sqrt{\int\limits_{1 - \varepsilon}^1 x^2 dx}}{\sqrt{\int
     \limits_{1-\varepsilon}^1 dx}} \ge (1  - \varepsilon)
-    \frac{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}{\sqrt{\int\limits_{1 - 
+    \dfrac{\sqrt{\int\limits_{1 - \varepsilon}^1 dx}}{\sqrt{\int\limits_{1 - 
     \varepsilon}^1 dx}}
     $$
     В итоге мы получили
@@ -229,11 +212,11 @@
     $$
     И тогда
     $$
-    \Alo g = f(x) = \frac{g(x)}{x -\lambda} \in L_2[0,1] \quad x \in [0,1]
+    \Alo g = f(x) = \dfrac{g(x)}{x -\lambda} \in L_2[0,1] \quad x \in [0,1]
     $$
     Найдём норму $f$:
     $$
-    \|f\| = \sqrt{\int \limits_0^1 \frac{|g|^2}{|x - \lambda|^2}dx} \le 
+    \|f\| = \sqrt{\int \limits_0^1 \dfrac{|g|^2}{|x - \lambda|^2}dx} \le 
     \rho(\lambda, [0,1] \|g\|
     $$
     где $0 \le \rho(\lambda, [0, 1]) \le |x - \lambda|\; \forall x \in [0, 1]$ 
@@ -241,7 +224,7 @@
     \Leftrightarrow \lambda \in [0,1]$.
     Таким образом 
     $$
-    \|\Alo\| \le \frac{1}{\rho(\lambda, [0, 1])}
+    \|\Alo\| \le \dfrac{1}{\rho(\lambda, [0, 1])}
     $$
     И образ естественно всё пространство так как $g$ --- любой объект из $H$.
     Таким образом непрерывность очевидна, определена на всём пространстве и 
@@ -258,10 +241,10 @@
     Покажем, что $\forall \lambda \in [0,1]$ выполняется $\lambda \in 
     \sigma(A)$ тогда $\ker \Al = 0$ и $g \in \Im \Al 
     \Leftrightarrow (x - \lambda)f(x) = g(x)$, то есть $x \in [0,1]$.
-    Тогда $f(x) = \frac{g(x)}{x - \lambda} \in L_2[0,1]$ для почти всех $x \in 
+    Тогда $f(x) = \dfrac{g(x)}{x - \lambda} \in L_2[0,1]$ для почти всех $x \in 
     [0, 1] \setminus \{\lambda\}$.
     Но это справедливо не для всякой $g$.
-    Пусть $g(x) = 1$, тогда $\frac{1}{x - \lambda} \notin L_2[0,1]$, поэтому 
+    Пусть $g(x) = 1$, тогда $\dfrac{1}{x - \lambda} \notin L_2[0,1]$, поэтому 
     $1 \notin \Im A \Rightarrow \Im A \ne H$, 
     Значит это элемент спектра $\sigma(A) = \sigma_C(A)$.
     Так как оператор самосопряженный, то для $\lambda \in \mathbb R$ $\ker 
@@ -269,13 +252,13 @@
     $\overline{\Im \Al} = (\ker \Al)^\perp = 0^\perp = H$. 
     Таким образом для $\lambda \in [0,1]$ оператор $\Alo : \Im \Al \mapsto 
     L_2[0,1]$, где $\Im \Al = \{g \in L_2[0,1] \mid
-    \frac{g(x)}{x - \lambda} \in L_2[0,1]\}$. 
-    $\Alo g = \frac{g}{x - \lambda}$.
+    \dfrac{g(x)}{x - \lambda} \in L_2[0,1]\}$. 
+    $\Alo g = \dfrac{g}{x - \lambda}$.
     Но норма такого оператора $\|\Alo\| = +\infty$ (доказать в качестве 
     упражнения): надо подобрать функции такие, что
     $\forall n \in \mathbb N\; \exists g_n \in \Im \Al$
     $$
-    \frac{\Alo g_n\|}{\|g_n\|} \ge n
+    \dfrac{\Alo g_n\|}{\|g_n\|} \ge n
     $$
     Если бы $\|\Alo\| \le +\infty$, то получили ту же самую оценку:
     $$
@@ -284,9 +267,9 @@
     для любого $f$ из $H$, причём $g = \Al f$.
     Отсюда
     $$
-    k\|f\| = \frac{\|f\|}{\|\Alo\|} \le \|\Al f\|
+    k\|f\| = \dfrac{\|f\|}{\|\Alo\|} \le \|\Al f\|
     $$
-    гдe $k = \frac{1}{\|\Alo\|}$.
+    гдe $k = \dfrac{1}{\|\Alo\|}$.
     И отсюда можно доказать, если норма образа больше или равна константы на 
     норму прообраза, то мгновенно
     доказывается, что $\Im \Al$ замкнут, что не так, так как замыкание образа 
@@ -441,11 +424,11 @@
     фундаментальная и значит наша подпоследовательность также фундаментальна.
     Получаем, что 
     $$
-    \|(T - A_{S(\varepsilon)})f_{n_k(k)}\| \le \frac{\varepsilon}{R + 1}
+    \|(T - A_{S(\varepsilon)})f_{n_k(k)}\| \le \dfrac{\varepsilon}{R + 1}
     $$ 
     Аналогично
     $$
-    \|(T - A_{S(\varepsilon)})f_{n_{k + p}(k + p)}\| \le \frac{\varepsilon}{
+    \|(T - A_{S(\varepsilon)})f_{n_{k + p}(k + p)}\| \le \dfrac{\varepsilon}{
     R + 1}
     $$
     А из фундаментальности
@@ -460,7 +443,7 @@
         \|(T - A_{S(\varepsilon)})f_{n_{k + p}(k + p)}\| +
         \|A_{S(\varepsilon)}f_{n_k(k)} - A_{S(\varepsilon)}
         f_{n_{k + p}(k + p)}\| \le \\
-        \le \frac{\varepsilon}{R + 1} + \frac{\varepsilon}{R + 1} + 
+        \le \dfrac{\varepsilon}{R + 1} + \dfrac{\varepsilon}{R + 1} + 
         \varepsilon \le 3 \varepsilon
     \end{multline*}
     Отсюда образ $\|T\|$ содержит фундаментальную подпоследовательность и
@@ -503,8 +486,8 @@
     в $\Im A$.
     
     Покажем вид этих операторов.
-    Если $A$ --- линейный и непрерывный и его образ конечномерный, тогда возмём
-    базис $g_1, \dots, g_N$ в $\Im A$, где $N = \dim \Im A$.
+    Если $A$ --- линейный и непрерывный и его образ конечномерный, тогда
+    возмём базис $g_1, \dots, g_N$ в $\Im A$, где $N = \dim \Im A$.
     Тогда $Af$ раскладывается
     $$
     Af = \sum\limits_{k = 1}^N\alpha_k(f)g_k
@@ -670,7 +653,7 @@
     
     Применяем теорему Стоуна-Вейерштрасса: $\exists P$ многочлен
     $$
-    \max_{G \times G}|F_\varepsilon - P| \le \frac{\varepsilon}{\mu(G \times 
+    \max_{G \times G}|F_\varepsilon - P| \le \dfrac{\varepsilon}{\mu(G \times 
     G) + 1}
     $$
     следовательно
@@ -678,7 +661,7 @@
     \|F_\varepsilon - P\|_{L_2(G \times G)} \le \max_{G \times G}|F_\varepsilon 
     - P|\sqrt{\mu(G \times G)} \le \varepsilon
     $$
-    Таким образо мы строим оператор
+    Таким образом мы строим оператор
     $$
     A_\varepsilon f = \int \limits_G P(t, x) f(t) \mathop{dt}
     $$

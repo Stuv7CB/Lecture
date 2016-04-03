@@ -1,14 +1,6 @@
-\documentclass[12pt]{article}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\frenchspacing
-\usepackage{amssymb, amsmath, amscd}
-\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
-\usepackage{comment}
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
 \DeclareMathOperator{\rh}{\rho}
-\renewcommand{\Im}{\operatorname{Im}}
-\renewcommand{\Re}{\operatorname{Re}}
-\usepackage{../theorem}
 \begin{document}
 \section*{Элементы теории линейных операторов в гильбертовых пространствах и её приложение к линейным операторным уравнениям в гильбертовом пространстве.}
 Пусть $H$ --- гильбертово пространство, то есть полное евклидово пространство со скалярным произведением.
@@ -38,8 +30,7 @@ $$
 Тогда такое множество неполное.
 $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \mapsto \mathbb C$ измерима по Лебегу и $\int\limits_G |f|^2 dx < +\infty$.
 \subsection*{Геометрия гильбертого пространства}
-\newtheorem{Th1}{Теорема}
-\begin{Th1}[Риса о расстоянии]
+\begin{Theor}[Риса о расстоянии]
     Пусть $L \subset H$, где $L$ --- замкнутое подпространство.
     Следовательно
     $$
@@ -51,11 +42,11 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
     $$
     Обозначим $g_f$ --- проекция $f$.
     Тогда отображение $P:H \mapsto L$ такое, что $Pf = g_f$, называется ортопроектором из $L$ на $H$.
-\end{Th1}
+\end{Theor}
 \begin{Proof}
     Покажем существование.
     $$
-    \forall f \in H\;\exists \{g_n\} \subset L\colon \rh(f, L) \le \|f-g_n\| \le \rh(f,L) + \frac{1}{n}
+    \forall f \in H\;\exists \{g_n\} \subset L\colon \rh(f, L) \le \|f-g_n\| \le \rh(f,L) + \dfrac{1}{n}
     $$
     Тогда
     $$
@@ -72,9 +63,9 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
     $$
     Теперь учтём, что
     $$
-    \|g_m+g_m-2f\|^2 = 4\|\frac{g_n + g_m}{2} - f\|^2 \ge 4\rh^2(f, L)
+    \|g_m+g_m-2f\|^2 = 4\|\dfrac{g_n + g_m}{2} - f\|^2 \ge 4\rh^2(f, L)
     $$
-    где $\frac{g_n + g_m}{2} \in L$, $\|g_{n,m} - f\|^2 = \rh^2(f, L)$
+    где $\dfrac{g_n + g_m}{2} \in L$, $\|g_{n,m} - f\|^2 = \rh^2(f, L)$
     Тогда получаем
     $$
     \|g_n - g_m\|^2 \le 2\|g_n - f\|^2 + 2\|g_m - f\|^2 - 4\rh^2(f,L) \to 0 \quad n,m \to 0
@@ -93,7 +84,7 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
     $$
     Рассмотрим $\|g_1 - g_2\|$:
     $$
-    0 \le \|g_1 - g_2\|^2 = \|(g_1 - f) - (g_2 - f)\|^2 = 2\|g_1 - f\|^2 + 2\|g_2 - f\|^2 - \|\frac{g_1 + g_2}{2} - f\|^2 \le 4\rho^2 - 4\rho^2 = 0
+    0 \le \|g_1 - g_2\|^2 = \|(g_1 - f) - (g_2 - f)\|^2 = 2\|g_1 - f\|^2 + 2\|g_2 - f\|^2 - \|\dfrac{g_1 + g_2}{2} - f\|^2 \le 4\rho^2 - 4\rho^2 = 0
     $$
     Следовательно $g_1 = g_2$.
     Доказательство закончено
@@ -102,8 +93,7 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
 Таким образом мы доказали теорему Риса о расстоянии.
 Пусть $P_L : H \mapsto L$, $P_L f = g_f$.
 Тогда $\|P_Lf - f\| = \rh(f, L)$. $P_L$ --- линейный оператор.
-\newtheorem{Nubl}{Наблюдение}
-\begin{Nubl}
+\begin{MathCl}{Наблюдение}
 	$\|g - f\| = \rh(f, L)\quad g \in L$ равносильно тому, что 
 	$$
 	\left\{
@@ -120,7 +110,7 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
 	|(h, f) - (h_n, f)| = |(h - h_n, f)| \le \|h - h_n\| \|f\|\to 0
 	$$
 	Поэтому $(h, f)=0$, а значит $h \in L$.
-\end{Nubl}
+\end{MathCl}
 Докажем теперь наше наблюдение
 \begin{Proof}
     В прямую сторону.
@@ -141,7 +131,7 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
 	\begin{gather*}
         0 \le (g - f, t h) + \overline{(g - f, t h)} + |t|^2 \|h\|^2\\ 
         0 \le 2\Re(g - f,t h) + |t|^2 \|h\|^2\\
-        0 \le 2\Re(g - f, \frac{t}{|t|} h) + O(|t|)
+        0 \le 2\Re(g - f, \dfrac{t}{|t|} h) + O(|t|)
 	\end{gather*}
     Пусть $t \in \mathbb R$.
     $$
@@ -201,8 +191,7 @@ $\forall f,h \in H$ пусть $\rho_2(f, h, A) = \inf\{\|f - g\| + \|h - g\|):g
 Из 2-чебышевости следует выпуклость и замкнутость.
 Но получаем вопрос: верно ли что из чебышевости следует 2-чебышевость?
 
-\newtheorem{Th2}{Теорема}
-\begin{Th2}[Риса об ортогональном дополнении]
+\begin{Theor}[Риса об ортогональном дополнении]
     $L \subset H$ --- замкнутое подпространство $\Rightarrow$ $L \oplus L^+ = H$ и $L \cap L^+ = \varnothing$.
     Последнее очевидно. 
     $\forall f \in H\;\exists! g \in L$ и $h \in L^+\colon f = g + h$.
@@ -215,7 +204,7 @@ $\forall f,h \in H$ пусть $\rho_2(f, h, A) = \inf\{\|f - g\| + \|h - g\|):g
     \right.
     $$
     Это равносильно $P_Lf = g$.
-\end{Th2}
+\end{Theor}
 \begin{Proof}
 $f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+\Rightarrow f = g + h$.
 Доказательство закончено.
@@ -224,11 +213,10 @@ $f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+\Right
 Пусть $f = g_1 + h_1$ и $f = g_2 + h_2$, и $g_{1,2} \in L$.
 Тогда $g_1 - g_2 = h_2 - h_1 \in L^+$, но $L \cap L^+\Rightarrow g_1 = g_2$ и $h_1 = h_2$.
 
-\newtheorem{Th3}{Теорема}
-\begin{Th3}[Рис, Фреше]
+\begin{Theor}[Рис, Фреше]
     $\Phi:H \mapsto \mathbb C$ --- линейный и непрерывный функционал ($f_n \to f$ в $H$ по норме, $\Phi(f_n) \to \Phi(f)$ в $\mathbb C$).
     Тогда $\exists! h \in H\colon \Phi(f) = (f,h)$.
-\end{Th3}
+\end{Theor}
 \begin{Proof}
     $L = \ker \Phi$ --- замкнутое подпространство в $H$.
     Первое в связи непрерывности, второе в силу линейности.
@@ -239,13 +227,13 @@ $f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+\Right
     где $g \in \ker \Phi$ и $\alpha = \dfrac{\Phi(f)}{\Phi(h_0)}$.
     Следовательно
     $$
-    g = f - \frac{\Phi(f)}{\Phi(h_0)}h_0\Rightarrow (f,h_0) = (g, h_0) + \frac{\Phi(f)}{\Phi(h_0)}\|h_0\|^2
+    g = f - \dfrac{\Phi(f)}{\Phi(h_0)}h_0\Rightarrow (f,h_0) = (g, h_0) + \dfrac{\Phi(f)}{\Phi(h_0)}\|h_0\|^2
     $$
     Тогда
     $$
-    \Phi(f) = (f, \frac{\overline{\Phi(h_0)}}{\|h_0\|}h_0)
+    \Phi(f) = (f, \dfrac{\overline{\Phi(h_0)}}{\|h_0\|}h_0)
     $$
-    где $\frac{\overline{\Phi(h_0)}}{\|h_0\|}h_0 = h$.
+    где $\dfrac{\overline{\Phi(h_0)}}{\|h_0\|}h_0 = h$.
     Пусть
     $$
     \Phi(f) = (f, h_1) = (f, h_2)\quad\forall f\in H

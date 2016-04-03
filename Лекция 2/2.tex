@@ -1,20 +1,7 @@
-\documentclass[12pt]{article}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\frenchspacing
-\usepackage{amssymb, amsmath, amscd}
-\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
-\usepackage{comment}
-\usepackage{../theorem}
-\renewcommand{\Im}{\operatorname{Im}}
-\DeclareMathOperator{\Lin}{Lin}
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
 \begin{document}
 \section*{Линейные непрерывные операторы в евклидовом пространстве.}
-\newtheorem{Theor}{Теорема}
-\newtheorem{Opr}{Определение}
-\newtheorem{Upr}{Упражнение}
-\newtheorem{Nabl}{Наблюдение}
-\newtheorem{Zam}{Замечание}
 
 $\varepsilon_1, \varepsilon_2$ --- два евклидовых пространства.
 $A : \varepsilon_1 \to \varepsilon_2$ --- линейный оператор.
@@ -41,18 +28,18 @@ $$
 Пусть $\varepsilon_1 = 1$, $\delta_0(1)$.
 Тогда $\forall f \ne 0$:
 $$
-\left \| \frac{f}{\|f\|}\delta_0(1)\right \| = \delta_0(1)
+\left \| \dfrac{f}{\|f\|}\delta_0(1)\right \| = \delta_0(1)
 $$
 Подставим это выражение под знак оператора.
 $$
-\|A(\frac{f}{\|f\|}\delta_0(1))\| \le 1\; \Leftrightarrow\; \frac{\delta_0(1)}{\|f\|}\|Af\| \le 1
+\|A(\dfrac{f}{\|f\|}\delta_0(1))\| \le 1\; \Leftrightarrow\; \dfrac{\delta_0(1)}{\|f\|}\|Af\| \le 1
 $$
 $\Rightarrow$ оцениваем норму образа через норму
 прообраза:
 $$
-\forall f \in \varepsilon_1\; \|A(f)\| \le \frac{\|f\|}{\delta_0(1)} \Rightarrow  \forall f,g \in \varepsilon_1 \|A(f-g)\| \le \frac{1}{\delta_0(1)}\|f - g\|
+\forall f \in \varepsilon_1\; \|A(f)\| \le \dfrac{\|f\|}{\delta_0(1)} \Rightarrow  \forall f,g \in \varepsilon_1 \|A(f-g)\| \le \dfrac{1}{\delta_0(1)}\|f - g\|
 $$
-Это липшецевость оператора $A$ на $\varepsilon_1$ с $L=\frac{1}{\delta_0(1)}$.
+Это липшецевость оператора $A$ на $\varepsilon_1$ с $L=\dfrac{1}{\delta_0(1)}$.
 Рассмотрим наименьшую константу Липшеца и назовём её нормой.
 
 
@@ -63,7 +50,7 @@ $$
     $$
     Очевидно, что это так же равно
     $$
-    \sup\limits_{f \in \varepsilon_1, f \ne 0} \frac {\|Af\|}{\|f\|}=L_0,\quad L_0 \le L
+    \sup\limits_{f \in \varepsilon_1, f \ne 0} \dfrac {\|Af\|}{\|f\|}=L_0,\quad L_0 \le L
     $$
 \end{Opr}
 
@@ -90,11 +77,11 @@ $$
 	$$
 	Иначе говоря
 	$$
-	\|A\| \ge \frac{|n|}{\|f_n\|} \ge n \to \infty
+	\|A\| \ge \dfrac{|n|}{\|f_n\|} \ge n \to \infty
 	$$
-	Или по-другому $g_n = \frac{1}{\sqrt{n}} f_n$ по в $\varepsilon_1$ стремится к 	нулю
+	Или по-другому $g_n = \dfrac{1}{\sqrt{n}} f_n$ по в $\varepsilon_1$ стремится к 	нулю
 	$$
-	\|g_n\|_{\varepsilon_1} \le \frac{1}{\sqrt{n}}
+	\|g_n\|_{\varepsilon_1} \le \dfrac{1}{\sqrt{n}}
 	$$
 	Тогда $A(g_n) = \sqrt{n}$, поэтому
 	$$
@@ -105,7 +92,7 @@ $$
 Дадим теперь два других определения операторной нормы.
 \begin{gather}
 	\label{first}
-	\|A\| = \sup\limits_{f \ne 0}{\frac{\|Af\|}{\|f\|}}\\
+	\|A\| = \sup\limits_{f \ne 0}{\dfrac{\|Af\|}{\|f\|}}\\
 	\label{second}
 	\|A\| = \sup\limits_{\|f\| = 0} \|Af\|\\
 	\label{third}
@@ -113,12 +100,12 @@ $$
 \end{gather}
 Покажем их равенство.
 (\ref{first}) $\ge$ (\ref{second}), так как $\|f\| = 1$ является сужением.
-С другой стороны $\sup\left\|A\frac{f}{\|f\|}\right\| \le $ (\ref{second}) $\Rightarrow$  (\ref{first}) $=$ (\ref{second}).
+С другой стороны $\sup\left\|A\dfrac{f}{\|f\|}\right\| \le $ (\ref{second}) $\Rightarrow$  (\ref{first}) $=$ (\ref{second}).
 (\ref{third}) $\le$ (\ref{second}) так как при $f \ne 0$ и $\|f\| \le 1$ имеем 
 $$
-\|Af\| =\|f\| \left\|A\frac{f}{\|f\|}\right\|
+\|Af\| =\|f\| \left\|A\dfrac{f}{\|f\|}\right\|
 $$
-где $\left\|A\frac{f}{\|f\|}\right\| \le \sup\limits_{\|\phi\| = 1} \|A\phi\|$.
+где $\left\|A\dfrac{f}{\|f\|}\right\| \le \sup\limits_{\|\phi\| = 1} \|A\phi\|$.
 Но (\ref{second}) $\le$ (\ref{third}) так как является сужением, поэтому (\ref{second}) $=$ (\ref{third}).
 
 \begin{Prim}
@@ -219,17 +206,18 @@ $$
 $$
 \|T(f)\| = \|B(A(f))\| \le \|B\|\|A(f)\| \le \|B\|\|A\|\|f\| \Rightarrow  \boxed{\|T\| \le \|B\|\|A\|}
 $$
-\newtheorem{Sled1}{Следствие}
-\begin{Sled1}
+
+\textbf{Следствие. }
+{\sl
 $A : \varepsilon \to \varepsilon$, $A$ --- линейный непрерывный оператор.
 Тогда можно формально рассмотреть $A^n f = A(A(\dots A(f)) \dots )$, где $A$ 
 применён  $n$ раз --- произведение в пространстве линейный операторов.
-\end{Sled1}
+}
 
 Естественно получается $\|A^n\| \le \|A\|^n$ по индукции из пункта 4.
 
 
-\begin{Nabl}
+\begin{MathCl}{Наблюдение}
 	$F : H \mapsto \mathbb C$ --- линейный непрерывный функционал.
 	По теореме Риса-Фреше $\exists! h \in H\colon F(f) = (f, h)\; \forall f \in H$.
 	Следовательно $\|F\|_{\text{операторная}} = \|h\|_H$.
@@ -242,8 +230,8 @@ $A : \varepsilon \to \varepsilon$, $A$ --- линейный непрерывны
 	\|F\| = \sup \limits_{\|f\| = 1}|(f, h)| = \|h\|
 	$$
 	в прямую сторону по неравенству Коши-Буняковского, а в обратную
-	если взять вектор $f = \frac{h}{\|h\|}$ при $h \ne 0$, то результат будет не 	меньше $\|h\|$.
-\end{Nabl}
+	если взять вектор $f = \dfrac{h}{\|h\|}$ при $h \ne 0$, то результат будет не 	меньше $\|h\|$.
+\end{MathCl}
 
 Два типа сходимости для последовательности операторов.
 $\{A_n\} : \varepsilon_1 \to \varepsilon_2$, $\{T_n\} : \varepsilon_2 \to \varepsilon_1$ --- линейные непрерывные функционалы.
@@ -303,24 +291,24 @@ $$
     Если взять $\|w\| = 1$ и рассмотреть $\|A_n w\|$, то $f_0 + r_0 w \in B_{r_0}(f_0)$ (к $f_0$ прибавили вектор единичной длины, умноженный на радиус шара
     и остались в нём), тогда, учитывая $\|A_n f_0\| \le R_0$
     $$
-    \frac{1}{r_0}\|A_n(f_0 + r_0 w) - A_n f_0\| \le \frac{1}{r_0}(N_0 + \|A_n f_0\|)\le \frac{N_0 + R_0}{r_0}
+    \dfrac{1}{r_0}\|A_n(f_0 + r_0 w) - A_n f_0\| \le \dfrac{1}{r_0}(N_0 + \|A_n f_0\|)\le \dfrac{N_0 + R_0}{r_0}
     $$
     для любого вектора на единичной сфере.
     Следовательно 
     $$
-    \|A_n\| \le \frac{N_0 + R_0}{r_0}
+    \|A_n\| \le \dfrac{N_0 + R_0}{r_0}
     $$
     Если удастся в $\Gamma_N$ впихнуть шарик, то можно оценить любой элемент сферы.
     Пусть в любое $\Gamma_N$ нельзя впихнуть никакой шар положительного радиуса.
     Тогда рассмотрим шар в центре 0 радиуса 1 и рассмотрим $\Gamma_1$, в который нельзя впихнуть какой-либо шар.
     Рассмотрим разность этого открытого шара и $\Gamma_1$.
-    Получим открытое множество, в нём любая точка входит вместе с окрестностью, а значит можно выбрать шар радиуса $r_1 < \frac12$, непересекающий $\Gamma_1$.
+    Получим открытое множество, в нём любая точка входит вместе с окрестностью, а значит можно выбрать шар радиуса $r_1 < \dfrac12$, непересекающий $\Gamma_1$.
     Рассмотрим теперь этот шар и множество $\Gamma_2$, в которое также нельзя запихнуть ни один шар.
-    Опять смотрим их разность (открытое множество) и выбираем шар $r_2 < \left(\frac12\right)^2$ и так далее.
+    Опять смотрим их разность (открытое множество) и выбираем шар $r_2 < \left(\dfrac12\right)^2$ и так далее.
     Получаем последовательность вложенных шаров $B_{r_1}(f_1) \supset B_{r_2}(f_2)$ и $\forall k\; B_{r_k} \cap \Gamma_k = \varnothing$, а радиусы стремяться к нулю.
     Центры этих шаров образуют фундаментальную последовательность
     $$
-    \|f_k - f_{k + p}\| \le \frac{1}{2^k} \le \varepsilon\; \forall k \ge k(\varepsilon)
+    \|f_k - f_{k + p}\| \le \dfrac{1}{2^k} \le \varepsilon\; \forall k \ge k(\varepsilon)
     $$
     Пользуяся полнотой получаем, что ряд $f_k \to f_*$. сходится в $H$.
     Получаем парадокс: $f_{k+p} \in B_{r_k}(f_k)$, при $p \to \infty\; f_{k+p} \to f_* \Rightarrow  f_* \in B_{r_k}(f_k)\; \forall k$.
@@ -414,11 +402,11 @@ $$
 \rho(A) = \{\lambda \in \mathbb C \mid \exists (A_\lambda)^{-1} : H \mapsto H\}
 $$
 
-\begin{Zam}
+\begin{MathCl}{Замечание}
     Пусть $\varepsilon_1, \varepsilon_2$ --- два евклидовых пространства и линейный оператор $T : \varepsilon_1 \mapsto \varepsilon_2$.
     Обратный оператор отображает образ $T^{-1} : \Im T \mapsto \varepsilon_1 \Leftrightarrow \ker T = \{0\}$.
     Тогда существует обратный $T^{-1}:\varepsilon_2 \rho \varepsilon_1\; \Leftrightarrow\; \ker T = \{0\}$ и $\Im T = \varepsilon_2$.
-\end{Zam}
+\end{MathCl}
 
 Тогда можно переписать определение резольвентного множества как 
 $$
@@ -426,15 +414,15 @@ $$
 $$
 Более того в гильбертовом пространстве обратный оператор автоматически непрерывен.
 
-\begin{Zam}[Теорема Банаха об обратном операторе]
+\begin{MathCl}[Теорема Банаха об обратном операторе]{Замечание}
     $T:H_1 \mapsto H_2$ --- линейный непрерывный оператор, где $H_{1,2}$ --- гильбертовы пространства.
     Тогда $\exists! T^{-1} : H_2 \mapsto H_1$ линейный и непрерывный если, и только если $\ker T = 0$ и $\Im T = H_2$.
-\end{Zam}
+\end{MathCl}
 
     $\lambda \in \rho(A) \Leftrightarrow \exists(A_\lambda)^{-1} : H \mapsto H$ --- непрерывный оператор.
-    $(I - \mu A) = -\mu A_{\frac{1}{\mu}}$, то 
+    $(I - \mu A) = -\mu A_{\dfrac{1}{\mu}}$, то 
     $$
-    \frac{1}{\mu} \in \rho(A) \Leftrightarrow \exists (I - \mu A)^{-1} = -\frac{1}{\mu}(A_{\frac{1}{\mu}})
+    \dfrac{1}{\mu} \in \rho(A) \Leftrightarrow \exists (I - \mu A)^{-1} = -\dfrac{1}{\mu}(A_{\dfrac{1}{\mu}})
     $$
     где обозначим $(I - \mu A)^{-1} = \rho_A(\mu)$ --- резольвента.
 \begin{Opr}
@@ -543,20 +531,19 @@ $$
     $$
     Таким образом теорема фон Неймана доказана.
 \end{Proof}
-\newtheorem{Sled}{Следствия}
-\begin{Sled}
+\begin{MathCl}{Следствия}
     Пусть $A : H \mapsto H$ --- линейный и непрерывный, тогда
     \begin{enumerate}
         \item{$\forall \lambda \in \mathbb C$ такой, что $|\lambda| > \|A\| \Rightarrow  \lambda \in \rho(A)$.
             При этом 
             $$
-            (A_\lambda)^{-1} = -\sum \limits_{n = 0}^{\infty}\frac{A^k}{\lambda^{k+1}}
+            (A_\lambda)^{-1} = -\sum \limits_{n = 0}^{\infty}\dfrac{A^k}{\lambda^{k+1}}
             $$
             причём ряд сходиться по операторной норме.}
         \item{$\rho(A)$ --- открыто в $\mathbb C$}
         \item{Функция от $\lambda\; (A_\lambda)^{-1}$ непрерывна на $\rho(A)$ по операторной норме}
-        \item{$\forall \lambda \in \rho(A)\; \exists \lim\limits_{\text{по операторной норме}}\frac{(A_{\lambda + \Delta \lambda})^{-1} - (A_\lambda)^{-1}}{\Delta\lambda} =
+        \item{$\forall \lambda \in \rho(A)\; \exists \lim\limits_{\text{по операторной норме}}\dfrac{(A_{\lambda + \Delta \lambda})^{-1} - (A_\lambda)^{-1}}{\Delta\lambda} =
             ((A_\lambda)^{-1})^2$}
     \end{enumerate}
-\end{Sled}
+\end{MathCl}
 \end{document}

@@ -1,23 +1,7 @@
 %Надо добавить примеры и упражнения
-\documentclass[12pt]{article}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\frenchspacing
-\usepackage{amssymb, amsmath, amscd}
-\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
-\usepackage{comment}
-\usepackage{../theorem}
-\renewcommand{\Im}{\operatorname{Im}}
-\DeclareMathOperator{\Lin}{Lin}
-\newcommand{\Al}{A_\lambda}
-\newcommand{\Alo}{(\Al)^{-1}}
-\newcommand{\Rez}{(I - \lambda A)^{-1}}
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
 \begin{document}
-\newtheorem{Theor}{Теорема}
-\newtheorem{Opr}{Определение}
-\newtheorem{Upr}{Упражнение}
-\newtheorem{Nabl}{Наблюдение}
-\newtheorem{Zam}{Замечание}
 \section*{Спектр и резольвентное множество линейного непрерывного оператора в гильбертовом пространстве $A : H \mapsto H$.}
 Пусть $A : H \mapsto H$ --- линейный и непрерывный оператор.
 Тождественный оператор $I : H \mapsto H$ ($If = f\;\forall f \in H$).
@@ -57,17 +41,17 @@ $$\sigma_C(A) =  \left \{ \lambda \in \mathbb C \mid
 $$
 Очевидно $\sigma(A) = \sigma_p(A) \cup \sigma_C(A)$.
 Резольвента $R_A(\lambda) = \Rez : H \mapsto H$, также используется определение
-$\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A - \frac{I}{\lambda})^{-1} = -\frac{1}{\lambda}(A_{\frac1{\lambda}})^{-1}$
+$\forall \lambda \ne 0\colon \dfrac{1}{\lambda} \in \rho(A)\;-\dfrac{1}{\lambda}(A - \dfrac{I}{\lambda})^{-1} = -\dfrac{1}{\lambda}(A_{\dfrac1{\lambda}})^{-1}$
 
 \begin{Theor}
     Пусть $A : H \mapsto H$ --- линейный и непрерывный, тогда
     \begin{enumerate}
         \item{$\forall \lambda \in \mathbb C$ такой, что $|\lambda| > \|A\| \Rightarrow \lambda \in \rho(A)$.
-            При этом $(A_\lambda)^{-1} = -\sum \limits_{n = 0}^{\infty}\frac{A^k}{\lambda^{k+1}}$, причём ряд сходиться по операторной норме.}
+            При этом $(A_\lambda)^{-1} = -\sum \limits_{n = 0}^{\infty}\dfrac{A^k}{\lambda^{k+1}}$, причём ряд сходиться по операторной норме.}
         \item{$\rho(A)$ --- открыто в $\mathbb C$ (очевидно следует, что спект --- замкнутое множество, а так же $\sigma(A) \subset \{ \lambda \in \mathbb C \mid |\lambda
             \le \|A\|\}$, поэтому спектр --- компакт).}
         \item{Функция от $\lambda\;(A_\lambda)^{-1}$ непрерывна на $\rho(A)$ по операторной норме}
-        \item{$\forall \lambda \in \rho(A)\;\exists \lim\limits_{\text{по операторной норме}}\frac{(A_{\lambda + \Delta \lambda})^{-1} - (A_\lambda)^{-1}}{\Delta\lambda} =
+        \item{$\forall \lambda \in \rho(A)\;\exists \lim\limits_{\text{по операторной норме}}\dfrac{(A_{\lambda + \Delta \lambda})^{-1} - (A_\lambda)^{-1}}{\Delta\lambda} =
             ((A_\lambda)^{-1})^2$}
     \end{enumerate}
 \end{Theor}
@@ -75,13 +59,13 @@ $\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A
     \begin{enumerate}
         \item{$|\lambda| > \|A\|$, то
         $$
-        \Al = -\lambda(I - \frac{A}{\lambda}
+        \Al = -\lambda(I - \dfrac{A}{\lambda}
         $$
-        где $\frac{A}{\lambda}$  обозначим $T$, $\|T\| = \frac{\|A\|}{|\lambda|}<1$
+        где $\dfrac{A}{\lambda}$  обозначим $T$, $\|T\| = \dfrac{\|A\|}{|\lambda|}<1$
         По теореме Неймана $\exists$ оператор непрерывный в $H$
         $$
-        \Alo = -\frac{1}{\lambda}(I - \frac{A}{\lambda})^{-1} =
-            -\sum_{n=0}^\infty \frac{A^n}{\lambda^{n+1}}
+        \Alo = -\dfrac{1}{\lambda}(I - \dfrac{A}{\lambda})^{-1} =
+            -\sum_{n=0}^\infty \dfrac{A^n}{\lambda^{n+1}}
         $$
         ряд сходится по операторной норме.}
         \item{Так как существует $\exists \Alo$ линейный и непрерывный.
@@ -96,7 +80,7 @@ $\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A
             $$
             Тогда 
             $$
-            \Delta\lambda < \frac{1}{\Alo}
+            \Delta\lambda < \dfrac{1}{\Alo}
             $$
              следовательно $\exists (A_{\lambda+\Delta\lambda})^{-1} : H \mapsto H$ линейный и непрерывный, следовательно
             $\lambda + \Delta\lambda \in \rho(A)$.}
@@ -114,11 +98,11 @@ $\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A
             Отсюда 
             $$
             \|(A_{\lambda + \Delta\lambda})^{-1} - \Alo\| \le \sum_{n=1}^\infty |\Delta\lambda|^n\|(\Alo)^{n+1}\| \le
-            |\Delta\lambda| \frac{\|\Alo\|^2}{1-|\Delta\lambda\|\Alo\|}
+            |\Delta\lambda| \dfrac{\|\Alo\|^2}{1-|\Delta\lambda\|\Alo\|}
             $$
-            где $|\Delta\lambda| \frac{\|\Alo\|^2}{1-|\Delta\lambda\|\Alo\|} \to 0\; \Delta\lambda \to 0$.
+            где $|\Delta\lambda| \dfrac{\|\Alo\|^2}{1-|\Delta\lambda\|\Alo\|} \to 0\; \Delta\lambda \to 0$.
             Следовательно непрерывен по операторной норме}
-        \item{$\lambda \in \rho(A)\;|\Delta\lambda| < \frac{1}{\|\Alo\|}$, тогда
+        \item{$\lambda \in \rho(A)\;|\Delta\lambda| < \dfrac{1}{\|\Alo\|}$, тогда
         получим тождество Гильберта 
         $$
         (A_{\lambda + \Delta\lambda})^{-1} - \Alo =
@@ -131,37 +115,36 @@ $\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A
             $$
             Рассмотрим теперь предел
             \begin{multline*}
-            \lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}} \frac{(A_{\lambda + \Delta\lambda})^{-1} - \Alo}{\Delta\lambda} = \\
+            \lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}} \dfrac{(A_{\lambda + \Delta\lambda})^{-1} - \Alo}{\Delta\lambda} = \\
             = \lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}}  \Alo (A_{\lambda + \Delta\lambda})^{-1}
             \end{multline*}
             А по п.3 $(A_{\lambda + \Delta\lambda})^{-1} \to \Alo$ поэтому
             $$
-             \lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}} \frac{(A_{\lambda + \Delta\lambda})^{-1} - \Alo}{\Delta\lambda} = \Alo \Alo
+             \lim \limits_{\Delta\lambda \to 0 \text{ по операторной норме}} \dfrac{(A_{\lambda + \Delta\lambda})^{-1} - \Alo}{\Delta\lambda} = \Alo \Alo
              $$
             }
     \end{enumerate}
 \end{Proof}
-\newtheorem{Sled1}{Следствие}
-\begin{Sled1}
+\begin{MathCl}{Следствие}
     $\sigma(A) \ne \varnothing$, иначе говоря спектр --- непустой компакт в $\mathbb C$. Определим спектральный радиус $r(A) = \max |\lambda|$.
     Тогда $r(A) = \lim \limits_{n \to \infty} \sqrt[n]{\|A\|^n} \le \|A\|$.
-\end{Sled1}
+\end{MathCl}
 \begin{Proof}
     1) Если вдруг спектр пуст $\sigma(A) = \varnothing$, тогда $\forall f, g \in H\;\forall \lambda \in  \rho(A) = \mathbb C$.
     Рассмотрим $F(\lambda) = (\Alo f, g)$ при $|\lambda| > \|A\|$
     $$
     F(\lambda) = (\Alo f, g) = (-\sum_{n = 0}^{\infty}
-    \frac{A^n f}{\lambda^{n + 1}}, g)
+    \dfrac{A^n f}{\lambda^{n + 1}}, g)
     $$
     где сумма сходится в $H$, а скалярное произведение непрерывно $H$.
     $$
-    F(\lambda) = -\sum_{n = 0}^{\infty} \frac{(A^n f, g)}{\lambda^{n + 1}} = O(\frac{1}{\lambda}) \quad \lambda \to \infty
+    F(\lambda) = -\sum_{n = 0}^{\infty} \dfrac{(A^n f, g)}{\lambda^{n + 1}} = O(\dfrac{1}{\lambda}) \quad \lambda \to \infty
     $$
     но в силу п. 4 $F(\lambda)$ регулярная.
     Действительно, $\forall \lambda \in \mathbb C, \forall \Delta\lambda \ne 0$
     $$
-    \lim\limits_{\Delta\lambda \to 0} \frac{F(\lambda + \Delta\lambda) - F(\lambda)}
-    {\Delta\lambda} = \lim\limits_{\Delta\lambda \to 0} (\frac{(A_{\lambda + \Delta\lambda})^{-1}f - \Alo f}{\Delta\lambda}, g)
+    \lim\limits_{\Delta\lambda \to 0} \dfrac{F(\lambda + \Delta\lambda) - F(\lambda)}
+    {\Delta\lambda} = \lim\limits_{\Delta\lambda \to 0} (\dfrac{(A_{\lambda + \Delta\lambda})^{-1}f - \Alo f}{\Delta\lambda}, g)
     $$
     где первая компонента скалярного произведения сходится по операторной норме к $(\Alo)^2f$.
     По определению $F'(\lambda) = \lim\limits_{\Delta\lambda \to 0} \dots = ((\Alo)^2 f, g)$ --- непрерывно в $\mathbb C$.
@@ -219,25 +202,25 @@ $\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A
     $F(\lambda) \to 0, \lambda \to \infty$, регулярная во внешности круга $|\lambda| < r(A)$.
     $|\lambda| > r(A) \Rightarrow \lambda \in \rho(A)$. Так как $|\lambda| > \|A\| \ge r(A)$, то по теореме Неймана
     $$
-    F(\lambda) = - \sum_0^\infty \frac{(A^n f, g)}{\lambda^{n + 1}}
+    F(\lambda) = - \sum_0^\infty \dfrac{(A^n f, g)}{\lambda^{n + 1}}
     $$
     С другой стороны
-    $$F(\lambda) = \sum_0^\infty \frac{c_n}{\lambda^{n + 1}}\quad |\lambda|>r(A)
+    $$F(\lambda) = \sum_0^\infty \dfrac{c_n}{\lambda^{n + 1}}\quad |\lambda|>r(A)
     $$
     $\Rightarrow$ по теореме единственности разложения в ряд Лорана
     $c_n = - (A^n f, g)\;\forall n \in \mathbb N \cup \{0\}$.
-    Таким образом $\forall |\lambda| > r(A)$ получаем $\frac{A^n f, g}{\lambda^n}$ --- член сходящегося ряда, следовательно
+    Таким образом $\forall |\lambda| > r(A)$ получаем $\dfrac{A^n f, g}{\lambda^n}$ --- член сходящегося ряда, следовательно
     $$
-    \frac{(A^n f, g)}{\lambda^n} \to 0\quad n \to \infty
+    \dfrac{(A^n f, g)}{\lambda^n} \to 0\quad n \to \infty
     $$
-    что равносильно $\forall g \in H\;(g, \frac{A^n f}{\lambda^n}) \to 0, n \to \infty$.
-    $\Phi_n : H \to \mathbb C$ линейный и непрерывный оператор, где $\Phi_n(g) = \frac{A^n f}{\lambda^n}$.
+    что равносильно $\forall g \in H\;(g, \dfrac{A^n f}{\lambda^n}) \to 0, n \to \infty$.
+    $\Phi_n : H \to \mathbb C$ линейный и непрерывный оператор, где $\Phi_n(g) = \dfrac{A^n f}{\lambda^n}$.
     Норма оператора
-    $\|\Phi_n\| = \frac {\|A^n f\|}{|\lambda^n|}$ сходится к 0 поточечно на $H$.
-    Отсюда по теореме Банаха-Штейнгаусса $\|\Phi_n\|$ --- ограниченная числа последовательность. $\forall f \in H\;\exists M_f > 0\colon \|\frac{A_n f}{\lambda^n}\|
-    \le M_f \Rightarrow \{\frac{A_n}{\lambda_n}\}$ --- поточечно сходящаяся на $H$ ограниченная последовательность операторов, следовательно
-    по теореме Банаха-Штейнгаусса $\|\frac{A^n}{\lambda^n}\|$ ограниченная числовая последовательность.
-    Следовательно $\exists M>0\colon \|\frac{A^n}{\lambda^n}\| \le M \Rightarrow \forall |\lambda| > r(A)\;\sqrt[n]{\|A^n\|} \le \sqrt[n]{M}|\lambda|$.
+    $\|\Phi_n\| = \dfrac {\|A^n f\|}{|\lambda^n|}$ сходится к 0 поточечно на $H$.
+    Отсюда по теореме Банаха-Штейнгаусса $\|\Phi_n\|$ --- ограниченная числа последовательность. $\forall f \in H\;\exists M_f > 0\colon \|\dfrac{A_n f}{\lambda^n}\|
+    \le M_f \Rightarrow \{\dfrac{A_n}{\lambda_n}\}$ --- поточечно сходящаяся на $H$ ограниченная последовательность операторов, следовательно
+    по теореме Банаха-Штейнгаусса $\|\dfrac{A^n}{\lambda^n}\|$ ограниченная числовая последовательность.
+    Следовательно $\exists M>0\colon \|\dfrac{A^n}{\lambda^n}\| \le M \Rightarrow \forall |\lambda| > r(A)\;\sqrt[n]{\|A^n\|} \le \sqrt[n]{M}|\lambda|$.
     $\varlimsup\limits_{n \to \infty} \sqrt[n]{\|A^n\|} \le |\lambda| \to r(A) + 0$.
     Получаем $\varlimsup\sqrt[n]{\|A^n\|} \le r(A) \le \varliminf\sqrt[n]{\|A^n\|}$, что и требовалось доказать.
 \end{Proof}
@@ -247,7 +230,6 @@ $\forall \lambda \ne 0\colon \frac{1}{\lambda} \in \rho(A)\;-\frac{1}{\lambda}(A
     если $(Af, g) = (f, A^* g)\;\forall f, g \in H$.
 \end{Opr}
 
-\newtheorem{Utv}[Theor]{Утверждение}
 \begin{Utv}
     $\forall A : H \mapsto H$ линейный непрерывный оператор $\exists! A^* = T\colon (Af, g) = (f, Tg)\;\forall f, g \in H$ и $\|T\| = \|A\|$.
 \end{Utv}
@@ -312,10 +294,10 @@ $L \subset H$ --- подпространство, тогда $L \subseteq L^{\pe
     $$
     следовательно $\|f_2\| = 0$, следовательно $f = f_1 \in \overline{L} \Rightarrow L^{\perp\perp} \supset \overline{L}$.
 \end{Proof}
-\newtheorem{Sled2}{Следствие}
-\begin{Sled2}
+
+\begin{MathCl}{Следствие}
     $\overline{\Im A} = (\ker A^*)^\perp$
-\end{Sled2}
+\end{MathCl}
 
 \begin{Prim}
 	Рассмотрим оператор $A : L_2(G) \mapsto L_2(G)$, действующий следующим
@@ -347,6 +329,6 @@ $L \subset H$ --- подпространство, тогда $L \subseteq L^{\pe
 
 Введём уравнение Фредгольма.
 $(I - \lambda A) u = f\;f\in H\;\lambda \in \mathbb C \setminus\{0\}$.
-Пусть $\frac{1}{\lambda} \in \rho(A) \Rightarrow \exists! u = (I - \lambda A)^{-1}f$ 
+Пусть $\dfrac{1}{\lambda} \in \rho(A) \Rightarrow \exists! u = (I - \lambda A)^{-1}f$ 
 и $\overline{\Im(I - \lambda A)} = (\ker(I - \lambda A)^*)^\perp$
 \end{document}

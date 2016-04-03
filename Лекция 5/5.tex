@@ -1,28 +1,9 @@
-\documentclass[12pt]{article}
-\usepackage[russian]{babel}
-\usepackage[utf8]{inputenc}
-\frenchspacing
-\usepackage{amssymb, amsmath, amscd}
-\usepackage[left=20mm, right=20mm, top=20mm, bottom=20mm]{geometry}
-\usepackage{comment}
-\usepackage{../theorem}
-\usepackage{indentfirst}
-\renewcommand{\Im}{\operatorname{Im}}
-\DeclareMathOperator{\Lin}{Lin}
-\newcommand{\Al}{A_\lambda}
-\newcommand{\Alo}{(\Al)^{-1}}
-\newcommand{\Rez}{(I - \lambda A)^{-1}}
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
 \begin{document}
-\newtheorem{Theor}{Теорема}
-\newtheorem{Utv}{Утверждение}
-\newtheorem{Opr}{Определение}
-\newtheorem{Upr}{Упражнение}
-\newtheorem{Nabl}{Наблюдение}
-\newtheorem{Zam}{Замечание}
 %=============================================================================!
 \section*{Теория компактных операторов в гильбертовом пространстве.}
-\textbf{Напоминание. }
-{\sl
+\begin{MathCl}{Напоминание}
     Пусть  $H$~--- гильбертово пространство, $A : H \mapsto H$ линейный
     непрерывный оператор.
     $A$ называется компактным, если $\forall\{f_n\} \subset H$ такой, что
@@ -30,7 +11,7 @@
     в $H$ подпоследовательность или, что равносильно $\forall \varepsilon > 0
     \;\exists A_\varepsilon : H \mapsto H$ линейный и непрерывный и $\dim \Im
     A_\varepsilon < + \infty$, тогда $\|A - A_\varepsilon\| \le \varepsilon$.
-}
+\end{MathCl}
 
 Для прикладных целей пусть $A$~--- компактный оператор и $\lambda \in
 \mathbb C$, и $f \in H$.
@@ -148,7 +129,403 @@ $$
     A_\lambda f_{n_k} = A f_{n_k} - \lambda f_{n_k} \equiv 0
     $$
     Следовательно $f_{n_k} = \frac{1}{\lambda}A f_{n_k}$~--- автоматически
-    фундаментальная
+    фундаментальная.
+\end{Proof}
+\newtheorem{Lemm}{Лемма}
+\begin{Lemm}
+    Пусть $A$~--- компактный оператор в $H$ и $\lambda \ne 0$.
+    Тогда $\Im A_\lambda$ замкнуто в $H$.
+\end{Lemm}
+\begin{Proof}
+    Имеем, что $\ker A_\lambda \oplus (\ker A_\lambda)^\perp = H$.
+    Образ $\Im A_\lambda$ символически равен
+    $$
+    A_\lambda(H) = A_\lambda(\ker A_\lambda) + A_\lambda((\ker A_\lambda)^
+    \perp) = A_\lambda((\ker A_\lambda)^\perp)
+    $$
+    Покажем, что $\exists k > 0\colon \forall f \in (\ker A_\lambda)^\perp$
+    выполняется $\|A_\lambda\| \ge k \|f\|$.
+    Отсюда вытекает, что $\exists \Al : \frac{1}{k}(\ker A_\lambda)^\perp 
+    \mapsto \Im 
+    \Al$ такой что
+    $$
+    \|f\| = \|\Alo \Al f\| \le \frac{1}{k}\|\Al f\|
+    $$
+    и следовательно
+    $$
+    \|\Alo\| \le \frac{1}{k}
+    $$
+    Если показать существование такого $k$, то получим, что $\forall g \in 
+    \overline{\Im \Al} = \overline{\Al (\ker A_\lambda)^\perp}\; \exists f_n
+    \in (\ker A_\lambda)^\perp\colon g = \lim\limits_{n \to \infty}\Al f_n$ в
+    $H$.
+    Тогда
+    $$
+    \|A_\lambda f_n - A_\lambda f_m\| \to 0 \quad n,m \to \infty
+    $$
+    С другой стороны
+    $$
+    \|\Al f_n - \Al f_m\| = \| \Al (f_n - f_m)\| \ge k \|f_n - f_m\|
+    $$
+    Поэтому
+    $$
+    \|f_n - f_m\| \to 0 \quad n,m \to \infty
+    $$
+    Следовательно, так как $H$~--- полное
+    $$
+    f_n \to h \in H
+    $$
+    Следовательно
+    $$
+    g = \lim_{n \to \infty}\Al f_n = \Al h \in \Im \Al
+    $$
+    
+    Теперь увидим, что $k > 0$ действительно существует.
+    Если вдруг такого $k > 0$ нет, то
+    $\forall k > 0\; \exists f_k \in (\ker A_\lambda)^\perp\colon \|\Al f_k\| 
+    < k \|f_k\|\quad f_k \ne 0$.
+    Пусть $k = \frac{1}{n}, n \in \mathbb N$, тогда $f_k = f_{\frac{1}{n}}$ и
+    $$
+    \|\Al \frac{f_{\frac{1}{n}}}{\|f_{\frac{1}{n}}\|}\| \le \frac{1}{n}
+    $$
+    Введём $g_n = \frac{f_{\frac{1}{n}}}{\|f_{\frac{1}{n}}\|} \in H$ и $\|g_n
+    \| = 1$.
+    Тогда
+    $$
+    \left\{
+        \begin{array}{l}
+            \|\Al g_n\| < \frac{1}{n} \quad \forall n \in \mathbb N\\
+            \|g_n\| = 1
+        \end{array}
+    \right.
+    $$
+    Следовательно $\Al g_n \to 0$ при $n \to \infty$.
+    Так как $A$~--- компактный оператор, то $\exists A g_{n_m}$~--
+    фундаментальная подпоследовательность в $H$, а значит сходится $Ag_{n_m}
+    \to h \in H$.
+    Тогда
+    $$
+    \left\{
+        \begin{array}{l}
+            \Al g_{n_m} \to 0\\
+            A g_{n_m} \to h
+        \end{array}
+    \right.
+    $$
+    И тогда
+    $$
+    g_{n_m} = \frac{A g_{n_m} - \Al g_{n_m}}{\lambda} \to \frac{h}{\lambda}
+    $$
+    С другой стороны в $H$ $\Al g_{n_m} \to \Al \frac{h}{\lambda}$ 
+    следовательно $\Al h = 0$ и $h$ лежит в ядре $\ker \Al$.
+    Но $g_{n_m} \in (\ker A_\lambda)^\perp$~--- замкнутое подпространство в 
+    $H$.
+    И $g_{n_m} \to \frac{h}{\lambda} \Rightarrow \frac{h}{\lambda} \in 
+    (\ker A_\lambda)^\perp \Rightarrow h \in (\ker A_\lambda)^\perp$.
+    Таким образом $h = 0$, $\|g_{n_m}\| = 1$ и
+    $$
+    |\|\frac{h}{\lambda}\| - \|g_{n_m}\|| \le \|\frac{h}{\lambda} - g_{n_m}\|
+    \to 0
+    $$
+    Значит $\frac{\|h\|}{|\lambda|} = 1 \Rightarrow  \|h\| = |\lambda| > 0$.
+    Противоречие.
+\end{Proof}
+\begin{MathCl}{Вопрос}
+    $A$~--- компактный оператор в $H$; $\dim H = \infty$, то $0 \in \sigma(A)
+    $
+\end{MathCl}
+
+\noindent Если вдруг $0 \notin \sigma(A)$ то есть $0 \in \rho(A)$.
+Это равносильно $\exists A^{-1} : H \mapsto H$.
+Суперпозиция непрерывного и компактного оператора также компактный оператор.
+$$
+A^{-1} A = I : H \mapsto H
+$$
+Значит $I$ также компактный оператор, а значит $\forall f_n \in H$ 
+ограниченной $I f_n = f_n$ существует $\exists I f_{n_k} = f_{n_k}$ 
+фундаментальная подпоследовательность, значит $H$ конечномерный~--- 
+противоречие с $\dim H = \infty$
+\begin{Theor}[третья теорема Фредгольма]
+    Пусть $A$ --- компактный оператор в $H$, $\lambda \ne 0$, тогда $\Im \Al =
+    (\ker (\Al)^*)^\perp = (\ker A^*_{\overline{\lambda}})^\perp$,
+    где $(\Al)^* = A^* - (\lambda I)^* = A^* - \overline{\lambda} I$.
+    То есть равнение $\Al u = f$ разрешимо тогда и только тогда, когда
+    $f \in (\ker(\Al)^*)^\perp$, иначе говоря $(f, v) = 0\; \forall v \in H
+    \colon (\Al)^*v = 0 \Leftrightarrow A^*v - \overline{\lambda}v = 0$~--- 
+    однородное союзное уравнение.
+    Раскроем подробней.
+    $\lambda \ne 0$ и $(I - \lambda A)u = f$
+    $$
+    \Im (I - \lambda A) = \Im (-\lambda)(A - \frac{I}{\lambda}) =
+    \Im A_{\frac{1}{\lambda}} = (\ker(A_{\frac{1}{\lambda}})^*)^\perp = 
+    (\ker(I - \overline{\lambda}A^*)^\perp)
+    $$
+    $f \in (I - \lambda A) \Leftrightarrow f \in (\ker(I - \overline{\lambda}
+    A^*)^\perp)$, тогда $(f, v) = 0\; \forall f \in H$ и $v = 
+    \overline{\lambda} A^*v$~--- однородное союзное уравнение.
+\end{Theor}
+\begin{Proof}
+    Как было уже показано $\ker (\Al)^* = (\Im \Al)^\perp$, что равносильно
+    $\overline{\Im \Al} = (\ker (\Al)^*)^\perp$.
+    А по лемме 1 $\overline{\Im \Al} = \Im \Al$, что и требовалось доказать.
+\end{Proof}
+\begin{MathCl}[альтернатива Фредгольма]{Следствие}
+    Пусть $A$~--- компактный оператор в $H$; $\lambda \ne 0$, то $\forall f 
+    \in H\;\exists u \in H\colon \Al u = f$, либо $\exists v \in H\; v \ne 0
+    \colon (\Al)^* v = 0$
+\end{MathCl}
+\begin{Proof}
+    Либо $\ker(\Al)^* = 0$ и тогда по теореме Фредгольма $\Im \Al = H$, а по
+    второй теореме Фредгольма тогда $\ker \Al = 0$ следовательно $\forall f 
+    \in H\;\exists!u \in H \colon \Al u = f$
+    
+    Либо $\ker(\Al)^* \ne 0$ (и по второй теореме Фредгольма $\ker \Al \ne 0$
+    и $\lambda \in \sigma_P(A)$), тогда $v \in \ker (\Al)^*\; v \ne 0$.
+\end{Proof}
+\begin{Theor}[вторая теорема Фредгольма]
+    Пусть $A$~--- компактный оператор в $H$ и $\lambda \ne 0$, тогда
+    $\dim \ker \Al = \dim \ker (\Al)^*$, где $\dim \ker \Al$ конечномерен по 
+    1-ой теореме Фредгольма.
+\end{Theor}
+\begin{Lemm}
+    $A$~--- компактный оператор в $H$ и $\lambda \ne 0 \in \sigma_P(A)$, 
+    тогда $\Im \Al \ne H$.
+\end{Lemm}
+\begin{Prim}
+    $A : H \mapsto H$~--- линейный непрерывный и не компактный оператор.
+    $\lambda \in \sigma_P(A)$, $\lambda \ne 0$ и $\ker \Al \ne 0$, тогда может
+    быть, что $\Im \Al = H$.
+    
+    Пусть $\{e_k\}_{ k = 1}^\infty$~--- ортонормированный базис в $H$ ($H =
+    L_2[0,1]$ и $e_k(x) = \sqrt{2}\sin \pi k x,k \in \mathbb{N}$).
+    Тогда 
+    $$
+    f = \sum\limits_{k = 1}^\infty \alpha_k(f) e_k,\quad \alpha_k(f) = (f,
+    e_k)
+    $$
+    По равенству Парсеваля
+    $$
+    \|f\|^2 = \sum\limits_{k = 1}^\infty |\alpha_k(f)|^2
+    $$
+    Пусть оператор $T$ действует как
+    $$
+    Tf = \sum\limits_{k = 1}^\infty \alpha_{k + 1}(f)e_k
+    $$
+    Тогда
+    $$
+    \|T_f\| = \sqrt{\sum\limits_{k = 2}^\infty |\alpha_k(f)|^2} \le = \|f\|
+    $$
+    Норма $\|T\| \le 1$.
+    $T e_2 = _1$, тогда
+    $$
+    \|T\| \ge \|T e_2\| = \|e_1\| = 1
+    $$
+    Отсюда $\|T\| = 1$.
+    Пусть $f \in \ker T$, что равносильно $\alpha_k(f) = 0\;\forall \alpha \ge 
+    2$, значит $f = \Lin\{e_1\}$.
+    Тогда $\forall g \in H$
+    $$
+    g = \sum\limits_{k = 1}^\infty \beta_k(f) e_k
+    $$
+    и $\|g\|^2 = \sum\limits_{k = 1}^\infty |\beta_k(f)|^2 < \infty$.
+    $$
+    \exists f = \sum\limits_{k = 2}^\infty \beta_{k - 1}(f)e_k \in H
+    $$
+    что $Tf = g$, значит $\Im T = H$.
+    Пусть $A = T + I$, $\lambda = 1$.
+    Тогда $\Al = T + I - I = T$.
+    Отсюда $\ker \Al = \ker T \ne 0$, но $\Im \Al = H = \Im T = H$.
+\end{Prim}
+
+Докажем теперь лемму.
+\begin{Proof}
+    Если вдруг $\Im \Al = H$, тогда можно показать последовательность
+    замкнутых подпространств.
+    $$
+    0 \ne L_1 \varsubsetneq L_2 \varsubsetneq L_3 \varsubsetneq \dots 
+    \varsubsetneq L_n \varsubsetneq \dots
+    $$
+    и $\Al L_n \subset L_{n - 1}\quad \forall n \ge 2$.
+    Если указать, то тогда существует последовательность $\{f_n\}$:
+    \begin{gather*}
+        0 \ne f_1 \in L_1\\
+        0 \ne f_2 \in L_2 \cap L_1^\perp\\
+        0 \ne f_n \in L_n \cap L_{n - 1}^\perp\quad n \ge 2
+    \end{gather*}
+    Пусть теперь $g_1 = \frac{f_1}{\|f_1\|}$, $g_2 = \frac{f_2}{\|f_2\|}$, 
+    $g_n = \frac{f_n}{\|f_n\|}$.
+    $\{g_n\}$ также ограниченная последовательность в $H$.
+    $\forall n, p \in \mathbb N$
+    \begin{multline*}
+        \|Ag_n - Ag_{n + p} \pm \lambda g_n \pm \lambda g_{n + p}\| =\\
+        = \|\Al g_n - \Al g_{n + p} + \lambda g_n - \lambda g_{n + p}\| =\\
+        = |\lambda|\|\frac{\Al g_n - \Al g_{n + p} + \lambda g_n}{\lambda} -
+        g_{n + p}\| \ge\\\ge |\lambda| \|g_{n + p}\| = |\lambda|
+    \end{multline*}
+    Следовательно
+    $$
+    \|A g_n - A g_{n + p}\| > |\lambda| > 0
+    $$
+    Следовательно $A g_n$ не содержит фундаментальную подпоследовательность.
+    
+    Рассмотрим $L_n = \ker(\Al)^n$, тогда $L_1 = \ker \Al \ne 0$ по условию
+    так как $\lambda \in \sigma_P(A)$.
+    Верно ли, что $\forall n \in \mathbb{N}\; L_n \varsubsetneq L_{n + 1}$?
+    Пусть $f \in L_n$, тогда $(\Al)^nf = 0$, значит $\Al (\Al)^n f = (\Al)^{n
+    + 1}f = 0$, следовательно $f \in L_{n + 1}$.
+    По условию $\exists f_1 = L_1 \setminus \{0\}$, тогда по предположению
+    $\exists f_2 \in H$:
+    $$
+    \Al f_2 = f_1 \ne 0
+    $$
+    $\Rightarrow$ $f_2 \notin L_1$, но
+    $$
+    (\Al)^2 f_2 = \Al f_1 = 0
+    $$
+    отсюда $f_2 \in L_2 \setminus L_1$.
+    $f_n \ne 0\; f_n \in L_n$, тогда $\exists f_{n + 1} \in H$:
+    $$
+    \Al f_{n + 1} = f_n \ne 0
+    $$
+    Следует ли $f_{n + 1} \notin L_n$?
+    $$
+    (\Al)^n \Al f_{n + 1} = (\Al)^{n + 1} f_{n + 1} = 0
+    $$
+    Тогда $f_{n + 1} \in L_{n + 1}\setminus L_n$.
+    $f \in L_n \Leftrightarrow (\Al)^n f = 0$, $g = \Al f$, тогда
+    $$
+    (\Al)^{n - 1}g = (\Al)^n f = 0
+    $$
+    значит $g \in L_{n - 1}$.
+    Таким образом получили противоречие с тем, что $A$ компактный оператор.
+\end{Proof}
+
+Перейдём теперь к доказательству второй теоремы Фредгольма.
+\begin{Proof}
+    По теореме Фредгольма для произвольного непрерывного оператора 
+    \begin{gather*}
+        \ker\Al = (\Im (\Al)^*)^\perp\\
+        \ker (\Al)^* = (\Im \Al)^\perp
+    \end{gather*}
+    Если увидем, что $\dim \ker \Al \le \dim (\Im \Al)^\perp$, то это 
+    аналогично для сопряжённого оператора $\dim \ker (\Al)^* \le \dim (\Im(\Al
+    )^*)^\perp = \dim (\Im A^*_{\overline{\lambda}})^\perp$ и $
+    \overline{\lambda} \ne 0$ и $A^*$~--- компактный оператор.
+    Тогда $\dim \ker \Al \le \dim \ker (\Al)^*$ и $\dim \ker (\Al)^* \le \dim 
+    \ker \Al$ и доказательство будет завершено.
+    
+    Если вдруг $\dim \ker \Al  \dim (\Im \Al)^\perp \ge 0$, тогда
+    $\lambda \in \sigma_P(A) \setminus \{0\}$.
+    Из первой теоремы Фредгольма $\ker \Al$ конечномерен и $(\Im \Al)^\perp$
+    также конечномерен и меньшей размерности.
+    $\exists \Phi : \ker \Al \mapsto (\Im \Al)^\perp$ линейный конечномерный
+    $\ker \Phi \ne 0$.
+    Оператор $\Phi$ будет компактный в конечномерном гильбертовом пространстве
+    так как по теореме Больцано-Вейерштрасса все линейные операторы являются
+    компактными.
+    Рассмотрим $P : H \mapsto \ker \Al$, где $\ker \Al \ne 0$, ортопроектор.
+    $\ker \Al \oplus (\ker \Al)^\perp = H$ и $\|P\| = 1$.
+    Смотрим на
+    $$
+    T = A + \Phi P
+    $$
+    так как $A$ компактен, $\Phi$ также компактен и $P$ линеен, то $T$ 
+    компактный оператор.
+    Рассмотрим
+    $$
+    T_\lambda = \Al + \Phi P
+    $$
+    так как $\ker \Phi \ne 0$, то $\exists f_0 \ne 0 \in \ker \Al$ такой, что
+    $\Phi f_0 = 0$ и $P f_0 = f_0$.
+    Тогда
+    $$
+    T_\lambda f_0 = \Al f_0 + \Phi P f_0 = 0
+    $$
+    Таким образом $0 \ne f_0 \in \ker T_\lambda$, значит $0 \ne \lambda \in 
+    \sigma_P(T)$.
+    $$
+    \Im T_\lambda = T_\lambda(H) = \Al(H) + \Phi P(\ker \Al)
+    $$
+    $\Al(H) = \Im \Al$, которое замкнуто по лемме 1, и
+    $$
+    \Phi P(\ker \Al) = \Phi \ker \Al = (\Im \Al)^\perp
+    $$
+    Также $H = \ker \Al + (\ker \Al)^\perp$ и по теореме Риса об ортогональном
+    разложении
+    $$
+    \Im T_\lambda = \Im \Al + (\Im \Al)^\perp = H
+    $$
+    Следовательно $\Im T_\lambda = H$.
+    Получили противоречие с леммой 2.
+\end{Proof}
+\begin{Theor}[4-ая теорема Фредгольма]
+    Пусть $A$~--- компактный оператор в $H$.
+    Тогда $\forall \varepsilon > 0$ множество
+    $$
+    \Lambda_\varepsilon = \{\lambda \in \mathbb{C}\mid
+    \begin{array}{l}
+        \lambda \in \sigma_P(A)\\
+        |\lambda| > \varepsilon    
+    \end{array}
+    \}
+    $$
+    содержит конечное число элементов или пусто.
+\end{Theor}
+\begin{Proof}
+    Если $\exists \varepsilon > 0\colon \Lambda_{\varepsilon_0}$ содержит 
+    счётное и больше элементов, тогда $\exists \{\lambda_n\}_{n = 1}^\infty
+    \subset \Lambda_{\varepsilon_0}$ и $\lambda_n \ne \lambda_m$ при
+    $n \ne m$, $\lambda_n \in \sigma_P(A)$.
+    Из курса линейной алгебры известно, что если $f_k \in \ker A_{\lambda_k},
+    k=1\dots N$, то $\{f_1,\dots f_N\}$ линейно независимы.
+    Рассмотрим $L_n = \Lin\{f_1 \dots f_N\}$.
+    Оператор $A : L_n \mapsto L_n$.
+    Рассмотри последовательность $L_1 \varsubsetneq L_2 \varsubsetneq L_3
+    \varsubsetneq \dots$ и $L_N$~--- замкнутое конечномерное подпространство
+    в $H$.
+    Покажем, что $A_{\lambda_N}L_N \subset L_{N - 1}$ при $N \ge 2$
+    $$
+    A_{\lambda_N} (\sum\limits_{i = 1}^N \alpha_i f_i) = (A - \lambda_N I)
+    \sum\limits_{i = 1}^N \alpha_i f_i = \sum\limits_{i = 1}^N
+    \alpha_i \lambda_i f_i - \sum\limits_{i = 1}^N \alpha_i \lambda_N f_i =
+    \sum\limits_{i = 1}^{N - 1} \alpha_i (\lambda_i - \lambda_N) f_i \in 
+    L_{N - 1}
+    $$
+    Теперь как в доказательстве леммы 2 для подпространств $\{L_n\}_{N = 1}^
+    \infty$ строим ортонормированную систему $g_N \in L_N \cap (L_{N - 1})^
+    \perp$, где $g_1 = \frac{f_1}{\|f_1\|} \in L_1$ и $\|g_N\| = 1, N \ge 2$.
+    $$
+    \|A g_N - A g_{N + p} \pm \lambda_N g_N \pm \lambda_{N + p} g_{N + p}\| =
+    |\lambda_{N + p}|\|\frac{A_{\lambda_N}g_N - A_{\lambda_{N + p}}g_{N + p} +
+    \lambda_N g_N}{\lambda_{N +}} - g_{N + p}\| \ge |\lambda_{N + p}|\||
+    \lambda_{N + p}|\| \ge \varepsilon_0
+    $$
+    Отсюда
+    $$
+    \|A g_N - A g_{N + p}\| \ge \varepsilon_0
+    $$
+    Следовательно $\{A g_N\}$ не содержит фундаментальную 
+    подпоследовательность~--- противоречие с тем, что $A$~--- компактный
+    оператор.
+\end{Proof}
+\begin{MathCl}[теорема о спектре компактного оператора]{Следствие}
+    Пусть $A$~--- компактный оператор в $H$, то $\sigma(A)$~--- не более, 
+    чем счётное множество.
+    $\sigma(A) \setminus \{0\} \subset \sigma_P(A)$.
+    $\sigma(A)$ имеет не более одной предельной точки и эта точка~--- ноль.
+\end{MathCl}
+\begin{Proof}
+    $\lambda \in \sigma(A)\setminus\{0\}$ и если вдруг $\lambda \notin
+    \sigma_P(A)$, то есть $\ker \Al = 0$, тогда по 2-ой теореме Фредгольма
+    $\ker(\Al)^* = 0$, тогда по 3-ей теореме Фредгольма $\Im \Al = (\ker
+    \Al^*)^\perp = H$, следовательно $\lambda \in \rho(A)$~--- противоречие.
+    Следовательно $\lambda \in \sigma_P(A)$.
+    По 4-ой теореме Фредгольма $\sigma_P(A)$ не более чем счётно,
+    следовательно $\sigma(A)$ не более чем счётно если $\dim H = +\infty$,
+    следовательно $0 \in \sigma(A)$.
+    Если $\sigma_P(A)$ счётно, то $\exists \{\lambda\}_{n = 1}^\infty = 
+    \sigma_P(A) \setminus\{0\}$, а по 4-ой теореме Фредгольма $\lambda_n \to 0
+    $ при $n \to 0$, следовательно $\lambda = 0$~--- предельная точка спектра.
 \end{Proof}
 \end{document}
 

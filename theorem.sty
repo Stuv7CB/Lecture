@@ -12,3 +12,12 @@
 \newenvironment{Prim}[1][\?]
 {\par{\bf Пример \arabic{prim}. }{\it #1.}}
 {\hfill\addtocounter{prim}{1}}
+\newenvironment{MathCl}[2][]
+{\par{\bf #2
+\ifx&#1&%
+.
+\else
+ (#1).
+\fi
+}\begingroup\sl}
+{\endgroup}
