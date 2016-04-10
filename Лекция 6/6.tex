@@ -1,0 +1,517 @@
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
+\usepackage{xargs}
+\newcommandx{\e}[3][1 = \infty, 2 = k]{\{#3_{#2}\}_{#2 = 1}^{#1}}
+\newcommand{\Line}[2]{\Lin\{#1_1,\dots, #1_#2\}}
+\newcommandx{\sump}[3][1 = n, 2 = 1, 3 = \infty]{\sum\limits_{#1 = #2}^{#3}}
+\newcommand{\vect}[2]{\left(
+\begin{array}{c}
+    #1\\
+    #2
+\end{array}\right)}
+\begin{document}
+%=============================================================================!
+\begin{MathCl}[об ортогональном базисе в гильбертовом пространстве]{Воспоминание}
+    Пусть $H$~--- гильбертово пространств и $\dim H = +\infty$, тогда 
+    $\exists \{e_k\}_{k = 1}^\infty \subset H$, что $\forall N\; \{e_1,\dots,e_M\}$~--- линейно
+    независимый набор.
+\end{MathCl}
+\begin{Opr}
+    $\{e_k\}_{k = 1}^\infty$ называют базисом в $H$, если $\forall f \in H\;\exists!\{\alpha_
+    k\}_{k = 1}^\infty \in \mathbb C\colon$
+    $$
+    \|f - \sum_{k = 1}^N \alpha_k e_k\| \to 0 \quad N \to \infty 
+    $$
+    Что по определению равносильно
+    $$
+    f = \sum_{k = 1}^\infty \alpha_k e_k
+    $$
+\end{Opr}
+\begin{Opr}
+    $\{e_k\}_{k = 1}^\infty$ называют полной в  $H$, если $\forall f \in H\; \forall \varepsilon
+    > 0\;\exists N = N(\varepsilon, g)\; \exists \{\alpha_k = \alpha_k(\varepsilon, f)\}_{k = 1}^N
+    \subset \mathbb C\colon \|f - \sum_{n = 1}^N \alpha_n e_n\| \le \varepsilon$.
+    Это равносильно тому, что линейная оболочка $\Lin\{e_k\}_{k = 1}^\infty = \{\sum_{k = 
+    1}^\infty \alpha_k e_k \mid \alpha_1 \dots \alpha_N \in \mathbb C\; \forall N \in \mathbb 
+    N\}$ всюду плотна в $H$, что равносильно $\rho(f, L_N) \to 0\;N \to 0$, где $L_N = 
+    \Lin\{e_k\}_{k = 1}^N$ и $L_N \subset L_{N + 1}$.
+    $\rho(f, L_{N + 1}) \le \rho(f, L_N) \le \rho(f, L_{N(\varepsilon, f)}) \le \varepsilon$, поэтому
+    $\rho(f, L_N)$ уменьшается при увеличении $N$ и $\lim \limits_{N \to \infty} \rho(f, 
+    L_N) = 0$ по теореме Больцано-Вейерштрасса.
+\end{Opr}
+\begin{Prim}[есть полнота, но нет базиса]
+    $\{e_k(x) = x^k\}_{k = 0}^\infty, e_0(x) = 1, x\in [0,1]$ в $H = L_2[0,1]$ является полной
+    по теореме Вейерштрасса о равномерно приближении многочленом, но это не
+    базис (доказать в качестве упражнения)
+\end{Prim}
+\begin{MathCl}{Утверждение}
+    Пусть $\e{e}$~--- ортогональная полная система в $H$, тогда $\e{e}$~--- базис в $H$
+\end{MathCl}
+\begin{Proof}
+    Пусть $L_N = \Line{e}{N}$.
+    Тогда по минимальному свойству коэффициентов фурье по ортогональной системе
+    $$
+    P_{L_N}(f) = S_N(f) = \sum\limits_{n = 1}^N\dfrac{(f, e_n)}{(e_n, e_n)}e_n
+    $$
+    Причём
+    $$
+    P_n(f) = \dfrac{(f, e_n)}{(e_n, e_n)}e_n
+    $$
+    это ортопроекция $f$  на $\Lin\{e_n\}$ и $\|P_n\| = 1$, тогда
+    $$
+    P_{L_N} = \sum\limits_{n = 1}^N P_n
+    $$
+    Так как $\rho(f, L_N) \to 0$ и $\rho(f, L_N) = \|f - P_{L_N}(f)\|$, то
+    $$
+    f = \sump P_nf = \sump \dfrac{(f, e_n)}{(e_n, e_n)}e_n
+    $$
+    сходимость по норме в $H$.
+    $\exists \alpha_n = \dfrac{(f, e_n)}{(e_n, e_n)}$~--- коэффициент фурье $f$ в системе
+    $\e{e}$.
+    Если существует другое разложение
+    $$
+    f = \sump \beta_n e_n
+    $$
+    тогда
+    $$
+    (f, e_n) = (\lim_{N \to \infty} \sump[n][1][N] \beta_n e_n, e_m) = \lim_{N \to \infty}
+    ( \sump[n][1][N] \beta_n e_n, e_m)
+    $$
+    тогда при $N > m$ это равно $\beta_m (e_m, e_m)$, а значит $\beta_m = \alpha_m =
+    \dfrac{(f, e_m)}{(e_m, e_m)}$
+\end{Proof}
+\begin{Opr}
+    $\e{e}$ называют замкнутой, если из $(f, e_k) = 0\; \forall k$ следует, что $f = 0$, что
+    равносильно по определению $(\Lin\{e_k\})^\perp = 0$, что равносильно 
+    $\overline{\Lin\{e_k\}} = H \Leftrightarrow \{e_k\}$~--- полная система.
+\end{Opr}
+\begin{MathCl}{Наблюдение}
+    $\{e_k\}$~--- полная система, тогда ортогонализуем её по Гильберту-Шмитду.
+    \begin{gather*}
+        0 \ne g_1 = e_1\\
+        0 \ne g_2 = e_2 + \alpha_{21}g_1 \perp g_1\\
+        \vdots\\
+        0 \ne g_n = e_n + \alpha_{n1}g_1 + \dots + \alpha_{n n-1}g_{nn - 1} \perp g_1 \dots g_
+        {n - 1}
+    \end{gather*}
+    Тогда $\Line{g}{N} = \Line{e}{N}$, $g_n = L_n$ и $e_n \in \Line{g}{N}$.
+    $\rho(f, L_N) \to 0\;\forall f \in H$ в силу полноты, тогда $\e{g}$ осталась полной, но 
+    стала ортогональной, поэтому это базис.
+\end{MathCl}
+\section*{Ортогональные базисы в декартовом и тензорном произведении двух 
+гильбертовых пространств}
+Пусть $H_1$ и $H_2$~--- два гильбертова пространства.
+Декартовым произведением $H_1$ и $H_2$ обозначается линейной пространство
+такое, что
+$$
+H_1 \times H_2 = \left\{
+    u_1 \times u_2 \equiv \left(
+    \begin{array}{c}
+    u_1\\
+    u_2
+    \end{array}\right)
+    \mid
+    \begin{array}{c}
+    u_1 \in H_1\\
+    u_2 \in H_2
+    \end{array}
+    \right\}
+$$
+Тогда $\forall u_k, \tilde{u}_k$, $\forall \alpha \in \mathbb C$
+$$
+\left(
+\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}
+\right)
++
+\left(
+\begin{array}{c}
+    \tilde{u}_1\\
+    \tilde{u}_2
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+    u_1 + \tilde{u}_1\\
+    u_2 + \tilde{u}_2
+\end{array}
+\right)
+$$
+и
+$$
+\alpha
+\left(
+\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+    \alpha u_1\\
+    \alpha u_2
+\end{array}
+\right)
+$$
+$0 = H_1 \times H_2$, $0 = \left(\begin{array}{c}
+0\\
+0
+\end{array}\right) = 0 \times 0$.
+$$
+(u_1 \times u_2, \tilde{u}_1 \times \tilde{u}_2) = (u_1, \tilde{u}_1)_{H_1} + (u_2, \tilde{u}_2)
+_{H_2} \ge 0
+$$
+тогда 
+$$
+(u_1 \times u_2, u_1 \times u_2) = \|u_1\|^2_{H_1} + \|u_2\|^2_{H_2} \ge 0
+$$
+Посмотрим, когда скалярное произведение в таком случае будет ноль.
+Тогда $u_1 = 0 \in H_1$ и $u_2 = 0 \in H_2$, а значит $\left(\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}
+\right) = 0 \in H_1 \times H_2$.
+Очевидно $\|u_1 \times u_2\|_{H_1 \times H_2} = \sqrt{\|u_1\|^2_{H_1} + \|u_2\|^2_{H_2}}
+$.
+
+Пусть $\e{e}$~--- базис в $H_1$ и $\e{g}$~--- базис в $H_2$.
+Рассмотрим систему ортогональных векторов в $H_1 \times H_2$
+$$
+\left\{\left(
+\begin{array}{c}
+    e_k\\
+    0
+\end{array}\right);
+\left(
+\begin{array}{c}
+    0\\
+    g_m
+\end{array}\right)
+\mid
+\begin{array}{c}
+k \in \mathbb N\\
+m \in \mathbb N
+\end{array}
+\right\}
+$$
+$u_1 \times u_2 \in H_1 \times H_2$, и $\|u_1 - \sump[k][1][N] \alpha_k e_k\|_{H_1} \le 
+\varepsilon$ , и $\|u_2 = \sump[k][1][N] \beta_k g_k\|_{H_2} \le \varepsilon$, тогда
+$$
+\left(
+\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}
+\right)
+-
+\left(
+\begin{array}{c}
+    \sump[k][1][N] \alpha_k e_k\\
+    \sump[k][1][N] \beta_k g_k
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}
+\right)
+-
+\sump[k][1][N] \alpha_k
+\left(
+\begin{array}{c}
+    e_k\\
+    0
+\end{array}\right)
+-
+\sump[k][1][N] \beta_k
+\left(
+\begin{array}{c}
+    0\\
+    g_m
+\end{array}
+\right) \in \Lin\{\left(
+\begin{array}{c}
+    e_k\\
+    0
+\end{array}\right);
+\left(
+\begin{array}{c}
+    0\\
+    g_m
+\end{array}\right)
+\}
+$$
+Пусть
+$$
+u = 
+\left(
+\begin{array}{c}
+    u_1 - \sump[k][1][N] \alpha_k e_k\\
+    u_2 - \sump[k][1][N] \beta_k g_k
+\end{array}
+\right)
+$$
+тогда $\|u\|_{H_1 \times H_2} \le \sqrt{2}\varepsilon$, а значит
+$\{\left(
+\begin{array}{c}
+    e_k\\
+    0
+\end{array}\right);
+\left(
+\begin{array}{c}
+    0\\
+    g_m
+\end{array}\right)
+\}$ полная в $H_1 \times H_2$, поэтому базис в $H_1 \times H_2$
+$$
+\left(
+\begin{array}{c}
+    u_1\\
+    u_2
+\end{array}
+\right)
+=
+\sump[k] \alpha_k
+\left(
+\begin{array}{c}
+    e_k\\
+    0
+\end{array}\right)
+-
+\sump[k] \beta_k
+\left(
+\begin{array}{c}
+    0\\
+    g_m
+\end{array}
+\right)
+$$
+
+Тензорное произведение $H_1$ и $H_2$ $H_1 \otimes H_2$.
+$\forall u_1 \in H_1$ и $\forall u_2 \in H_2$ $u_1 \otimes u_2 = w \in H_1 \otimes H_2$~--- 
+пара.
+Введём сложение и умножение на скаляр этих пар $u_1 \otimes u_2$ $u_1 \otimes u_2
++ \tilde{u}_1 \otimes \tilde{u}_2$ и $\alpha(u_1 \otimes u_2)$, $u_k, \tilde{u}_k \in H_k, 
+k=1,2$ так, чтобы $\alpha(u_1 \otimes u_2) = (\alpha u_1) \otimes u_2 = u_1 \otimes (\alpha
+u_2)$, $(u_1 + \tilde{u}_1) \otimes u_2 = u_1 \otimes u_2 + \tilde{u}_1 \otimes u_2$ и
+$u_1  \otimes (u_2 + \tilde{u}_2) = u_1 \otimes u_2 + u_1 \otimes \tilde{u}_2$.
+Вводим 
+$$
+M = \{\text{всевозможные конечные линейные комбинации пар $u_1 \otimes 
+u_2$, $u_k \in H_k, k=1,2$}\}
+$$
+$u_1 \otimes 0$ или $0 \otimes u_2$~--- нули в $H$~--- линейное пространство.
+Тогда
+\begin{gather*}
+u_1 \otimes 0 + u_1 \otimes u_2 = u_1 \otimes u_2\\
+u_1 \otimes (0*u_2) = 0 (u_1 \otimes u_2) = 0 \in M
+\end{gather*}
+Введём скалярное произведение как
+$$
+(u_1 \otimes u_2, \tilde{u}_1 \otimes \tilde{u}_2)_M = (u_1, \tilde{u}_1)_{H_1}(u_2, \tilde{u}_2)
+_{H_2}
+$$
+Тогда
+$$
+(u_1 \otimes u_2, u_1 \otimes u_2) = \|u_1\|_{H_1}^2\|u_2\|_{H_2}^2 \ge 0
+$$
+Оно равно нулю тогда и только тогда, когда $u_1 = 0$ и $u_2 = 0$, следовательно
+$u_1 \otimes u_2 = 0$.
+Потребуем, чтобы
+\begin{multline*}
+(u_1 \otimes u_2 + \hat{u}_1 \otimes \hat{u}_2, \tilde{u}_1 \otimes \tilde{u}_2) =\\= 
+(u_1 \otimes u_2, \tilde{u}_1 \otimes \tilde{u}_2) +
+(\hat{u}_1 \otimes \hat{u}_2, \tilde{u}_1 \otimes \tilde{u}_2)  =\\=
+(u_1, \tilde{u}_1)(u_2, \tilde{u}_2) +
+(\hat{u}_1, \tilde{u}_1)(\hat{u}_2 , \tilde{u}_2) 
+\end{multline*}
+
+Наделим $(M, \|\;\|)$ нормой, порождённой скалярным произведением.
+Пополняя $(M, \|\;\|)$ получим $H_1 \otimes H_2$.
+$M$ всюду плотно в $H_1 \otimes H_2$ по построению.
+В смысле евклидовой нормы
+$$
+\|u_1 \otimes u_2\| = \sqrt{(u_1 \otimes u_2)(u_1 \otimes u_2)} = \|u_1\| + \|u_2\|
+$$
+
+Если $\e{e}$~--- ортогональный базис в $H_1$ и $\e[\infty][m]{g}$~--- ортогональный
+базис в $H_2$.
+Пусть $h_{km} = e_k \otimes g_m \in M \subset H_1 \otimes H_2$, тогда
+$$
+(h_{km}, h_{\tilde{k}\tilde{m}})_{H_1 \otimes H_2} = (e_k, e_{\tilde{k}})_{H_1}
+(g_m, g_{\tilde{m}})_{H_2}
+$$
+Если $h_{km} \ne h_{\tilde{k}\tilde{m}}$, тогда либо $k \ne \tilde{k}$, либо
+$m \ne \tilde{m}$, тогда $(e_k, e_{\tilde{k}}) = 0$, либо $(h_m, h_{\tilde{m}}) = 0$, а значит
+$(h_{km},h_{\tilde{k}\tilde{m}}) = 0$, отсюда система $h_{km}$ ортогональная в $H_1
+\otimes H_2$
+
+Берём $w \in H_1 \otimes H_2$, тогда $\forall \varepsilon\; \exists v \in H\colon \|w - v\|
+_{H_1 \otimes H_2} \le \varepsilon$.
+Пусть
+$$
+v = \sump[k][1][N] \alpha_k u_{1k} \otimes u_{2k}
+$$
+где $u_{1k} \in H_1, u_{2k} \in H_2$.
+$$
+\|u_{1k} - \sump[j][1][M]\beta_{jk}e_j\|_{H_1} \le \delta
+$$
+Обозначим как $S_1$ частичную сумму $\sump[j][1][M]\beta_{jk}e_j$.
+Аналогично
+$$
+\|u_{2k} - \sump[s][1][M]\gamma_{sk}g_s\|_{H_2} \le \delta
+$$
+и $S_2 = \sump[s][1][M]\gamma_{sk}g_s$.
+Тогда рассмотрим
+$$
+\|u_{1k} \otimes u_{2k} - S_1 \otimes S_2\|_{H_1 \otimes H_2}
+$$
+Так суммы сходятся, то $u_{1k} - S_1 = \xi_1$ и $u_{1k} = \xi_1 + S_1$, аналогично
+$u_{2k} = \xi_2 + S_2$.
+Тогда
+$$
+\|u_{1k} \otimes u_{2k} - S_1 \otimes S_2\|_{H_1 \otimes H_2} = \|(S_1 + \xi_1) \otimes
+(S_2 + \xi_2) - S_1 \otimes S_2\|
+$$
+Из наложенного требования на скалярное произведение
+$$
+(S_1 + \xi_1) \otimes (S_2 + \xi_2) = S_1 \otimes S_2 +S_1 \otimes \xi_2 + \xi_1 \otimes S_2 +
+\xi_1 \otimes \xi_2
+$$
+Отсюда
+\begin{multline*}
+\|u_{1k} \otimes u_{2k} - S_1 \otimes S_2\|_{H_1 \otimes H_2} =\\=
+\|S_1 \otimes \xi_2 + \xi_1 \otimes S_2 + \xi_1 \otimes S_2\| \le\\\le
+\|S_1 \otimes \xi_2\| + \|\xi_1 \otimes S_2\| + \|\xi_1 \otimes \xi_2\| \le\\\le
+(\|u_{1k}\| + \delta)\delta + (\|u_{2k}\| + \delta)\delta + \delta^2
+\end{multline*}
+подерём $\delta$, чтобы полученное выражение было бы меньше ,чем
+$$
+\dfrac{\varepsilon}{\sump[k][1][N]|\alpha_k| + 1}
+$$
+тогда
+$$
+\|v - \sump[k][1][N] \alpha_k S_{1k} \otimes S_{2k}\| \le \sump[k][1][N]|\alpha_k|
+\|u_{1k} \otimes u_{2k} - S_{1k} \otimes S_{2k}\| \le \varepsilon
+$$
+Отсюда $\e[\infty][km]{h}$ полная ортогональная система в $H_1 \otimes 
+H_2$~--- ортогональный базис.
+
+В качестве приложения пусть $L_2[0,1] = H_1 = H_2$, $g, f \in L_2[0,1]$, тогда
+определим
+$$
+f(x) \otimes g(y) = f(x)g(y) \subset L_2([0,1]^2)
+$$
+тогда 
+$$
+f_1 \otimes g_2 + \tilde{f}_1 \otimes \tilde{g}_1 = f(x)g(y) + \tilde{f}(x)\tilde{g}(y)
+$$
+Скалярное произведение
+$$
+(f \otimes g, \tilde{f} \otimes \tilde{g}) = (f, \tilde{f})_{L_2[0,1]}(g, \tilde{g})_{L_2[0,1]}
+= \int_0^1f\tilde{f}dx\int_0^1g\tilde{g}dy
+$$
+и
+$$
+(f \otimes g + \hat{f} \otimes \hat{g}, \tilde{f} \otimes \tilde{g}) = 
+(f, \tilde{f})(g, \tilde{g}) + (\hat{f},\tilde{f})(\hat{g}\tilde{g})
+$$
+также
+$$
+\|f \otimes g\| = \|f\|_{L_2[0,1]}\|g\|_{L_2[0,1]}
+$$
+Множество всех конечных линейных комбинаций
+$$
+M = \{\sump[k][1][N] \alpha_k f_k(x) g_k(y) \mid \alpha_k \in \mathbb C; N \in 
+\mathbb N; f_k,g_k \in L_2[0,1]\}
+$$
+\begin{MathCl}{Утверждение}
+    Пополнение $M$~--- это $L_2([0,1]^2)$.
+    $L_2([0,1] \times [0,1]) = L_2[0,1] \otimes L_2[0,1] = H$
+\end{MathCl}
+\begin{Proof}
+    $\forall w \in L_2([0,1]^2)\;\forall \varepsilon > 0\; \exists v \in C([0,1]^2)$, где 
+    $C([0,1]^2)$~--- пополнение $L_2$, такой, что $\|w - v\|_{L_2([0,1]^2)} \le 
+    \varepsilon$.
+    По теореме Стоуна-Вейерштрасса $\exists P(x,y)$ многочлен $\max \limits_
+    {[0,1]^2}|P - v| \le \varepsilon$ и $P \in M$.
+    Тогда $\|v - P\|_{L_2([0,1]^2)} \le \max \limits_
+    {[0,1]}|P - v| \le \varepsilon$, а значит $\|w - P\|_{L_2([0,1]^2)} \le 2\varepsilon$
+\end{Proof}
+
+Построим базис.
+$\sin \pi k x = e_k(x)$, $\sin \pi m y = g_m(y)$~--- ортогональный базис в $L_2[0,1]$.
+Тогда $h_{km}(x,y) = \sin \pi k x \sin \pi m y$~--- ортогональный базис в $L_2
+([0,1]^2)$
+\begin{Prim}[электрон со спином\?]
+$L_2[0,1] \otimes \mathbb C^2$. $\vect{1}{0}$ и $\vect{0}{1}$ образуют базис в 
+$\mathbb C^2$.
+Пусть $f(x) \in L_2[0,1]\colon f : [0,1] \mapsto \mathbb C$ и $\vect{a}{b} \in 
+\mathbb{C}^2$, тогда $f(x)\vect{a}{b} = f(x) \otimes \vect{a}{b}$.
+Пусть $\{e_k\}$~--- базис в $L_2[0,1]$, тогда $e_k \vect{1}{0}$ и $e_k\vect{0}{1}$
+базис в $L_2[0,1] \otimes \mathbb C^2$. Но это также и базис в $L_2[0,1] \times
+L_2[0,1]$. Отсюда $L_2[0,1] \times L_2[0,1] = L_2[0,1] \otimes \mathbb C^2$ и
+$$
+\vect{\Psi_1(x)}{\Psi_2(x)} = \Psi_1(x) \vect{1}{0} + \Psi_2(x) \vect{0}{1} =
+\sump[k]\left(\alpha_k e_k \vect{1}{0} + \beta_k e_k \vect{0}{1}\right)
+$$
+\end{Prim}
+\begin{Theor}[Гильберта, Шмидта]
+    Пусть $H$~--- гильбертово пространство и $A : H \mapsto H$~--- компактный
+    самосопряжённый оператор. Тогда в $(\ker A)^\perp \ne 0$ есть базис 
+    из собственных функций $A$.
+\end{Theor}
+\begin{Proof}
+    $A \ne 0 \Leftrightarrow \|A\| > )$, так как $A$~--- самосопряжённый, то 
+    спектральный радиус $r(A) = \|A\|$, а значит $\exists \lambda \in \sigma(A)
+    \setminus\{0\}$, что $|\lambda| = r(A) = \|A\| > 0$.
+    По теореме о спектре компактного оператора для любого нетривиального
+    элемента его спектра, являющийся собственным значением следует, что
+    $\sigma_P(A) \setminus\{0\} \ne \varnothing$. Пусть $\lambda \in \sigma_P(A)
+    \setminus\{0\}$, тогда $f \ne 0$ такой, что $f \in \ker \Al$ следует, что
+    $f \in (\ker A)^\perp$ так как $\forall g \in \ker A$
+    $$
+    (Af, g) = \lambda(f, g) = (f, Ag) = 0 \Rightarrow (f, g) = 0
+    $$
+    По 4-ой теореме Фредгольма $\sigma_P(A)\setminus\{0\}$ не более чем 
+    счётное с быть может единственной предельной точкой 0. Поэтому 
+    занумеруем $\e[N][k]{\lambda} = \sigma_P(A) \setminus\{0\}$, где $N 
+    \in \mathbb N \cup \{+\infty\}$. Если $N = +\infty$, то $\lambda_n \to 0\;n \to
+    \infty$.
+    По 1-ой теореме Фредгольма $\ker \Al[n]$ конечномерно.
+    Отсюда $\forall n \in 1 \dots N\; \exists h_{n_1}\dots h_{n_m} \in \ker \Al[n]$
+    ортогональный базис в $\ker \Al[n]$, где $m_n = \dim \ker \Al[n]$.
+    Так как $A$~--- самосопряжённый, то $\ker \Al[n] \perp \ker \Al[m]$ при $n \ne 
+    m$.
+\end{Proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

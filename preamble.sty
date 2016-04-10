@@ -10,7 +10,13 @@
 \usepackage{color}
 \renewcommand{\Im}{\operatorname{Im}}
 \DeclareMathOperator{\Lin}{Lin}
-\newcommand{\Al}{A_\lambda}
+\newcommand{\Al}[1][]{A_
+\ifx&#1&%
+\lambda
+\else
+{\lambda_#1}
+\fi
+}
 \newcommand{\Alo}{(\Al)^{-1}}
 \newcommand{\Rez}{(I - \lambda A)^{-1}}
 \newtheorem{Theor}{Теорема}
