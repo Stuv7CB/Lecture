@@ -103,8 +103,8 @@ $L_2(G)$ --- пополнение $CL_2(G)$, или по-другому $f:G \ma
     	\end{aligned}
 	\right.
 	$$
-	Где $L^+ = \{h \in H \mid (h, f) = 0 \quad \forall f \in L\}$ --- замкнутое подпространство.
-	Это следует из неравенства Коши-Буняковского: пусть $h_n \to h$ и $h_n \in L^+$.
+	Где $L^\perp = \{h \in H \mid (h, f) = 0 \quad \forall f \in L\}$ --- замкнутое подпространство.
+	Это следует из неравенства Коши-Буняковского: пусть $h_n \to h$ и $h_n \in L^\perp$.
 	Тогда
 	$$
 	|(h, f) - (h_n, f)| = |(h - h_n, f)| \le \|h - h_n\| \|f\|\to 0
@@ -192,9 +192,9 @@ $\forall f,h \in H$ пусть $\rho_2(f, h, A) = \inf\{\|f - g\| + \|h - g\|):g
 Но получаем вопрос: верно ли что из чебышевости следует 2-чебышевость?
 
 \begin{Theor}[Риса об ортогональном дополнении]
-    $L \subset H$ --- замкнутое подпространство $\Rightarrow$ $L \oplus L^+ = H$ и $L \cap L^+ = \varnothing$.
+    $L \subset H$ --- замкнутое подпространство $\Rightarrow$ $L \oplus L^\perp = H$ и $L \cap L^\perp = \varnothing$.
     Последнее очевидно. 
-    $\forall f \in H\;\exists! g \in L$ и $h \in L^+\colon f = g + h$.
+    $\forall f \in H\;\exists! g \in L$ и $h \in L^\perp\colon f = g + h$.
     $$
     \left\{
         \begin{aligned}
@@ -206,12 +206,12 @@ $\forall f,h \in H$ пусть $\rho_2(f, h, A) = \inf\{\|f - g\| + \|h - g\|):g
     Это равносильно $P_Lf = g$.
 \end{Theor}
 \begin{Proof}
-$f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+\Rightarrow f = g + h$.
+$f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^\perp\Rightarrow f = g + h$.
 Доказательство закончено.
 \end{Proof}
 
 Пусть $f = g_1 + h_1$ и $f = g_2 + h_2$, и $g_{1,2} \in L$.
-Тогда $g_1 - g_2 = h_2 - h_1 \in L^+$, но $L \cap L^+\Rightarrow g_1 = g_2$ и $h_1 = h_2$.
+Тогда $g_1 - g_2 = h_2 - h_1 \in L^\perp$, но $L \cap L^\perp\Rightarrow g_1 = g_2$ и $h_1 = h_2$.
 
 \begin{Theor}[Рис, Фреше]
     $\Phi:H \mapsto \mathbb C$ --- линейный и непрерывный функционал ($f_n \to f$ в $H$ по норме, $\Phi(f_n) \to \Phi(f)$ в $\mathbb C$).
@@ -220,10 +220,10 @@ $f \in H$, смотрим на $g = P_Lf \Leftrightarrow h = f - g \in L^+\Right
 \begin{Proof}
     $L = \ker \Phi$ --- замкнутое подпространство в $H$.
     Первое в связи непрерывности, второе в силу линейности.
-    $L \oplus L^+ = H$.
+    $L \oplus L^\perp = H$.
     Случай $\Phi = 0$ очевиден: $h = 0$.
-    Пусть теперь $\Phi \ne 0\Rightarrow (\ker\Phi)^+ \ne \{0\}$.
-    Пусть $h_0 \in (\ker\Phi)^+\backslash\{0\}$, тогда отсюда следует $f \in H\;f = g +\alpha h_0$,
+    Пусть теперь $\Phi \ne 0\Rightarrow (\ker\Phi)^\perp \ne \{0\}$.
+    Пусть $h_0 \in (\ker\Phi)^\perp\backslash\{0\}$, тогда отсюда следует $f \in H\;f = g +\alpha h_0$,
     где $g \in \ker \Phi$ и $\alpha = \dfrac{\Phi(f)}{\Phi(h_0)}$.
     Следовательно
     $$
