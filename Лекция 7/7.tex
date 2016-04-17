@@ -1,0 +1,661 @@
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
+\newcommand{\vect}[2]{\left(
+\begin{array}{c}
+    #1\\
+    #2
+\end{array}\right)}
+%=============================================================================!
+\begin{document}
+\section*{Резольвента компактного самосопряжённого оператора в 
+гильбертовом пространстве}
+Пусть $A : H \mapsto H$, $A \neq 0$~--- компактный самосопряжённый оператор.
+$H$~--- гильбертово пространство.
+Пусть $\e[N]{\lambda}, N \in \mathbb N \cup \{+\infty\}$~--- все нетривиальные
+собственные значения $A$.
+Пусть $\{e_{k,1}\dots e_{k,m_k}\} \in \ker \Al[k]$~--- ортогональный базис в 
+$\ker \Al[k]\; \forall n \in 1\dots N$.
+Тогда по теореме Гильберта-Шмидта $\{e_{k,j}\}_{j = 1\dots m_k}^{k = 1 \dots N}$
+образует ортогональный базис в $(\ker A)^\perp$.
+Тогда $\forall f \in H$ мы можем разложить её на
+$$
+f = f_\parallel + f_\perp
+$$
+где $f_\parallel \in \ker A, f_\perp \in (\ker A)^\perp$.
+Очевидно
+\begin{gather*}
+    f_\parallel = P_{\ker A}f\\
+    f_\perp = P_{(\ker A)^\perp} f
+\end{gather*}
+с другой стороны, так как в  $(\ker A^\perp$ существует базис, то
+$$
+f_\perp = \sump[k][1][N] \sump[j][1][m_k] \alpha_{kj} e_{kj}
+$$
+Эта сумма сходится в $H$ и 
+$$
+\alpha_{kj} = \dfrac{(f_\perp, e_{kj})}{(e_{kj}, e_{kj})}
+$$
+причём $(f_\perp, e_{kj}) \equiv (f, e_{kj})$ так как $f_\parallel \perp e_{kj}$.
+Таким образом
+$$
+P_{kj}g = \dfrac{(g_\perp, e_{kj})}{(e_{kj}, e_{kj})} e_{kj} \quad \forall g \in H
+$$
+$P_{kj} : H \mapsto \Lin\{e_{kj}\}$~--- ортопроектор.
+Можно интерпретировать
+$$
+f_\perp = \sump[k][1][N] \sump[j][1][m_k] P_{kj} f = P_{(\ker A)^\perp}f 
+$$
+
+Оператор $A$~--- непрерывный, так как является компактным оператором.
+$$
+Af = Af_\parallel + Af_\perp
+$$
+причём $Af_\parallel = 0$ так как $f_\parallel \in \ker A$, поэтому
+$$
+Af = Af_\perp = \sump[k][1][N] \sump[j][1][m_k] \alpha_{kj} Ae_{kj}
+=  \sump[k][1][N] \sump[j][1][m_k] \alpha_{kj} \lambda_{k}e_{kj}
+$$
+где $\lambda_k \to 0\; k \to +\infty$ когда $N = +\infty$ по 4-ой теореме 
+Фредгольма.
+В итоге можно переписать получившиеся выражение как
+$$
+Af = \sump[k][1][N] \lambda_k\sump[j][1][m_k] P_{kj} f
+$$
+этот ряд сходится поточечно при $N = +\infty$.
+Формулу
+$$
+A = \sump[k][1][N] \lambda_k\sump[j][1][m_k] P_{kj}
+$$
+называют спектральным разложением оператора $A$.
+Если $N = +\infty$, то указанный ряд сходится по операторной норме в силу 
+того, что $\lambda_k \to 0$ при $k \to \infty$ если $N = +\infty$.
+Действительно
+$$
+\|Af - \sump[k][1][S] \lambda_k\sump[j][1][m_k] P_{kj} f\| =
+\|\sump[k][1][+\infty] \lambda_k\sump[j][1][m_k] P_{kj} f -
+\sump[k][1][S] \lambda_k\sump[j][1][m_k] P_{kj} f\| =
+\|\sump[k][S + 1][+\infty] \lambda_k\sump[j][1][m_k] \alpha_{kj} e_{kj}\|
+$$
+и далее по равенству Парсеваля
+$$
+\|Af - \sump[k][1][S] \lambda_k\sump[j][1][m_k] P_{kj} f\| = 
+\sqrt{\sump[k][S + 1][+\infty] \lambda_k^2 \sump[j][1][m_k] |\alpha_{kj}|^2\|e_{kj}\|
+^2} \le \sup \limits_{k > S} |\lambda_k| \sqrt{\sump[k][S + 1][+\infty] \sump[j][1][m_k]
+|\alpha_{kj}|^2\|e_{kj}\|^2}
+$$
+причём
+$$
+\sqrt{\sump[k][S + 1][+\infty] \sump[j][1][m_k]|\alpha_{kj}|^2\|e_{kj}\|^2} \le
+\sqrt{\sump[k][1][+\infty] \sump[j][1][m_k] |\alpha_{kj}|^2\|e_{kj}\|^2} = \|f\|
+$$
+Таким образом
+$$
+\|Af - \sump[k][1][S] \lambda_k\sump[j][1][m_k] P_{kj} f\| \le \sup \limits_{k > S} |
+\lambda_k| \|f\|
+$$
+и 
+$$
+\|A - \sump[k][1][S] \lambda_k\sump[j][1][m_k] P_{kj} \| \le \sup \limits_{k > S} |
+\lambda_k| \to 0\quad s \to +\infty
+$$
+
+Построим теперь резольвенту.
+$$
+R_A(\lambda) = \Rez : H \mapsto H
+$$
+если $\lambda \ne \dfrac{1}{\lambda_k}\; \forall k = 1 \dots N$, то есть
+$\lambda$~--- не характеристическое число $A$.
+С одной стороны
+$$
+(I - \lambda A) f = f - \lambda A f = f_\parallel + f_\perp - \lambda A f =
+P_{\ker A}f + P_{(\ker A)^\perp}f - \lambda A f
+$$
+Воспользуемся спектральным разложением оператора $A$ и определением
+$P_{(\ker A)^\perp}$ получим
+$$
+(I - \lambda A) f = P_{\ker A}f + P_{(\ker A)^\perp}f - \lambda
+\sump[k][1][N] \lambda_k\sump[j][1][m_k] P_{kj} f = 
+P_{\ker A}f + \sump[k][1][N] \lambda_k\sump[j][1][m_k] (1 - \lambda \lambda_k)
+P_{kj} f
+$$
+С другой стороны пусть
+$$
+(I - \lambda A)f = g = P_{\ker A}g + \sump[k][1][N] \lambda_k\sump[j][1][m_k] P_{kj} g
+$$
+Тогда
+\begin{gather*}
+    P_{\ker A} f = P_{\ker A}g\quad (f_\parallel = g_\parallel)\\
+    (1 - \lambda \lambda_k)P_{kj}f = P_{kj}g
+\end{gather*} 
+где $P_{kj}f = \alpha_{kj} e_{kj}$ и $P_{kj}g = \beta_{kj}e_{kj}$  и
+$$
+\beta_{kj} = \dfrac{(g, e_{kj})}{(e_{kj}, e_{kj})}
+$$
+Так как $(1 - \lambda \lambda_k \neq 0$, то
+$$
+(1 - \lambda \lambda_k)\alpha_{kj} = \beta_{kj}
+$$
+и
+$$
+\alpha_{kj} = \dfrac{\beta_{kj}}{1 - \lambda \lambda_k}
+$$
+Таким образом
+$$
+f = R_A(\lambda)g = P_{\ker A}g + \sump[k][1][N]\dfrac{1}{1 - \lambda \lambda_k}
+\sump[j][1][m_k]P_{kj}g
+$$
+и
+$$
+R_A(\lambda) = P_{\ker A} + \sump[k][1][N]\dfrac{1}{1 - \lambda \lambda_k}
+\sump[j][1][m_k]P_{kj}
+$$
+Если $N = +\infty$, то ряд сходится поточечно, но не операторной норме.
+Действительно $\forall g \in H$
+$$
+\|R_A(\lambda)g - P_{\ker A}g - \sump[k][1][S]\dfrac{1}{1 - \lambda\lambda_k}\sump[j][1][m_k]
+P_{kj}g\| =
+\sqrt{\sump[k][S +1]|\dfrac{1}{1 - \lambda\lambda_k}|^2\sump[j][1][m_k]\|P_{kj}g\|^2}
+$$
+Пусть $g = \dfrac{e_{S + 1,1}}{\|e_{S+1,1}\|}$, тогда $\|P_{kj}g\| = 1$ только при $k = S + 1$
+и $j = 1$, а в остальных случаях ноль.
+Тогда
+$$
+\|R_A(\lambda)g - P_{\ker A}g - \sump[k][1][S]\dfrac{1}{1 - \lambda\lambda_k}\sump[j][1][m_k]
+P_{kj}g\| = \dfrac{1}{|1 - \lambda \lambda_{S + 1}|}
+$$
+Тогда
+$$
+\|P_A(\lambda) - P_{\ker A} - \sump[k][1][S]\dfrac{1}{1 - \lambda\lambda_k}\sump[j][1][m_k]
+P_{kj}\| \ge \dfrac{1}{1 - \lambda\lambda_{S + 1}}
+$$
+и так как $\lambda_{S + 1} \to 0$ при $S \to +\infty$, то $\exists S_\lambda\colon 
+|\lambda_{S + 1}\lambda| \le \dfrac{1}{2}\;\forall S \ge S_\lambda$, тогда $\dfrac{1}{|1 - 
+\lambda \lambda_{S + 1}} \ge \dfrac{1}{2}$ и ближе не приблизиться.
+
+Найдём теперь норму резольвенты.
+$\forall g \in H$
+$$
+\|R_A(\lambda)g\| = \sqrt{\|g_\parallel\|^2 + \sump[k][1][N] \dfrac{1}{|1 - \lambda \lambda_k|
+^2} \sump[j][1][m_k]\|P_{kj}g\|^2}
+$$
+Введём $d(\lambda) = \sup\limits_{k = 1 \dots N} \dfrac{1}{|1 - \lambda \lambda_k|}$.
+Так как при $N = +\infty$ $\lambda_k \to 0$, то $\dfrac{1}{|1 - \lambda \lambda_k|} \to 1$ 
+при $k \to +\infty$, поэтому $d(\lambda)$ ограничено.
+$$
+\|R_A(\lambda)g\| \le \sqrt{\|g_\parallel\|^2 + \sump[k][1][N] d(\lambda)^2 \sump[j][1][m_k]\|P_{kj}g\|^2} \le \max\{1, d(\lambda)\}\|g\|
+$$
+где 
+$$
+\|g\| = \sqrt{\|g_\parallel\|^2 + \sump[k][1][N] \sump[j][1][m_k]\|P_{kj}g\|^2}
+$$
+Таким образом $\|R_A(\lambda)\| \le \max\{1, d(\lambda)\}$
+\begin{MathCl}{Упражнение}
+Доказать, что $\|R_A(\lambda)\| = \max\{1, d(\lambda)\}$.
+\end{MathCl}
+\\Если $d(\lambda) > 1$, то $\exists k_l\colon d(\lambda) = \lim\limits_{l \to +\infty} \dfrac{1}
+{1 - \lambda\lambda_{k_l}}$.
+Пусть $g = \dfrac{e_{k_l, 1}}{\|e_{k_l, 1}\|}$.
+Так как $d(\lambda) > 1$, то
+$$
+d(\lambda) \ge \|R_A(\lambda)\| \ge \|R_A(\lambda)g_{k_l}\| = \dfrac{1}{|1 - \lambda
+\lambda_{k_l}|} \to d(\lambda)
+$$
+следовательно $\|R_A(\lambda)\| = d(\lambda)$.
+\section*{Применение теоремы Гильберта-Шмидта для исследования базисности
+системы собственных функция дифференциальных операторов}
+\begin{Prim}
+    Пусть $A = -i\dfrac{d}{dx}$, $x \in [0, 2\pi]$.
+    $H = L_2[0, 2\pi]$ (оператор $L_z$ в квантовой механике).
+    $A : D(A) \mapsto H$, где $D(A)$~--- область определения $A$, являющиеся
+    подпространством в $H$.
+    $$
+    D(A) = \{f \in C'[0,2\pi] \mid f(0) = e^{\imath \phi}f(2\pi)\}
+    $$
+    где $\phi \in (0, 2\pi)$~--- заданный параметр и $e^{\imath \phi} \neq 1$.
+    Эта область определения соответствует области определения оператора проекции
+    момента импульса при эффекте Ааронова~---~Бома.
+    Мы ищем
+    $$
+    Af = \lambda f,\quad f \neq 0\in D(A), \lambda \in \mathbb C
+    $$
+    Оператор $A$ симметричный на $D(A)$, то есть $(Af, g) = (f, Ag)\;\forall f,g \in D(A)$.
+    Действительно
+    $$
+    \int\limits_{0}^{2\pi}\imath f' \overline{g} dx = \left. -\imath f \overline{g}\right|_{0}^{2\pi} +
+    \int\limits_{0}^{2\pi}\imath f \overline{g'}dx
+    $$
+    Из условий на $f, g$:
+    \begin{multline*}
+        \left. -\imath f \overline{g}\right|_{0}^{2\pi} = -\imath f(2\pi)\overline{g}(2\pi) + 
+        \imath f(0)\overline{g}(0) =\\=  -\imath f(2\pi)\overline{g}(2\pi) + 
+        \imath f(2\pi)e^{\imath \phi}\overline{g}(2\pi)e^{-\imath \phi} = 0
+    \end{multline*}
+    Таким образом $A$ действительно симметричен.
+    \begin{MathCl}{Утверждение}
+        Пусть $T : D(T) \mapsto H$~--- линейный и непрерывный оператор на $D(T)$~---
+        подпространство в $H$, тогда все собственные значения $T$ действительны и
+        собственные функции для различных собственных значений ортогональны в $H$.
+    \end{MathCl}
+    \begin{Proof}
+        Пусть $Tf = \lambda f$ и $f \in D(T) \setminus \{0\}$, тогда
+        $$
+        (Tf, f) = \lambda(f, f) = (f, Tf) = \overline{\lambda} (f, f)
+        $$
+        таким образом $\lambda = \overline{\lambda}$.
+        Пусть теперь $Tg = \mu g$ и $\lambda \neq \mu$
+        $$
+        (Tf, g) = \lambda(f, g) = (f, Tg) = (f, g) \mu
+        $$
+        Так как $\lambda \neq \mu$, то $(f, g) = 0$, то есть $f \perp g$ в $H$.
+        Доказательство закончено.
+    \end{Proof}
+
+    Вернёмся к нашему оператору $A$.
+    Ищем решение $Af = \lambda f$ и $\lambda \in \mathbb R$
+    \begin{gather*}
+        -\imath f' = \lambda f\\
+        f(x) = C e^{\imath \lambda x},\quad C \neq 0
+    \end{gather*}
+    Используем условия на $f$ и получаем
+    $$
+    1 = e^{\imath \phi} e^{\imath \lambda 2 \pi}
+    $$
+    Отсюда
+    \begin{gather*}
+        \phi + 2 \pi \lambda_k = 2 \pi k,\quad k \in \mathbb Z\\
+        \lambda_k = k - \dfrac{\phi}{2\pi},\quad k \in \mathbb Z
+    \end{gather*}
+    Получили собственные значения $A$.
+    Тогда собственные функции $f_k(x) \in D(A)$ имеют вид
+    $$
+    f_k(x) = e^{\imath x (k - \frac{\phi}{2\pi})},\quad x \in [0, 2\pi]
+    $$
+    $\ker A = 0$ так как $\lambda = 0$ не собственно значение.
+    Тогда $\exists A^{-1} : \Im A \mapsto D(A)$.
+    Исследуем базисность $\{f_k\}_{k \in \mathbb Z}$~--- ортогональная система собственных 
+    функци $A$ с помощью теоремы Гильберта-Шмитда.
+    $\Im A \subset C[0, 2\pi]$, $\forall g \in C[0,2\pi]$
+    $$
+    \left\{
+    \begin{array}{l}
+        f \in D(A)\\
+        Af = -\imath f' = g
+    \end{array}
+    \right.
+    $$
+    справедливо, что
+    $$
+    \exists! f = \imath \int\limits_0^x g(t) dt + C
+    $$
+    Получаем, что $\Im A = C[0,2\pi]$.
+    Из условия на $f$
+    $$
+    C = e^{\imath \phi}\left(\imath \int\limits_0^{2\pi} g(t) dt + C\right)
+    $$
+    Отсюда выражаем константу
+    $$
+    C = \dfrac{e^{\imath \phi}}{1 - e^{\imath \phi}} \int\limits_0^{2\pi} g(t) dt
+    $$
+    Таким образом
+    \begin{multline*}
+    (A^{-1}g)(x) =\\= \left(\imath + \dfrac{\imath e^{\imath \phi}}{1 - e^{\imath \phi}}\right)
+    \int\limits_0^x g dt + \dfrac{\imath e^{\imath \phi}}{1 - e^{\imath \phi}}\int\limits_x^{2\pi}g dt
+    =\\= \dfrac{\imath}{1 - e^{\imath \phi}} \int\limits_0^x g dt - \dfrac{\imath}{1 - e^{-\imath 
+    \phi}} \int\limits_x^{2\pi} g dt =\\= \int\limits_0^{2\pi}K(t, x)g(t)dt
+    \end{multline*}
+    где
+    $$
+    K(t, x) = \left\{
+    \begin{array}{l}
+        \dfrac{\imath}{1 - e^{\imath \phi}}, \quad 0 \le t < x \le 2\pi\\
+        \dfrac{-\imath}{1 - e^{-\imath \phi}}, \quad 0 \le x < t \le 2\pi
+    \end{array}
+    \right., \quad \phi \in (0, 2\pi)
+    $$
+    $\overline{K(t, x)} = K(x, t)$ для почти всех $t, x \in [0, 2\pi]$.
+    Очевидно $K \in L_2([0,2\pi]^2)$ тогда построим
+    $$
+    (Tg)(x) = \int\limits_0^{2 \pi}K(t, x)g(t)dt
+    $$
+    $T : L_2[0,2\pi] \mapsto L_2[0,2\pi]$, $\Im T \subset C[0,2\pi] = \Im A$ и $T|_{C[0,2\pi]} = 
+    A^{-1}$.
+    По теореме Гильберта-Шмидта в $H = L_2[0, 1]$ существует ортогональный базис из
+    собственных функций $T$.
+    
+    $\ker T = 0$ так как $\ker T = (\Im T^*)^\perp$ по теореме Фредгольма, а так как 
+    $T = T^*$ то $\ker T =(\Im T)^\perp$.
+    Так как $T|_{C[0,2\pi]} = A^{-1}$, то $\Im T \supset A^{-1}(C[0,2\pi]) = D(A)$.
+    Тогда $(\Im T)^\perp \subset (D(A))^\perp = \left(\overline{D(A)}\right)^\perp$.
+    Покажем, что $\overline{D(A)} = Р$ ($A$~--- плотно определённый оператор).
+    Введём
+    $$
+    D_0 = \{f \in C^1[0, 2\pi] \mid f(0) = 0, f(2\pi) = 0\} \subset D(A)
+    $$
+    $\overline{D_0} = H$ так как $\forall g \in L_2[0,2\pi]\; \forall \varepsilon > 0\;
+    \exists h \in C[0, 2\pi]\colon \|g - h\|_{L_2} \le \varepsilon$.
+    Действительно, по теореме Вейерштрасса $\exists P$~--- многочлен такой, что
+    $$
+    \max \limits_{[0, 2\pi]} |h - P| \le \dfrac{\varepsilon}{\sqrt{2\pi}}
+    $$
+    тогда
+    $$
+    \|h - P\|_{L_2} \le \sqrt{\int\limits_0^{2 \pi}\dfrac{\varepsilon^2}{2\pi}dx} = \varepsilon
+    $$
+    Пусть $|P| \le R$ на $[0, 2\pi]$.
+    Пусть $f \in D_0$, $|f| \le R$ на $[0, 2\pi]$.
+    Пусть также нули многочлена отдалены от 0 и $2\pi$ на $0 \le \delta \le 2\pi$, тогда
+    $$
+    \|f - P\|_{L_2} \le \sqrt{\delta 4 R^2 + \delta 4 R^2} = \sqrt{8}R\sqrt{\delta} \le \varepsilon
+    $$
+    Тогда подберём $\delta \le \dfrac{\varepsilon^2}{8R^2}$.
+    В итоге получаем
+    $$
+    \|f - g\|_{L_2} \le \|f - P\|_{L_2} + \|h - P\|_{L_2} + \|g - h\|_{L_2} \le 3 \varepsilon
+    $$
+    В итоге $\overline{D_0} = H$, значит $\left(\overline{D(A)}\right)^\perp = H^\perp = 0$,
+    следовательно $0 \in \ker T \subset 0 \Rightarrow \ker T = 0$.
+    
+    Пусть $\mu \neq 0$ и $Tg = \mu g$, $g \in H \setminus\{0\}$.
+    Это равносильно
+    $g = \dfrac{1}{\mu}Tg$, $Tg \in C[0, 2\pi]$, следовательно $g \in C[0,2\pi]$, следовательно
+    $Tg = A^{-1} g \in D(A)$, отсюда $g \in D(A)$.
+    В итоге $g \in D(A)$ и
+    $$
+    g = \dfrac{1}{\mu}A^{-1}g \Rightarrow Ag = \dfrac{1}{\mu}g
+    $$
+    то есть $\dfrac{1}{\mu}$~--- собственное значение $A$, $g$~--- собственная функция $A$
+    из $D(A)$.
+    Отсюда $\mu_k = \dfrac{1}{\lambda_k}$ и $g_k = f_k$.
+    По теореме Гильберта-Шмидта все $\{f_k\}_{k \in \mathbb Z}$ образует ортогональный
+    базис.
+\end{Prim}
+
+Просуммируем теперь общие свойства.
+\begin{MathCl}{Замечание}
+    Оператор $A : D(A) \mapsto H$~--- симметричный оператор на $D(A)$, $D(A)$~--- 
+    подпространство в $H$; $\overline{D(A)} = H$; $\ker A = 0$ и $A^{-1} : \Im A \mapsto D(A)
+    $~--- непрерывный оператор и $\overline{\Im A} = H$.
+    Тогда $\exists!$ продолжение по непрерывности оператора $A^{-1}$ до $T : H \mapsto 
+    H$~--- линейный и непрерывный.
+\end{MathCl}
+\begin{Proof}
+    Так как $\|A^{-1}\| < +\infty$, то берём $g \in H$ и $g_n \in \Im A\colon g_n \to g$
+    $$
+    \|A^{-1}g_n - A^{-1}g_m\| \le \|A^{-1}\|\|g_n - g_m\| \to 0
+    $$
+    Тогда $A^{-1}g_n \to h$  и определим $h = Tg$.
+    Такое определение корректно, если $\tilde{g}_n \to g, \tilde{g} \in \Im A$
+    $$
+    \|A^{-1}\tilde{g}_n - A^{-1}\tilde{g}_m\| \le \|A^{-1}\|\|\tilde{g}_n - g_n\|
+    $$
+    где $g_n \to g$ и $\tilde{g}_n \to g$, поэтому
+    $$
+    \|A^{-1}\| \|\tilde{g}_n - g_n\| \to 0
+    $$
+    Оператор $T : H \mapsto H$ линейный и непрерывный, $T|_{\Im A} = A^{-1}$, поэтому
+    $\|T\| \ge \|A^{-1}\|$.
+    Пусть снова $g_n \in \Im A, g_n \to g$
+    $$
+    \|Tg\| = \|\lim_{n \to +\infty} A^{-1}g_n\| = \lim_{n \to +\infty}\|A^{-1}g_n\| \le
+    \lim_{m \to +\infty}\|A^{-1}\|\| \to \|A^{-1}\|\|g\|
+    $$
+    Таким образом $\|T\| \le \|A^{-1}\|$, значит $\|T\| = \|A^{-1}\|$.
+\end{Proof}
+\begin{MathCl}{Утверждение}
+    $T$~--- самосопряжённый оператор в силу симметричности $A$ на $D(A)$
+\end{MathCl}
+\begin{Proof}
+    Рассмотрим $(Tg, h)$, $g,h \in H$.
+    Тогда $\exists g_n, h_n \in \Im A\colon g_n \to g, h_n \to h$ и
+    \begin{multline*}
+    |(Tg, h) - (Tg_n, h_n)| =\\= |(Tg,h) \pm (Tg_n, h) - (Tg_n, h_n)| =\\= |(Tg - Tg_n,  h) + (Tg_n, 
+    h - h_n)|
+    \le\\\le \|h\|\|T\|\|g - g_n\|
+    + \|T g_n\| \|h - h_n\| \to 0
+    \end{multline*}
+    отсюда и в силу того, что $Tg_n =A^{-1} g_n$ так $g_n \in \Im A$
+    $$
+    (Tg, h) = \lim_{n \to +\infty}(Tg_n, h_n) = \lim_{n \to +\infty}(A^{-1}g_n, h_n)
+    $$
+    Пусть $f_n = A^{-1}g_n$ и $\psi_n = A^{-1} h_n$.
+    Это равносильно $Af_n = g_n$, $A\psi_n = h_n$, $\psi_n, f_n \in D(A)$.
+    Тогда
+    $$
+    (Tg, h) = \lim_{n \to +\infty}(f_n, A\psi_n) = \lim_{n \to +\infty}(Af_n, \psi_n) = \lim_{n \to +
+    \infty}(g_n, A^{-1}h_n) = (g, Th)
+    $$
+    аналогично
+    $$
+    (g, Th) = \lim_{n \to +\infty}(g_n, Th_n) = \lim_{n \to +\infty}(g_n, A^{-1}h_n) = (Tg, h)
+    $$
+    В итоге 
+    $$
+    (Tg, h) = (g, Th)\quad \forall g,h \in H
+    $$
+\end{Proof}
+
+Потребуем компактность оператора $T$ (например, если $A^{-1}$ компактен на $\Im A$,
+то $T$~--- компактен на $H$ (доказать в качестве упражнения)).
+Тогда по теореме Гильберта-Шмидта у $T$ есть в $H$ ортогональный базис из
+собственных функций.
+
+$T$ и $A$ обладают общей системой собственных функций.
+$$
+    \left\{
+    \begin{array}{l}
+        Af = \lambda f\\
+        f \in D(A)
+    \end{array}
+    \right. \Rightarrow
+    \left\{
+    \begin{array}{l}
+        f = \lambda A^{-1}f = \lambda T f\\
+        f \in D(A)
+    \end{array}
+    \right.
+$$
+$\ker A = 0 \Rightarrow \lambda \ne 0 \Rightarrow Tf = \dfrac{1}{\lambda}f, f \in D(A)$.
+И наоборот, $\ker T = (\Im T)^\perp$ так как $T = T^*$
+$$
+(\Im T)^\perp \subset (D(A))^\perp = \left(\overline{D(A)}\right)^\perp = H^\perp = 0
+$$
+значит $\ker T = 0$.
+$Tf =\mu f, f \in H$ и $\mu \ne 0$, следовательно $f = \dfrac{1}{\mu}Tf$.
+
+Потребуем $\Im T \subset \Im A$.
+Пусть $\dfrac{1}{\mu}Tf \in \Im A$, тогда $f = \dfrac{1}{\mu}Tf \in \Im A$, тогда $Tf = A^{-1}f \in 
+D(A)$, следовательно $f \in D(A)$, значит $f = \dfrac{1}{\mu}A^{-1}f \Rightarrow Af =\dfrac{1}
+{\mu}f$.
+
+В итоге получили, что ортогональная система всех собственных функций $A$ образует
+в $H$ ортогональный базис.
+
+Рассмотрим теперь в качестве приложения задачу Штурма-Лиувиля.
+\begin{align*}
+    &A = a(x)\dfrac{d^2}{dx^2} + b(x)\dfrac{d}{dx} + c(x)I,\quad x \in [\alpha, \beta] \subset 
+    \mathbb R\\
+    &a, b, c \in C[\alpha, \beta], a \not\equiv 0\\
+    &a, b, c : [\alpha, \beta] \mapsto \mathbb R
+\end{align*}
+$\Im A \subset C[\alpha, \beta]$.
+Пусть $H = L_2[\alpha, \beta]$ и 
+$$
+D(A) = \left\{f \in C^2[\alpha, \beta] \left\arrowvert
+\begin{aligned}
+    &\mu_1f'(\alpha) + \nu_1f(\alpha) = 0 \qquad (1)\\
+    &\mu_2  f'(\beta) + \nu_2  f(\beta) = 0 \qquad (2)
+\end{aligned}
+\right.
+\right\}
+$$
+где
+\begin{gather*}
+    \mu_k, \nu_k \in \mathbb R\\
+    |\mu_1| + |\nu_1| > 0\\
+    |\mu_2| + |\nu_2| > 0
+\end{gather*}
+Поставим теперь задачу: $\forall f \in C[\alpha, \beta]\; \forall \lambda \in \mathbb C$
+исследовать решение уравнения
+$$
+\left\{
+\begin{array}{l}
+    Au(x) = \lambda u(x) + f(x), \quad x \in [\alpha, \beta]\\
+    u \in D(A)
+\end{array}
+\right.
+$$
+Исследуем, когда $\ker A = 0$.
+Если $\ker A = 0$, то рассмотрим 2 задачи Коши:
+$$
+\left\{
+\begin{array}{l}
+    Av_1 = 0, \quad v_1 \in C^2[\alpha, \beta]\\
+    v_1(\alpha) = \mu_1\\
+    v'_1(\alpha) = -\nu_1
+\end{array}
+\right.
+$$
+$\exists! v_1 \not\equiv 0$ удовлетворяет (1).
+Аналогично
+$$
+\left\{
+\begin{array}{l}
+    Av_2 = 0, \quad v_2 \in C^2[\alpha, \beta]\\
+    v_2(\alpha) = \mu_2\\
+    v'_2(\alpha) = -\nu_2
+\end{array}
+\right.
+$$
+и $\exists! v_2 \not\equiv 0$ удовлетворяет (2).
+Пусть $\ker ! = 0$, тогда $v_2$ не удовлетворяет (1) и $v_1$ не удовлетворяет (2).
+Следовательно $v_1$ и $v_2$ линейно независимы в $C^2[\alpha, \beta]$.
+Следовательно $\{v_1, v_2\}$~--- фундаментальная система решений для $A$.
+\begin{MathCl}{Утверждение}
+    Если $\exists$ специальная фундаментальная система решений $v_1 ,v_2 \in C^2[\alpha,
+    \beta]$ и $Av_k = 0\; k=1,2$ на $[\alpha, \beta]$ и $v_1$ удовлетворяет (1), но не
+    удовлетворяет (2) и $v_2$ удовлетворяет (2), но не удовлетворяет (1), тогда
+    $\ker A = 0$
+\end{MathCl}
+\begin{Proof}
+    Если $v \in \ker A$, то 
+    $$
+    \left\{
+    \begin{array}{l}
+        v = \alpha_1 v_1 + \alpha_2 v_2\\
+        v \in D(A)
+    \end{array}
+    \right.
+    $$
+    из условия (1)
+    $$
+    \alpha_1(\mu_1 v'_1(\alpha) + \nu_1 v_1(\alpha)) + \alpha_2(\mu_1 v'_2(\alpha) + \nu_1 
+    v_2(\alpha)) = \alpha_2(\mu_1 v'_2(\alpha) + \nu_1 v_2(\alpha)) = 0
+    $$
+    И так как $v_2$ не удовлетворяет (1), то $\alpha_2 = 0$.
+    Аналогично $\alpha_1 = 0$.
+    Следовательно $v \equiv 0$.
+\end{Proof}
+\begin{MathCl}{Утверждение}
+    Пусть $\ker A = 0$ (то есть существует специальная фундаментальная система решений 
+    $v_1$ и $v_2$). 
+    Тогда
+    $$
+    A^{-1} : C[\alpha, \beta] \mapsto D(A)
+    $$
+    $\forall f \in C[\alpha, \beta]$ и можно указать единственную функцию $u \in D(A)
+    \colon u = A^{-1}f \Rightarrow Au = f$
+\end{MathCl}
+\begin{Proof}
+    $$
+    u(x) = C_1(x)v_1(x) + C_2(x)v_2(x)
+    $$
+    Поставим требование
+    $$
+    C'_1(x)v_1(x) + C'_2(x)v_2(x) = 0
+    $$
+    тогда
+    $$
+    v' = C_1 v'_1 + C_2 v'_2
+    $$
+    В итоге  получаем
+    \begin{multline*}
+        Au = a(C'_1v'_1 + C'_2v'_2) + a(C_1 v''_1 + C_2 v''_2) 
+    +\\+ b(C_1 v'_1 + C_2 v'_2) + c(C_1 v_1 + C_2 v_2) =\\=
+    a(C'_1v'_1 + C'_2v'_2) + C_1 Av_1 + C_2 Av_2 = f
+    \end{multline*}
+    где $C_1Av_1 = C_2 A v_2 = 0$.
+    В итоге можно записать:
+    $$
+    \left(
+    \begin{array}{cc}
+        v_1 & v_2\\
+        v'_1 & v'_2
+    \end{array}
+    \right)
+    \vect{C'_1}{C'_2}
+    =
+    \vect{0}{\frac{f}{a}}
+    $$
+    где $
+    \left(
+    \begin{array}{cc}
+        v_1 & v_2\\
+        v'_1 & v'_2
+    \end{array}
+    \right)$~--- фундаментальная система решений.
+    $$
+    \det
+    \left(
+    \begin{array}{cc}
+        v_1 & v_2\\
+        v'_1 & v'_2
+    \end{array}
+    \right) = w = \mathrm{const} e^{-\int \frac{b}{a} dx}
+    $$
+    Тогда
+    $$
+    \vect{C'_1}{C'_2} = \dfrac{1}{w}
+    \left(
+    \begin{array}{cc}
+        v_2' & -v_2\\
+        -v'_1 & v_1
+    \end{array}
+    \right)
+    \vect{0}{\frac{f}{a}}
+    =
+    \vect{-\frac{v_2}{wa}f}{\frac{v_1}{wa}f}
+    $$
+    В итоге
+    \begin{gather*}
+        C_1(x) = \int \limits_x^\beta \dfrac{v_2(t)}{w(t)a(t)}f(t)dt + D_1\\
+        C_2(x) = \int \limits_\alpha^x \dfrac{v_1(t)}{w(t)a(t)}f(t)dt + D_2
+    \end{gather*}
+    Осталось $u = C_1(x)v_1(x) + C_2(x)v_2(x)$ подставить в (1) и (2) и найти $D_1$ и $D_2$.
+    \begin{MathCl}{Утверждение}
+        $D_1 = D_2$
+    \end{MathCl}
+\end{Proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
