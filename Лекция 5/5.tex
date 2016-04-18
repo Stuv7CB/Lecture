@@ -101,11 +101,11 @@ $$
     Заметим, что, во-первых, если $L \subset H$ подпространство и $\dim \ker L
     < +\infty$, то это равносильно тому, что для любой ограниченной
     последовательность из $L$ имеет фундаментальную подпоследовательность.
-    В прямую сторону это следует из теоремы Больцано-Вейерштрасса.
+    В прямую сторону это следует из теоремы Больцано~--- Вейерштрасса.
     Покажем справедливость в обратную сторону.
     Если вдруг $\dim L = +\infty$, то $\exists\{f_n\}_{n = 1}^\infty$
     последовательность линейно независимых векторов.
-    Подвергнем её процедуре ортогонализации Грама-Шмитда и получим $\{g_n\}
+    Подвергнем её процедуре ортогонализации Грамма~--- Шмидта и получим $\{g_n\}
     _{n = 1}^\infty \subset L$, и $g_m \perp g_m\; n \ne m$, и $g_n = \Lin
     \{f_1,\dots,f_n\}$ так как
     \begin{gather*}
@@ -194,7 +194,7 @@ $$
     $$
     \left\{
         \begin{array}{l}
-            \|\Al g_n\| < \dfrac{1}{n} \quad \forall n \in \mathbb N\\
+            \|{\Al} g_n\| < \dfrac{1}{n} \quad \forall n \in \mathbb N\\
             \|g_n\| = 1
         \end{array}
     \right.
@@ -207,7 +207,7 @@ $$
     $$
     \left\{
         \begin{array}{l}
-            \Al g_{n_m} \to 0\\
+            {\Al} g_{n_m} \to 0\\
             A g_{n_m} \to h
         \end{array}
     \right.
@@ -358,8 +358,8 @@ $$
     $\forall n, p \in \mathbb N$
     \begin{multline*}
         \|Ag_n - Ag_{n + p} \pm \lambda g_n \pm \lambda g_{n + p}\| =\\
-        = \|\Al g_n - \Al g_{n + p} + \lambda g_n - \lambda g_{n + p}\| =\\
-        = |\lambda|\|\dfrac{\Al g_n - \Al g_{n + p} + \lambda g_n}{\lambda} -
+        = \|{\Al} g_n - {\Al} g_{n + p} + \lambda g_n - \lambda g_{n + p}\| =\\
+        = |\lambda|\|\dfrac{{\Al} g_n - {\Al} g_{n + p} + \lambda g_n}{\lambda} -
         g_{n + p}\| \ge\\\ge |\lambda| \|g_{n + p}\| = |\lambda|
     \end{multline*}
     Следовательно
@@ -404,8 +404,8 @@ $$
 \begin{Proof}
     По теореме Фредгольма для произвольного непрерывного оператора 
     \begin{gather*}
-        \ker\Al = (\Im (\Al)^*)^\perp\\
-        \ker (\Al)^* = (\Im \Al)^\perp
+        \ker {\Al} = (\Im ({\Al})^*)^\perp\\
+        \ker ({\Al})^* = (\Im {\Al})^\perp
     \end{gather*}
     Если увидем, что $\dim \ker \Al \le \dim (\Im \Al)^\perp$, то это 
     аналогично для сопряжённого оператора $\dim \ker (\Al)^* \le \dim (\Im(\Al
@@ -421,7 +421,7 @@ $$
     $\exists \Phi : \ker \Al \mapsto (\Im \Al)^\perp$ линейный конечномерный
     $\ker \Phi \ne 0$.
     Оператор $\Phi$ будет компактный в конечномерном гильбертовом пространстве
-    так как по теореме Больцано-Вейерштрасса все линейные операторы являются
+    так как по теореме Больцано~--- Вейерштрасса все линейные операторы являются
     компактными.
     Рассмотрим $P : H \mapsto \ker \Al$, где $\ker \Al \ne 0$, ортопроектор.
     $\ker \Al \oplus (\ker \Al)^\perp = H$ и $\|P\| = 1$.
@@ -450,7 +450,7 @@ $$
     $$
     \Phi P(\ker \Al) = \Phi \ker \Al = (\Im \Al)^\perp
     $$
-    Также $H = \ker \Al + (\ker \Al)^\perp$ и по теореме Риса об ортогональном
+    Также $H = \ker \Al + (\ker \Al)^\perp$ и по теореме Рисса об ортогональном
     разложении
     $$
     \Im T_\lambda = \Im \Al + (\Im \Al)^\perp = H

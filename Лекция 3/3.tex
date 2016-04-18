@@ -22,8 +22,8 @@ $$
         &\ker A_\lambda \ne 0\\
         &\left \{
             \begin{aligned}
-                &\ker \Al = 0\\
-                &\Im \Al \ne H
+                &{\ker \Al = 0}\\
+                &{\Im \Al \ne H}
             \end{aligned}
             \right.
     \end{aligned}
@@ -34,8 +34,8 @@ $$
 $$\sigma_C(A) =  \left \{ \lambda \in \mathbb C \mid 
 \left\{
     \begin{aligned}
-                &\ker \Al = 0\\
-                &\Im \Al \ne H
+                &{\ker \Al = 0}\\
+                &{\Im \Al \ne H}
     \end{aligned}
 \right.\right \}
 $$
@@ -217,9 +217,9 @@ $\forall \lambda \ne 0\colon \dfrac{1}{\lambda} \in \rho(A)\;-\dfrac{1}{\lambda}
     $\Phi_n : H \to \mathbb C$ линейный и непрерывный оператор, где $\Phi_n(g) = \dfrac{A^n f}{\lambda^n}$.
     Норма оператора
     $\|\Phi_n\| = \dfrac {\|A^n f\|}{|\lambda^n|}$ сходится к 0 поточечно на $H$.
-    Отсюда по теореме Банаха-Штейнгаусса $\|\Phi_n\|$ --- ограниченная числа последовательность. $\forall f \in H\;\exists M_f > 0\colon \|\dfrac{A_n f}{\lambda^n}\|
+    Отсюда по теореме Банаха~--- Штейнгаусса $\|\Phi_n\|$ --- ограниченная числа последовательность. $\forall f \in H\;\exists M_f > 0\colon \|\dfrac{A_n f}{\lambda^n}\|
     \le M_f \Rightarrow \{\dfrac{A_n}{\lambda_n}\}$ --- поточечно сходящаяся на $H$ ограниченная последовательность операторов, следовательно
-    по теореме Банаха-Штейнгаусса $\|\dfrac{A^n}{\lambda^n}\|$ ограниченная числовая последовательность.
+    по теореме Банаха~--- Штейнгаусса $\|\dfrac{A^n}{\lambda^n}\|$ ограниченная числовая последовательность.
     Следовательно $\exists M>0\colon \|\dfrac{A^n}{\lambda^n}\| \le M \Rightarrow \forall |\lambda| > r(A)\;\sqrt[n]{\|A^n\|} \le \sqrt[n]{M}|\lambda|$.
     $\varlimsup\limits_{n \to \infty} \sqrt[n]{\|A^n\|} \le |\lambda| \to r(A) + 0$.
     Получаем $\varlimsup\sqrt[n]{\|A^n\|} \le r(A) \le \varliminf\sqrt[n]{\|A^n\|}$, что и требовалось доказать.
@@ -236,7 +236,7 @@ $\forall \lambda \ne 0\colon \dfrac{1}{\lambda} \in \rho(A)\;-\dfrac{1}{\lambda}
 \begin{Proof}
     $\forall g \in H$ рассмотрим $f \in H\;f \to (Af, g) = \Phi_g(f)$.
     $\Phi_g : H \to \mathbb C$ линейный и непрерывный.
-    Тогда по теореме Риса-Фреше $\exists! h \in H\colon \Phi_g(f) = (f, h) \Rightarrow \exists! T : H \mapsto H\colon \forall g \in H\;Tg = h_g$ и
+    Тогда по теореме Рисса~--- Фреше $\exists! h \in H\colon \Phi_g(f) = (f, h) \Rightarrow \exists! T : H \mapsto H\colon \forall g \in H\;Tg = h_g$ и
     $$
     (Af, g) = (f, h_g) = (f, Tg)
     $$
@@ -280,7 +280,7 @@ $L \subset H$ --- подпространство, тогда $L \subseteq L^{\pe
     Рассмотрим $\forall f \in L^{\perp\perp}$, тогда $f \in \overline{L}$ и 
     $$
     \overline{L} \oplus \overline{L}^{\perp} = H
-    $$ по теореме Риса об ортогональном дополнении.
+    $$ по теореме Рисса об ортогональном дополнении.
     Покажем, что $\overline{L}^{\perp} \subset L^{\perp}$.
     Пусть последовательность $h_n \in L$ такая, что $h_n \to \Phi \in \overline{L}$.
     Пусть $g \in L^{\perp}$, тогда $(h_n, g) = 0$, $h_n \to \Phi$, поэтому $(\Phi, g) = 0\;\forall \Phi \in \overline{L}$ по непрерывности скалярного произведения.
