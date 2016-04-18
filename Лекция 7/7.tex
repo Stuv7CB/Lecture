@@ -182,7 +182,8 @@ $$
 Так как при $N = +\infty$ $\lambda_k \to 0$, то $\dfrac{1}{|1 - \lambda \lambda_k|} \to 1$ 
 при $k \to +\infty$, поэтому $d(\lambda)$ ограничено.
 $$
-\|R_A(\lambda)g\| \le \sqrt{\|g_\parallel\|^2 + \sump[k][1][N] d(\lambda)^2 \sump[j][1][m_k]\|P_{kj}g\|^2} \le \max\{1, d(\lambda)\}\|g\|
+\|R_A(\lambda)g\| \le \sqrt{\|g_\parallel\|^2 + \sump[k][1][N] d(\lambda)^2 \sump[j][1][m_k]\|
+P_{kj}g\|^2} \le \max\{1, d(\lambda)\}\|g\|
 $$
 где 
 $$
@@ -386,7 +387,7 @@ $$
     Тогда $A^{-1}g_n \to h$  и определим $h = Tg$.
     Такое определение корректно, если $\tilde{g}_n \to g, \tilde{g} \in \Im A$
     $$
-    \|A^{-1}\tilde{g}_n - A^{-1}\tilde{g}_m\| \le \|A^{-1}\|\|\tilde{g}_n - g_n\|
+    \|A^{-1}\tilde{g}_n - A^{-1}g_n\| \le \|A^{-1}\|\|\tilde{g}_n - g_n\|
     $$
     где $g_n \to g$ и $\tilde{g}_n \to g$, поэтому
     $$
@@ -463,7 +464,8 @@ $$
 $Tf =\mu f, f \in H$ и $\mu \ne 0$, следовательно $f = \dfrac{1}{\mu}Tf$.
 
 Потребуем $\Im T \subset \Im A$.
-Пусть $\dfrac{1}{\mu}Tf \in \Im A$, тогда $f = \dfrac{1}{\mu}Tf \in \Im A$, тогда $Tf = A^{-1}f \in 
+Тогда $\dfrac{1}{\mu}Tf \in \Im A$, тогда $f = \dfrac{1}{\mu}Tf \in \Im A$, тогда, учитывая
+$T|_{\Im A} = A^{-1}$,  получаем $Tf = A^{-1}f \in 
 D(A)$, следовательно $f \in D(A)$, значит $f = \dfrac{1}{\mu}A^{-1}f \Rightarrow Af =\dfrac{1}
 {\mu}f$.
 
