@@ -1,0 +1,619 @@
+\documentclass[14pt]{extarticle}
+\usepackage{../preamble}
+\newcommand{\vect}[2]{\left(
+\begin{array}{c}
+    #1\\
+    #2
+\end{array}\right)}
+%=============================================================================!
+\begin{document}
+\section*{Задача Штурма-Лиувиля}
+
+Пусть оператор $A$ задан, как:
+$$
+A = a(x)\dfrac{d^2}{dx^2} + b(x)\dfrac{d}{dx} + c(x)I, \quad x \in [\alpha, \beta]
+$$
+где $a(x), b(x), c(x) \in C[\alpha, \beta]$~--- вещественнозначные функции, причём $a \ne 0\;
+\forall x \in [\alpha, \beta]$.
+Область определения оператора $A$:
+$$
+D(A) = \left\{ u \in C^2[\alpha,\beta] \left\arrowvert
+\begin{array}{l}
+    \mu_1 u'(\alpha) + \nu_1 u(\alpha) = 0 \quad (1)\\
+    \mu_2 u'(\beta) + \nu_2 u(\beta) = 0 \quad (2)
+\end{array}
+\right.\right\}
+$$
+где $\mu_k, \nu_k \in \mathbb R\;k = 1,2$ и
+\begin{gather*}
+    |\mu_1| + |\nu_1| > 0\\
+    |\mu_2| + |\nu_2| > 0
+\end{gather*}
+Оператор $A$ действует $A : D(A) \mapsto L_2[\alpha, \beta]$, где $L_2[\alpha, \beta] = H$ и
+$D(A) \subset H$, причём $\overline{D(A)} = H$.
+\begin{MathCl}{Утверждение}
+    $\ker A = 0$ равносильно тому, что существует фундаментальная система решений
+    уравнения
+    $$
+    \left\{
+    \begin{array}{l}
+        Av = 0\\
+        v \in C^2[\alpha, \beta]
+    \end{array}
+    \right.
+    $$
+    $\{v_1, v_2\} \subset C^2[\alpha, \beta]$, $\forall k\;Av_k = 0$ и $v_1$ удовлетворяет (1), но
+    не удовлетворяет (2), и $v_2$ удовлетворяет (2), но не удовлетворяет (1).
+\end{MathCl}
+\begin{Proof}
+    Граничные условия, определяющие $v_1$ и $v_2$ эквивалентны заданию задачи для 
+    Коши.
+    $v_1 \ne 0$ и $v_1 \in C^2[\alpha, \beta]$
+    $$
+    \left\{
+    \begin{aligned}
+        &Av_1 = 0\\
+        &v_1(\alpha) = \mu_1\\
+        &v'_1(\alpha) = -\nu_1
+    \end{aligned}
+    \right.
+    $$
+    И соответственно $v_2 \ne 0$ и $v_2 \in C^2[\alpha, \beta]$
+    $$
+    \left\{
+    \begin{aligned}
+        &Av_2 = 0\\
+        &v_2(\beta) = \mu_2\\
+        &v'_2(\beta) = -\nu_2
+    \end{aligned}
+    \right.
+    $$
+    Так как $\mu_k, \nu_k \in \mathbb R$ и $a, b, c$~--- вещественнозначные функции, 
+    то и $v_1$ и $v_2$ вещественнозначные.
+    Тогда решение уравнения
+    $$
+    \left\{
+    \begin{aligned}
+        &Au = 0\\
+        &u \in C^2[\alpha, \beta]
+    \end{aligned}
+    \right.
+    $$
+    принимает вид $u = C_1 v_1 + C_2 v_2$ в силу независимости $v_1$ и $v_2$.
+    Поэтому ядро $\ker A = 0$.
+\end{Proof}
+
+Когда $\ker A = 0$ надо построить $A^{-1} : \Im A \mapsto D(A)$, 
+верно ли, что $\Im A = C[\alpha, \beta]$?
+Существует ли $u \in D(A)\colon Au = f \in C[\alpha, \beta]$.
+Если существует, то единственность автоматически следует из $\ker A = 0$.
+Ищем решение в виде $u(x) = C_1(x)v_1(x) + C_2(x)v_2(x)$, где $C_1, C_2 \in C^2[\alpha, \beta]$.
+$$
+\left\{
+\begin{aligned}
+    &C'_1 v_1 + C'_2 v_2 = 0\\
+    &a(C'_1 v'_1 + C'_2 v'_2) = f
+\end{aligned}
+\right.
+$$
+Тогда
+$$
+\left(
+\begin{array}{cc}
+    v_1 & v_2\\
+    v'_1 & v'_2
+\end{array}
+\right)
+\vect{C'_1}{C'_2}
+=
+\vect{0}{\frac{f}{a}}
+$$
+на $[\alpha, \beta]$.
+Тогда определитель Вронского
+$$
+w = \det \left|
+\begin{array}{cc}
+    v_1 & v_2\\
+    v'_1 & v'_2
+\end{array}
+\right|
+=
+\mathrm{const} e^{-\int \frac{b}{a}dx}
+$$
+Тогда
+$$
+    \vect{C'_1}{C'_2} = \vect{-\frac{v_2}{wa}f}{\frac{v_1}{wa}f}
+$$
+В итоге
+\begin{gather*}
+    C_1(x) = \int \limits_x^\beta \dfrac{v_2(t)}{w(t)a(t)}f(t)dt + D_1\\
+    C_2(x) = \int \limits_\alpha^x \dfrac{v_1(t)}{w(t)a(t)}f(t)dt + D_2
+\end{gather*}
+Получаем соответственно
+$$
+u(x) = \intl[\alpha][x][dt]{\dfrac{v_1(t) v_2(x)}{a(t) w(t)} f(t)} +
+\intl[x][\beta][dt]{\dfrac{v_1(x) v_2(t)}{a(t) w(t)} f(t)} + D_1 + D_2
+$$
+Используем, что $u \in D(A)$.
+Подставим в первое граничное условие:
+\begin{multline*}
+    \mu_1(\dfrac{v_1(\alpha) v_2(\alpha)}{(aw)(\alpha)} f(\alpha) +
+    \intl[\alpha][\alpha][dt]{\dfrac{v_1(t) v'_2(\alpha)}{a(t) w(t)} f(t)} +\\+
+    (-1)\dfrac{v_1(\alpha)v_2(\alpha)}{(aw)(\alpha)}f(\alpha) +
+    \intl[\alpha][\beta][dt]{\dfrac{v'_1(\alpha) v_2(t)}{a(t) w(t)} f(t)} +
+    D_1 v'_1(\alpha) + D_2 v'_2(\alpha)) +\\+
+    \nu_1 (\intl[\alpha][\beta][dt]{\dfrac{v_1(\alpha) v_2(t)}{a(t) w(t)} f(t)} +
+    D_1 v_1(\alpha) + D_2 v_2(\alpha)
+    ) = 0
+\end{multline*}
+Упрощаем и получаем
+\begin{multline*}
+    (\mu_1 v'_1(\alpha) + \nu_1 v_1(\alpha))
+    \intl[\alpha][\beta][dt]{\dfrac{v'_1(\alpha) v_2(t)}{a(t) w(t)} f(t)} +\\+
+    D_1 (\mu_1 v'_1(\alpha) + \nu_1 v_1(\alpha)) +
+    D_2 (\mu_1 v'_2(\alpha)) + \nu_1 v_2(\alpha))
+    = 0
+\end{multline*}
+Отсюда $D_2 = 0$.
+Теперь подставим во второе граничное условие
+\begin{multline*}
+    \mu_2(\dfrac{v_1(\beta) v_2(\beta)}{(aw)(\beta)}f(\beta) +
+    \intl[\alpha][\beta][dt]{\dfrac{v_1(t) v'_2(\beta)}{a(t) w(t)} f(t)} +\\+
+    (-1)\dfrac{v_1(\beta) v_2(\beta}{(aw)(\beta)}f(\beta) +
+    \intl[\beta][\beta][dt]{\dfrac{v'_1(\beta)) v_2(t)}{a(t) w(t)} f(t)}+
+    D_1 v'_1(\alpha)) +\\+
+    \nu_2(\intl[\alpha][\beta][dt]{\dfrac{v_1(t) v_2(\beta)}{a(t) w(t)} f(t)} +
+    D_1 v_1(\beta)) = 0
+\end{multline*}
+Тогда
+\begin{multline*}
+    (\mu_2 v'_2(\beta) + \nu_2 v_2(\beta))
+    \intl[\alpha][\beta][dt]{\dfrac{v_1(t)}{a(t) w(t)} f(t)} +\\+
+    D_1((\mu_2 v'_1(\beta) + \nu_2 v_1(\beta))
+    = 0
+\end{multline*}
+А значит и $D_1 = 0$.
+Осталось проверить, что $u \in C^2[\alpha, \beta]$.
+$\forall x \in [\alpha, \beta]$
+\begin{multline*}
+u'(x) = (\dfrac{v_1 v_2}{aw}f)(x) + 
+\intl[\alpha][x][dt]{\dfrac{v_1(t)v'_2(x)}{a(t) w(t)} f(t)} -\\-
+(\dfrac{v_1 v_2}{aw}f)(x) + \intl[x][\beta][dt]{\dfrac{v_2(t)v'_1(x)}{a(t) w(t)} f(t)}
+=\\=
+\intl[\alpha][x][dt]{\dfrac{v_1(t)v'_2(x)}{a(t) w(t)} f(t)} +
+\intl[x][\beta][dt]{\dfrac{v_2(t)v'_1(x)}{a(t) w(t)} f(t)}
+\end{multline*}
+Так как $v'_1, v'_2 \in C^1[\alpha, \beta]$ и интеграл от функций в $C[\alpha, \beta]$, то
+$u' \in C^1[\alpha, \beta]$, а значит $u \in C^2[\alpha, \beta]$.
+Таким образом для любая непрерывная функция $f$ порождает решение, значит
+действительно $\Im A = C[\alpha, \beta]$.
+
+Определим теперь $T : L_2[\alpha, \beta] \mapsto L_2[\alpha, \beta]$.
+$$
+(Tf)(x) = \intl[\alpha][\beta][dt]{K(t, x) f(t)} \quad f \in L_2[\alpha, \beta]
+$$
+где
+$$
+K(t, x) = \dfrac{1}{(aw)(t)}
+\left\{
+\begin{aligned}
+    &v_1(t)v_2(x) \quad \alpha \le t \le x \le \beta\\
+    &v_1(x)v_2(t) \quad \alpha \le x \le t \le \beta
+\end{aligned}
+\right.
+$$
+$K(t, x) \in C^2[\alpha, \beta]^2) \subset L_2([\alpha,\beta]^2)$.
+Далее $\Im T \subset C[\alpha, \beta] = \Im A$ и $T|_{C[\alpha, \beta]} = A^{-1}$.
+$\forall f \in C[\alpha, \beta]$:
+$$
+\left\{
+\begin{aligned}
+    &Au = f\\
+    &u \in D(A)
+\end{aligned}
+\right. \Leftrightarrow
+\left\{
+\begin{aligned}
+    &u = Tf \in D(A)\\
+    &f \in C[\alpha, \beta]
+\end{aligned}
+\right.
+$$
+\begin{MathCl}[когда $T$~--- самосопряжённый оператор]{Наблюдение}
+    Так как $a, b, c$~--- вещественнозначный и $\mu_k, \nu_k \in \mathbb R$, $k = 1, 2$, то
+    $v_1, v_2$~--- вещественнозначные, а значит и $K$ также вещественнозначная.
+    Таким образом условием самоспряжённости для $T$ является $K(t, x) = K(x, t)\;\forall t, x
+    \in [\alpha, \beta]$.
+\end{MathCl}
+\\Этому условию препятствует $\dfrac{1}{(aw)(t)}$, поэтому нужно, чтобы это была бы
+константа. $aw = \mathrm{const}$ на $[\alpha, \beta]$, если $a \in C^1[\alpha, \beta]$ и
+$a'(x) = b(x)\;\forall x \in [\alpha, \beta]$.
+Тогда
+$$
+\int\dfrac{b}{a} \mathop{dx} = \int \dfrac{a'}{a} \mathop{dx} = \ln |a| 
+$$
+тогда
+$$
+w = \mathrm{const} e^{-\ln |a|} = \dfrac{\mathrm{const}}{|a|}
+$$
+на $[\alpha, \beta]$.
+Так как $|a| = a \mathop{\mathrm{sgn}}\nolimits(a)$ и $a \ne 0\;\forall x \in [\alpha, \beta]$
+и $a \in C^1[\alpha, \beta]$, то $\mathop{\mathrm{sgn}}\nolimits(a) \equiv \mathrm{const}$
+$$
+w = \dfrac{\mathrm{const}}{a}
+$$
+значит $aw = \mathrm{const}$ на $[\alpha, \beta]$.
+При $a' = b$ оператор $A$ имеет вид 
+$$
+(Au)(x) = \dfrac{d}{dx}(a(x)\dfrac{d}{dx}u(x)) + c(x) u(x)
+$$
+Такой оператор является симметричным на $D(A)$, а значит и $T$ является
+самосопряжённым в $H$.
+
+Пусть $a' = b$ и $T$~--- компактный самосопряжённый оператор.
+Тогда по теореме Гильберта~--- Шмидта в $H$ существует ортогональный базис 
+$\e{e} \subset L_2[\alpha, \beta]$ из собственных функций $T$, то есть $Te_k = \lambda_k
+e_k$, где $\lambda_k \ne 0$ так как $\ker  T = (\Im T^*)^\perp = (\Im T)^\perp$, где
+$(\Im T)^\perp \subset (D(A))^\perp = \left(\overline{D(A)}\right)^\perp = H^\perp = 0$.
+$\e[N]{\lambda}$~--- набор собственных значений, где $N \in \mathbb N \cup \{+\infty\}$.
+$\ker T_{\lambda_k}$~--- конечномерный по 1-ой теореме Фредгольма.
+Пусть $\dim \ker T_{\lambda_k} = m_\lambda$.
+$e_{1, k}\dots _{m_k, k}$~--- ортогональный базис в $\ker T_{\lambda_k}$, $Te_{i,k} = 
+\lambda_k e_{i,k}$, $i =1\dots m_k$. $\{e_{i,k}\}^{k = 1 \dots N}_{i = 1 \dots m_k}$,
+$N \in \mathbb N \cup \{+\infty\}$.
+Так как $L_2[\alpha, \beta] = H$ бесконечномерно и $T_{\lambda_k}$ конечномерно, то
+$N$ должно быть равно $+\infty$.
+Тогда $\lambda_k \to 0\; k \to +\infty$ по 4-ой теореме Фредгольма и $\lambda_k \in \mathbb 
+R$ так как $T$~--- самосопряжённый.
+\begin{MathCl}{Утверждение}
+    $\forall k \in \mathbb N\; \forall i = 1 \dots m_k$ $e_{i, k} \in D(A)$ и $A e_{i,k} =
+    \dfrac{1}{\lambda_k}e_{i,k}$, то есть $\{e_{i,k}\}^{k = 1 \dots N}_{i = 1 \dots m_k}$~---
+    ортогональный базис в $H$ из собственных функций $A$.
+\end{MathCl}
+\begin{Proof}
+    $T e_{i, k} = \lambda_k e_{i, k}$, где $\lambda_k \ne 0$.
+    Тогда $e_{i, k} = \dfrac{1}{\lambda_k} Te_{i, k}$.
+    $\Im T \subset C[\alpha, \beta] = \Im A \Rightarrow e_{i, k} \in C[\alpha, \beta]$.
+    С учётом того, что $T|_{C[\alpha, \beta]} = A^{-1} : C[\alpha, \beta] \mapsto D(A)$
+    получаем $T e_{i, k} \in D(A)$, значит $e_{i,k} \in D(A)$.
+    А значит $A e_{i, k} = \dfrac{1}{\lambda_k}A A^{-1} e_{i, k} = \dfrac{1}{\lambda_k} e_{i,k}$.
+\end{Proof}
+\begin{Theor}[Стеклова]
+    Пусть $a \in C^1[\alpha, \beta]$, $b = a'$, $c \in C[\alpha, \beta]$. Пусть $a, b ,c \in \mathbb R
+    $ и $\mu_k, \nu_k \in \mathbb R$, $k = 1, 2$ и пусть существует специальная 
+    фундаментальная система решений $A$ (то есть $\ker A = 0$).
+    Тогда а) $A$ обладает в $H$ ортогональным базисом из своих собственных функций,
+    отвечающих различным собственным значениям $\dfrac{1}{\lambda_k}, \lambda_k \to 0$.
+    б) $\forall \lambda \ne \dfrac{1}{\lambda_k}\;\forall k \in \mathbb N$; $\forall f \in C[\alpha,
+    \beta]\; \exists! u \in D(A)$ уравнения
+    $$
+    \left\{
+    \begin{aligned}
+        &Au = \lambda u + f\\
+        &u \in D(A)
+    \end{aligned}
+    \right\}
+    $$
+    такое, что 
+    $$
+    u = \sump[k] \sump[i][1][m_k]\dfrac{f_{i,k}}{\frac{1}{\lambda_k} - \lambda} e_{i,k}
+    $$
+    сходящаяся в $H = L_2[\alpha, \beta]$, где $f_{i,k} = \dfrac{(f, e_{i,k})}{(e_{i,k}, e_{i,k})}$.
+\end{Theor}
+\begin{Proof}
+    а) уже доказано.
+    Докажем б).
+    Помним, что $\forall g \in C[\alpha, \beta]$ уравнение
+    $$
+    \left\{
+    \begin{aligned}
+        &Au = g\\
+        &u \in D(A)
+    \end{aligned}
+    \right. \Leftrightarrow
+    \left\{
+    \begin{aligned}
+        &u = Tg\in D(A)\\
+        &g \in C[\alpha, \beta]
+    \end{aligned}
+    \right.
+    $$
+    А так как $\lambda u + f \in C[\alpha, \beta]$, то
+    $$
+    \left\{
+    \begin{aligned}
+        &A u = \lambda u + f\\
+        &u \in D(A)
+    \end{aligned}
+    \right.
+    \Rightarrow
+    \left\{
+    \begin{aligned}
+        &u = \lambda T u  + T f \in D(A)\\
+        &f \in C[\alpha, \beta]\\
+        &u \in C[\alpha, \beta]
+    \end{aligned}
+    \right.
+    $$
+    В обратную сторону рассмотрим уравнение
+    $$
+    u = \lambda T u + T f
+    $$
+    для $u \in L_2[\alpha, \beta]$.
+    Это уравнение Фредгольма второго рода.
+    $f \in C[\alpha, \beta]$, то помним, что $T u \in C[\alpha, \beta]$, так как $\Im T \subset
+    C[\alpha, \beta]$, а значит $Tu$ и $Tf$ автоматически из $C[\alpha, \beta]$.
+    Следовательно $u \in C[\alpha, \beta]$, поэтому
+    $$
+    \left\{
+    \begin{aligned}
+        &u = \lambda T u  + T f \in D(A)\\
+        &f \in C[\alpha, \beta]\\
+        &u \in C[\alpha, \beta]
+    \end{aligned}
+    \right.
+    \Rightarrow
+     \left\{
+    \begin{aligned}
+        &A u = \lambda u + f\\
+        &u \in D(A)\\
+        &f \in C[\alpha, \beta]
+    \end{aligned}
+    \right.
+    $$
+    
+    Таким образом $Au = \lambda u + f$, $u \in D(A)$  и $f \in C[\alpha, \beta]$ равносильно
+    $$
+    \left\{
+    \begin{aligned}
+        &u = \lambda T u  + T f \in D(A)\\
+        &f \in C[\alpha, \beta]\\
+        &u \in H
+    \end{aligned}
+    \right.
+    $$
+    Разложим
+    \begin{gather*}
+    u = \sump[k]\sump[i][1][m_k]u_{i,k}e_{i,k}\\
+    f  = \sump[k]\sump[i][1][m_k]f_{i,k}e_{i,k}
+    \end{gather*}
+    и подставим в $u = \lambda T u + T f$.
+    Так как
+    $$
+    Tu = \sump[k]\sump[i][1][m_k]u_{i,k} T e_{i,k} = \sump[k]\sump[i][1][m_k]u_{i,k} 
+    \lambda_ke_{i,k}
+    $$
+    сходится в $H$.
+    $$
+    Tf = \sump[k]\sump[i][1][m_k]f_{i,k} T e_{i,k} = \sump[k]\sump[i][1][m_k]f_{i,k} 
+    \lambda_ke_{i,k}
+    $$
+    Получаем
+    $$
+    \sump[k]\sump[i][1][m_k]u_{i,k}e_{i,k} = \sump[k]\sump[i][1][m_k] \lambda_k
+    (\lambda u_{i,k} + f_{i,k})e_{i,k}
+    $$
+    Следовательно
+    $$
+    u_{i,k}(1 - \lambda \lambda_k) = \lambda_k f_{i,k}
+    $$
+    значит
+    $$
+    u_{i,k} = \dfrac{f_{i,k}}{\frac{1}{\lambda_k} - \lambda}
+    $$
+    Так как $A$ симметрична на $D(A)$, то
+    $$
+    Au = \sump[k]\sump[i][1][m_k]\dfrac{(Au, e_{i,k})}{(e_{i,k}, e_{i,k})}e_{i,k} = 
+    \sump[k]\sump[i][1][m_k]\dfrac{(u, Ae_{i,k})}{(e_{i,k}, e_{i,k})}e_{i,k} =
+    \sump[k]\sump[i][1][m_k]\dfrac{1}{\lambda_k}\dfrac{(u, e_{i,k})}{(e_{i,k}, e_{i,k})}e_{i,k} = 
+    $$
+    а $\dfrac{(u, e_{i,k})}{(e_{i,k}, e_{i,k})} = u_{i,k} = \dfrac{f_{i,k}}{\frac{1}{\lambda_k} - \lambda}$.
+    Значит
+    $$
+    A u =  \sump[k]\sump[i][1][m_k]\dfrac{f_{i,k}}{1 - \lambda \lambda_k}e_{i,k}
+    $$
+    сходится в $H$.
+    $$
+    \|Au\|^2 =  \sump[k]\sump[i][1][m_k]\dfrac{|f_{i,k}|^2}{|1 - \lambda_k \lambda|^2} \le +\infty
+    \|e_{i,k}\|^2
+    $$
+    $|f_{i,k}|^2\|e_{i,k}\|^2$ член сходящегося ряда, так как $f \in H$.
+    $u \in D(A)$, значит $\exists Au \in C[\alpha, \beta] \in H$ что как будто бы
+    $$
+    Au =  \sump[k]\sump[i][1][m_k] u_{i,k}Ae_{i,k}
+    $$
+    Как будто потому что на самом деле $A$ разрывный оператор, а такое свойство 
+    появилось в силу симметричности на $D(A)$.
+\end{Proof}
+\section*{Собственные функции оператора Лапласа в круге с однородными 
+граничными условиями} 
+
+Пусть $G \subset \mathbb R^2$~--- ограниченная область с кусочно гладкой границей.
+$H = L_2(G)$, $\Delta : D(A) \mapsto H$, $D(\Delta) \subset H$.
+$$
+D(\Delta) = \left\{u \in C^2(\overline{G}) \mid u|_{\partial G} = 0\right\}
+$$
+Можно также использовать
+$$
+D_1(\Delta) = \left\{u \in C^2(\overline{G}) \mid \left.\dfrac{\partial u}{\partial n}\right|_{\partial 
+G} = 0\right\}
+$$
+где $n$~--- единичный нормальный вектор на $\partial G$.
+\begin{MathCl}{Утверждение}
+    $\Delta$~--- симметричный отрицательно определённый оператор на $D(\Delta)$ 
+    (на $D_1(\Delta)$ он симметричный и отрицательно полуопределённый).
+\end{MathCl}
+\begin{Proof}
+    Пусть $u, v \in D(\Delta)$
+    $$
+    (\Delta u, v) = \intl[G][][dxdy]{\Delta u \overline{v}} = 
+    \intl[G][][dxdy]{(u_{xx}\overline{v} + u_{yy}\overline{v})}
+    $$
+    Используем формулу Грина
+    $$
+    \oint\limits_{\partial G}(P \mathop{dx} + Q \mathop{dy}) = 
+    \intl[G][][dxdy]{(Q_x - P_y)}
+    $$
+    и получаем
+    $$
+    \intl[G][][dxdy]{u_{xx}\overline{v}} = \intl[G][][dxdy]{((u_x \overline{v})'_x - u_x v_x)}    
+    $$
+    Аналогично
+    $$
+    \intl[G][][dxdy]{u_{yy}\overline{v}} = \intl[G][][dxdy]{((u_y \overline{v})'_y - u_y v_y)}    
+    $$
+    В итоге
+    \begin{multline*}
+        (\Delta u, v) = \intl[G][][dxdy]{\Delta u \overline{v}} = 
+        \intl[G][][dxdy]{(u_{xx}\overline{v} + u_{yy}\overline{v})} =\\=
+        \intl[G][][dxdy]{((u_{x}\overline{v})'_x + (u_{yy}\overline{v})'_y)} -
+        \intl[G][][dxdy]{(u_x v_x + u_y v_y)} =\\=
+        \oint \limits_{\partial G} \overline{v}(u_x \mathop{dy} - u_y \mathop{dx}) - \intl[G][][dxydy]
+        {(\nabla u, \nabla v)}
+    \end{multline*}
+    Пусть $r(t)$ задаёт границу $\partial G$.
+    Пусть $r = \vect{a}{b}$, тогда единичная нормаль имеет вид $n =
+    \dfrac{1}{\sqrt{a^2 + b^2}}\vect{b}{-a}$.
+    Тогда
+    \begin{multline*}
+    \oint \limits_{\partial G} \overline{v}(u_x \mathop{dy} - u_y \mathop{dx}) - \intl[G][][dxydy]
+    {(\nabla u, \nabla v)} =\\=
+    \oint \limits_{\partial G} \overline{v} (\nabla u, n)|r|\mathop{dt} - \intl[G][][dxydy]
+    {(\nabla u, \nabla v)} =\\=
+    \oint \limits_{\partial G} \overline{v} \dfrac{\partial u}{\partial n} \mathop{ds} - \intl[G][][dxydy]
+    {(\nabla u, \nabla v)}
+    \end{multline*}
+    $u, v \in D(\Delta)$, тогда
+    $$
+    (\Delta u, v) = -\intl[G][][dxdy]{(\nabla u, \nabla v)}
+    $$
+    с другой стороны
+    $$
+    (u, \Delta v) = \overline{(\Delta u, v)} = -\intl[G][][dxdy]{\overline{(\nabla u, \nabla v)}} = -
+    \intl[G][][dxdy]{(\nabla u, \nabla v)}
+    $$
+    Значит
+    $$
+    (\Delta u, v) = (u, \Delta v)
+    $$
+    Аналогично для $u, v \in D_1(\Delta)$:
+    \begin{gather*}
+        (\Delta u, v) = -\intl[G][][dxdy]{(\nabla u, \nabla v)}\\
+        (u, \Delta v) = \overline{(\Delta u, v)} = -\intl[G][][dxdy]{\overline{(\nabla u, \nabla v)}} = -
+        \intl[G][][dxdy]{(\nabla u, \nabla v)}
+    \end{gather*}
+    Значит
+    $$
+    (\Delta u, v) = (u, \Delta v)
+    $$
+    
+    Теперь пусть $u \in D(\Delta)$, тогда
+    $$
+    (\Delta u, u) = - \intl[G][][dxdy]{|\nabla u|^2} \le 0
+    $$
+    Так как $|\nabla u|^2 \ge 0$ и $|\nabla u|^2 \in C(\overline{G})$, значит $|\nabla u|^2 = 0$
+    равносильно $\nabla u \equiv 0$ в $G$, значит $u \equiv \mathrm{const}$, а так как
+    $u \in D(\Delta)$, то $u \equiv 0$ в $G$, значит $(\Delta u, u) < 0\; \forall u \not \equiv 0 \in 
+    D(\Delta)$
+
+    Если же $u \in D_1(\Delta)$, то
+    $$
+    (\Delta u, u) = - \intl[G][][dxdy]{|\nabla u|^2} \le 0
+    $$
+    равно нулю при $u = \mathrm{const} \in D_1(\Delta)$
+\end{Proof}
+\begin{MathCl}{Следствие}
+    $\Delta : D(\Delta) \mapsto H$ симметрично отрицательно определённый оператор,
+    значит все его собственные значения вещественные и отрицательные, а собственные
+    функции, отвечающие различным собственным значениям ортогональны в $H$.
+\end{MathCl}
+\begin{Proof}
+    Пусть $\Delta u = \lambda u$, $u \in \mathbb C$, $u \in D(\Delta)\setminus\{0\}$.
+    Тогда
+    $$
+    (\Delta u, u) = \lambda \|u\|^2 = (u, \Delta u) = \overline{\lambda} \|u\|^2
+    $$
+     значит $\lambda = \overline{\lambda}$.
+     Далее
+     $$
+     (\Delta u, u) = \lambda\|u\|^2 < 0
+     $$
+     значит $\lambda < 0$ так как $\|u\|^2 > 0$.
+     Если $v \in D(\Delta) \setminus \{0\}$ и $\Delta v = \mu v$, $\mu \ne \lambda$, то
+     $$
+     (\Delta u, v) = \lambda (u, v) = (u, \Delta v) = \mu(u, v)
+    $$
+    Значит $(u, v) = 0$.
+\end{Proof}
+
+Ищем ортогональный базис в $L_2(G)$, где
+$$
+G = C_R(0) = \left\{ \vect{x}{y} \left\arrowvert x^2 + y^2\right.\right\}
+$$
+из собственных функций $\Delta : D(\Delta) \mapsto H$
+$$
+D(\Delta) = \{u \in C^2(\overline{C}_R(0)) \mid u|_{x^2 + y^2 = R^2} = 0\}
+$$
+
+Сделаем замену координат $x = r \cos \varphi$, $y = r \sin \varphi$, где $0 \le r < R$ и
+$\varphi \in [0, 2\pi]$
+Тогда
+$$
+\Delta = \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} + \dfrac{1}{r^2}
+\dfrac{\partial^2}{\partial \varphi^2}
+$$
+и 
+$$
+C_R(0) = \left\{
+\begin{array}{c}
+    0 \le r < R\\
+    0 \le \varphi < 2\pi
+\end{array}
+\right\}
+$$
+Пусть $f = f(r, \varphi) \in L_2(C_R(0))$
+$$
+\|f\| = \sqrt{\intl[0][R][dr]{r\intl[0][2\pi][d\varphi]{|f|^2}}}
+$$
+Если бы $f(r, \varphi) = g(r)h(\varphi)$, где $h \in L_2[0,2\pi] = H_2$
+и $g \in L_{2r}[0, R] = H_1 = \{g : [0, R] \mapsto \mathbb C \mid \intl[0][R][dr]{r|g(r)|^2} \le 
++\infty\}$,
+тогда $\|f\|_H = \|g\|_{H_1} \|h\|_{H_2}$.
+Пусть $g_1, g_2 \in H_1$, тогда
+$$
+(g_1, g_2) = \intl[0][R][dr]{r g_1 \overline{g_2}}
+$$
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
