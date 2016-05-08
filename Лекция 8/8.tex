@@ -5,6 +5,7 @@
     #1\\
     #2
 \end{array}\right)}
+\newcommand{\tmp}[1][]{v_{k, #1}}
 %=============================================================================!
 \begin{document}
 \section*{Задача Штурма-Лиувиля}
@@ -583,6 +584,166 @@ $$
 $$
 (g_1, g_2) = \intl[0][R][dr]{r g_1 \overline{g_2}}
 $$
+Тогда
+$$
+|(g_1, g_2)| \le \intl[0][R][dr]{\sqrt{r} |g_1| \sqrt{r} |g_2|}
+$$
+И $\sqrt{r} |g_1|$, и $\sqrt{r} |g_2|$ принадлежат $L_2[0,R]$.
+Далее по неравенству Коши~--- Буняковского
+$$
+\intl[0][R][dr]{\sqrt{r} |g_1| \sqrt{r} |g_2|} \le \sqrt{\intl[0][R][dr]{r|g_1|^2}}
+\sqrt{\intl[0][R][dr]{r|g_2|^2}} = \|g_1\|_{H_1} \|g_2\|_{H_1}
+$$
+
+$H_1$~--- пополнение $C[0, R]$ по норме
+$$
+\|g\| = \sqrt{\intl[0][R][dr]{|r||g^2|}}
+$$
+\begin{MathCl}{Утверждение}
+    $L_{2,r}[0,R] \otimes L_2[0,\pi] = L_2((C_R(0))$, то есть $\|g \otimes h\| = \|g\|_{H_1}
+    \|h\|_{H_2}$, где $g \otimes h = g(r)h(\varphi)$.
+\end{MathCl}
+\begin{Proof}
+    $\forall f \in L_2(C_R(0))\;\forall \varepsilon > 0$~--- это пополнение $C(\overline{C_R(0)})$
+    по $L_2$ норме, то $\exists \Psi \in C(\overline{C_R(0)}) \colon \|f - \Psi\|_{L_2(C_R(0))} \le 
+    \varepsilon$.
+    Так как $C(\overline{C_R(0)})$~--- компакт, $\Psi$~--- непрерывная на компакте функция, то
+    по теореме Стоуна~--- Вейерштрасса $\exists P(x, y)$~--- многочлен $x, y$ такой, что
+    $$
+    \max \limits_{\overline{C_R(0)}} |P - \Psi| \le \dfrac{\varepsilon}{\sqrt{\pi}R}
+    $$
+    тогда
+    $$
+    \|P - \Psi\|_{L_2(C_R(0))} \le \sqrt{\intl[C_R(0)][][]{\dfrac{\varepsilon^2}{\pi R^2}}} = \varepsilon
+    $$
+    Но 
+    \begin{multline*}
+        P(x, y) = P(r \cos{\varphi}, r \sin{\varphi}) =\\=
+        \sump[k][1][N]\alpha_k x^{m_k} y^{n_k} =
+        \sump[k][1][N] \alpha_k r^{n_k + m_k} \cos^{m_k}{\varphi} \sin^{n_k}{\varphi}  =\\=
+        \sump[k][1][N] g_k(r) h_k(\varphi) \in L_{2,r}[0,R] \otimes L_2[0, 2\pi]
+    \end{multline*}
+    Обозначим $P(r \cos{\varphi}, r \sin{\varphi}) = w$, тогда
+    $$
+    \|f - w\|_{L_2(C_R(0))} = \|f - \Psi + \Psi - w\|_{L_2(C_R(0))} \le \|f - \Psi\|_{L_2(C_R(0))} + 
+    \|\Psi - w\|_{L_2(C_R(0))} \le 2 \varepsilon
+    $$
+    Тогда пусть $M = \{\sump[k][1][N] \alpha_k g_k \otimes h_k\}$, $\alpha_k \in \mathbb C$,
+    тогда $\overline{M} = L_2(C_R(0))$, так как любая функция из $f$ приближается сколько
+    угодно мало функцией из $M$.
+    С другой стороны $\overline{M} = L_{2, r}[0,R] \otimes L_2[0, 2\pi]$,
+    значит $L_{2, r}[0,R] \otimes L_2[0, 2\pi] = L_2(C_R(0))$.
+\end{Proof}
+
+Нам известно, что в $L_2[0, 2\pi]$ есть ортогональный базис
+$$
+\{1, \cos{k \varphi}, \sin{k \varphi} \mid k \in \mathbb N\}
+$$
+Можно обозначить базисные функции, как $e_k(\varphi)$, где
+$e_k(\varphi) = \cos{k \varphi}, k \ge 0$ и $e_k(\varphi) = \sin{k \varphi}, k < 0$, или иначе
+$e_k(\varphi) = e^{\imath k \varphi}, k \in \mathbb Z$.
+Тогда
+$$
+\dfrac{\partial^2}{\partial \varphi^2} e_k(\varphi) = -k^2 e_k(\varphi)
+$$
+
+Ищем собственные функции $v(r)e_k(\varphi) \in H$, $v \in C^2[0, R]$, $v(R) = 0$, 
+$v(r)e_k(\varphi) \in D(\Delta)$.
+$$
+\Delta v(r)e_k(\varphi) = (v'' + \dfrac{1}{r} v' - \dfrac{k^2}{r^2}v)e_k = \lambda v e_k,\quad 
+\lambda < 0
+$$
+Обозначим $A_k$
+$$
+A_k = \dfrac{\partial^2}{\partial r^2} + \dfrac{1}{r} \dfrac{\partial}{\partial r} - \dfrac{k^2}{r^2}
+$$
+$A_k : D(A_k) \mapsto L_{2, r}[0, R]$, где
+$$
+D(A_k) = \left\{v \in C^2[0, R] \left\arrowvert
+\begin{aligned}
+v(R) &= 0\\
+A_k(v) &\in L_{2, r}[0, R]
+\end{aligned}
+\right.\right\}
+$$
+В $D(A_k)$ заведомо выполнено, что $v(0) = 0$, значит $v(r) = O(r), r \to +0$.
+$A_k v = \lambda v$, $v \in D(A_k) \setminus \{0\}$, $\lambda < 0$.
+
+Существует ли $\e[\infty][m]{\tmp{}}$~--- ортогональный базис в $L_{2, r}[0, R]$? 
+Если вдруг удастся построить ортогональный базис $\forall k \in \mathbb Z$
+$\e[\infty][m]{\tmp{}} \subset D(A_k)$ в $L_{2, r}[0, R]$, $A_k v_{k,m} = \lambda_{k, m}v_{k, m}$,
+$\lambda_{k, m} < 0$, тогда $u_{k, m} = v_{k, m}(r) e_k(\varphi) \in D(\Delta)$~--- это 
+собственные функции $\Delta$ отвечающие $\lambda_{k, m}$.
+$$
+(v_{k,m} \otimes e_k, v_{\tilde{k}, \tilde{m}} \otimes e_{\tilde{k}})_{L_2(C_R(0))} =
+(v_{k, m}, v_{\tilde{k}, \tilde{m}})_{L_{2, r}[0, R]}(e_k, e_{\tilde{k}})_{L_2[0, 2\pi]}
+$$
+равно нулю при $m \ne \tilde{m}$ или $k \ne \tilde{k}$, таким образом $v_{k, m} \perp 
+v_{k, \tilde{m}}$ при $m \ne \tilde{m}$ в $L_{2, r}[0, R]$, значит система действительно
+ортогональная.
+\begin{MathCl}{Утверждение}
+    Пусть $H_1$ и $H_2$~--- два гильбертовых пространства.
+    Пусть $\e[][k][\in \mathbb Z]{e}$~--- ортогональный базис в $H_2$ 
+    и пусть $\forall k \in \mathbb Z$ система $\{v_{k, m}\}_{m \in \mathbb N}$~--- 
+    ортогональный базис в $H_1$, тогда $\{v_{k, m} \otimes e_k\}$~--- ортогональный базис
+    в $H_1 \otimes H_2$.
+\end{MathCl}
+\begin{Proof}
+    Надо доказать полноту ортогональный системы $\{v_{k, m} \otimes e_k\}_{k, m}$ в 
+    $H_1 \otimes H_2$ то есть $\forall f \in H_1 \otimes H_2\; \forall \varepsilon > 0$ по
+    определению $H_1 \otimes H_2$ $\exists g = \sump[k][1][N] \alpha_k u_k \otimes v_k$
+    то $\|f -g\|_{H_1 \otimes H_2} \le \varepsilon$.
+    $v_k \in H_2$  приближается с любой заданной точностью $\delta > 0$ линейной
+    комбинацией $\e[][i][\in \mathbb Z]{e}$
+    $$
+    \|v_k - \sump[i][1][M_k] \beta_{k,i} e_i\|_{H_2} \le \delta
+    $$
+    значит
+    \begin{multline*}
+        \|f - \sump[k][1][N]\alpha_k u_k \otimes \left(\sump[i][1][M_k]\beta_{k,i} e_i\right)\| =\\=
+        \|f - \sump[k][1][N]\alpha_k u_k \otimes \left(\sump[i][1][M_k]\beta_{k,i} e_i\right) +g - g\|
+        \le\\\le \varepsilon + \|\sump[k][1][N]\alpha_k u_k \otimes \left(v_k - \sump[i][1][M_k]
+        \beta_{k,i} e_i\right)\| \le\\\le
+        \varepsilon + \delta \sump[k][1][N]|\alpha_k|\|u_k\|_{H_1}
+    \end{multline*}
+    хотим, чтобы было бы меньше, чем $2 \varepsilon$, тогда $\delta > 0$ и
+    $$
+    \delta < \dfrac{\varepsilon}{\sump[k][1][N] |\alpha_k|\|u_k\|_{H_1} + 1}
+    $$
+    Таким образом
+    $$
+    \|f - \sump[k][1][N]\sump[i][1][M_k]\alpha_k \beta_{k, i} u_k \otimes e_i\|_{H_1 \otimes H_2}
+    = \|f - w\|_{H_1 \otimes H_2}
+    \le 2\varepsilon
+    $$
+    С точность $\gamma > 0$ для каждого $i = 1 \dots M_k$, $k = 1 \dots N$ приблизим $u_k$
+    конечной линейной комбинацией $\{v_{i, m}\}_{m \in \mathbb N}$~--- ортогональный 
+    базис в $H_1$, $u_k \in H_1$.
+    $$
+    \|u_k - \sump[j][1][L_{k, i}]\gamma_{k, i, j} v_{i, j}\|_{H_1} \le \gamma
+    $$
+    Тогда
+    \begin{multline*}
+        \|f - \sump[k][1][N]\sump[i][1][M_k]\sump[j][1][L_{k, i}] \alpha_k \beta_{k, i \gamma_{k, i, j}}
+        v_{i, j} \otimes e_i\| =\\=
+        \|f - \sump[k][1][N]\sump[i][1][M_k]\sump[j][1][L_{k, i}] \alpha_k \beta_{k, i \gamma_{k, i, j}}
+        v_{i, j} \otimes e_i + w - w\| \le\\\le
+        2 \varepsilon + \sump[k][1][N]\sump[i][1][M_k]|\alpha||\beta_{k, i}|\|u_k - \sump[j][1][
+        L_{k,i }] \gamma_{k, i, j} v_{i, j}\|_{H_1} \|e_i\|_{H_2} =\\=
+        2\varepsilon + \sump[k][1][N]\sump[i][1][M_k]|\alpha||\beta_{k, i}| \gamma \|e_i\|_{H_2}
+    \end{multline*}
+    Пусть
+    $$
+    0 \le \gamma \le \dfrac{\varepsilon}{\sump[k][1][N]\sump[i][1][M_k]|\alpha||\beta_{k, i}|\|e_i
+    \|_{H_2} + 1}
+    $$
+    тогда
+    $$
+    \|f - \sump[k][1][N]\sump[i][1][M_k]\sump[j][1][L_{k, i}] \alpha_k \beta_{k, i \gamma_{k, i, j}}
+    v_{i, j} \otimes e_i\| \le 3 \varepsilon
+    $$
+    таким образом наша система полная, значит образует базис.
+\end{Proof}
 \end{document}
 
 
